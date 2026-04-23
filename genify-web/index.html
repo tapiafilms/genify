@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Genify - Landing Moderna</title>
+    <title>Genify - Business Operating System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -713,7 +713,8 @@
       }
       .mid-title {
           text-align: left!important;
-      }
+          max-width: 100%!important;
+          }
       }
 
       .mid-title {
@@ -760,12 +761,16 @@
         border-radius: var(--radius-md);
         padding: 1.5rem;
         box-shadow: var(--shadow-soft);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                    border-color 0.3s ease, 
+                    box-shadow 0.4s ease;
       }
 
       .card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(120, 197, 255, 0.4);
+        transform: scale(1.05) translateY(-5px);
+        border-color: rgba(120, 197, 255, 0.6);
+        box-shadow: 0 30px 60px rgba(8, 2, 31, 0.7);
+        z-index: 10;
       }
 
       .icon-badge {
@@ -1145,6 +1150,7 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
                     sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
                     Et harum quidem rerum facilis es
                   </p>
+                  <a id="stripButton" class="btn" href="https://www.celigot.cl" target="_blank" style="margin-top: 1.5rem;">Visitar sitio</a>
                 </div>
                 <div class="strip-visual">
                   <img id="stripImage" src="./img/call-to-action.png" alt="Detalle del producto" style="mask-image: linear-gradient(to left, black, transparent); -webkit-mask-image: linear-gradient(to left, black, transparent);">
@@ -1156,28 +1162,28 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
               <img src="./img/ft1.png" alt="Proyecto de entretenimiento" />
               <div class="showcase-copy">
                 <h4>Celigot</h4>
-                <p>Plataforma social con diseño atractivo y navegación fluida.</p>
+                <p>Ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad.</p>
               </div>
             </article>
             <article class="showcase-item reveal" style="--reveal-delay: 80ms" id="item-2">
               <img src="./img/ft2.png" alt="Proyecto de comunidad digital" />
               <div class="showcase-copy">
                 <h4>Wufly</h4>
-                <p>Experiencias móviles para comunidades con identidad de marca.</p>
+                <p>Plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital.</p>
               </div>
             </article>
             <article class="showcase-item reveal" style="--reveal-delay: 160ms" id="item-3">
               <img src="./img/ft5.png" alt="Aplicación con interfaz visual moderna" />
               <div class="showcase-copy">
                 <h4>Maestrio</h4>
-                <p>Aplicación orientada a engagement y contenidos personalizados.</p>
+                <p>Marketplace inteligente para servicios del hogar, rápido, confiable y escalable.</p>
               </div>
             </article>
             <article class="showcase-item reveal" style="--reveal-delay: 240ms" id="item-4">
               <img src="./img/ft4.png" alt="Equipo usando app en entorno real" />
               <div class="showcase-copy">
                 <h4>Un Cupo</h4>
-                <p>Suite para activar procesos internos y acelerar productividad.</p>
+                <p>Conecta pasajeros y conductores en tiempo real, reduciendo costos y fricción.</p>
               </div>
             </article>
           </div>
@@ -1189,7 +1195,10 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
           <h2 class="section-title reveal tit-color">Smart Service Platforms</h2>
           <p class="section-subtitle reveal">
             <span style="color:#fff;"><b>Plataformas inteligentes para empresas.</b></span>
-            Soluciones automatizadas para captar y atender clientes.
+            
+Infraestructura digital para crear y escalar servicios de forma inteligente.
+Centraliza captación, atención y operación en experiencias automatizadas.
+Potenciada por IA para conectar empresas y clientes de manera eficiente y continua.
           </p>
           <div class="cards-grid">
             <article class="card reveal" style="--reveal-delay: 0ms">
@@ -1223,13 +1232,11 @@ Optimiza decisiones con métricas claras.</p>
           <div class="about-copy reveal">
             <h2 class="section-title">Business Operating System</h2>
             <p>
-              Esta DXP (Digital Experience Platform), permite crear y gestionar experiencias digitales, y es la base que permite crear, automatizar y gestionar todas las plataformas dentro del ecosistema.
+              Esta DXP (Digital Experience Platform) es el núcleo que impulsa todo el ecosistema digital.
+Permite crear, automatizar y gestionar múltiples plataformas desde un solo lugar.
+Integra captación, comunicación, inteligencia artificial y operación para conectar empresas y personas de forma eficiente y escalable.
+            </p>
 
-Coordina la captación de clientes, la comunicación, la inteligencia artificial y la operación de cada servicio, conectando a empresas con personas de forma eficiente y escalable.
-            </p>
-            <p>
-              Hola
-            </p>
           </div>
           <figure class="about-media reveal">
             <img src="./img/call-to-action.png" alt="Vista de producto móvil en ambiente neón" />
@@ -1351,28 +1358,32 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
       // ─── Showcase strip ──────────────────────────────────────────────────────
       const projectsData = {
         'item-1': {
-          title: 'Celigot - Plataforma Social',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          title: 'Plataforma Social',
+          description: 'Celigot es un ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad. Impulsado por IA para descubrir opciones seguras y tomar decisiones informadas. La infraestructura que redefine la experiencia celíaca.',
           logo: './img/logo-celigot.png',
-          image: './img/ft1.png'
+          image: './img/ft1.png',
+          url: 'https://www.celigot.cl'
         },
         'item-2': {
-          title: 'Wufly - Experiencias Móviles',
-          description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          title: 'Experiencias Móviles',
+          description: 'Wufly es una plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital. Desde servicios hasta adopción, potenciado por IA y conexión en tiempo real. Redefiniendo el cuidado y la gestión del mundo animal.',
           logo: './img/logo-wufly.png',
-          image: './img/ft2.png'
+          image: './img/ft2.png',
+          url: 'https://wufly.vercel.app/'
         },
         'item-3': {
-          title: 'Maestrio - Engagement Digital',
-          description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+          title: 'Conección Digital',
+          description: 'Maestrio es Marketplace inteligente para servicios del hogar, rápido, confiable y escalable. Conecta usuarios con profesionales verificados mediante IA. La nueva forma de resolver lo cotidiano.',
           logo: './img/logo-maestrio.png',
-          image: './img/ft3.png'
+          image: './img/ft3.png',
+          url: 'https://www.maestrio.cl'
         },
         'item-4': {
-          title: 'Un Cupo - Suite Empresarial',
-          description: 'Nemo enim ipsam voluptatem quia vacaciones sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+          title: 'Viajes Interurbanos',
+          description: 'Un Cupo es una red de movilidad compartida para optimizar viajes interurbanos. Conecta pasajeros y conductores en tiempo real, reduciendo costos y fricción. Infraestructura digital para una nueva forma de viajar.',
           logo: './img/logo-uncupo.png',
-          image: './img/ft4.png'
+          image: './img/ft4.png',
+          url: 'https://uncupo.vercel.app'
         }
       };
 
@@ -1383,6 +1394,7 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
       const stripDescEl    = document.querySelector(".strip-description");
       const stripLogo      = document.getElementById("stripLogo");
       const stripImage     = document.getElementById("stripImage");
+      const stripButton    = document.getElementById("stripButton");
 
       let isAnimated   = false;
       let currentItem  = null;
@@ -1417,6 +1429,7 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
           stripDescEl.textContent   = projectInfo.description;
           stripLogo.src             = projectInfo.logo;
           stripImage.src            = projectInfo.image;
+          stripButton.href          = projectInfo.url;
         }
 
         if (isResponsive) {
