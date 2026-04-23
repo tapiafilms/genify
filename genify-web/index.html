@@ -46,6 +46,7 @@
           var(--bg-main);
         line-height: 1.5;
         letter-spacing: 0.01em;
+        overflow-x: hidden;
       }
 
       .landing {
@@ -204,6 +205,13 @@
 
       .btn:hover::before {
         left: 130%;
+      }
+
+      .btn:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+        transform: none;
+        filter: none;
       }
 
       .hero {
@@ -742,8 +750,7 @@
 
       .cards-grid {
         display: grid;
-        gap: 1rem;
-        grid-template-columns: 1fr;
+        gap: 1.2rem;
         margin-top: 2.1rem;
       }
 
@@ -751,38 +758,38 @@
         background: var(--bg-card);
         border: 1px solid var(--border-soft);
         border-radius: var(--radius-md);
-        padding: 1.2rem;
+        padding: 1.5rem;
         box-shadow: var(--shadow-soft);
-        transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .card:hover {
-        transform: translateY(-7px);
+        transform: translateY(-5px);
         border-color: rgba(120, 197, 255, 0.4);
-        box-shadow: 0 22px 45px rgba(13, 6, 39, 0.62);
       }
 
       .icon-badge {
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
         background: linear-gradient(145deg, rgba(127, 61, 255, 0.32), rgba(51, 210, 255, 0.25));
         border: 1px solid rgba(255, 255, 255, 0.16);
         display: grid;
         place-items: center;
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         margin-bottom: 1rem;
       }
 
       .card h3 {
-        margin: 0 0 0.45rem;
-        letter-spacing: -0.01em;
+        margin: 0 0 0.5rem;
+        font-size: 1.2rem;
       }
 
       .card p {
         margin: 0;
         color: var(--text-soft);
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+        line-height: 1.5;
       }
 
       .about-wrap {
@@ -1182,31 +1189,30 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
           <h2 class="section-title reveal tit-color">Smart Service Platforms</h2>
           <p class="section-subtitle reveal">
             <span style="color:#fff;"><b>Plataformas inteligentes para empresas.</b></span>
-
-Son aplicaciones creadas para ayudar a empresas a captar, atender y convertir clientes de forma automática.
-
-Integran herramientas como inteligencia artificial, formularios, reservas y seguimiento, todo en un solo lugar, permitiendo optimizar el tiempo y aumentar las oportunidades de venta.
+            Soluciones automatizadas para captar y atender clientes.
           </p>
           <div class="cards-grid">
             <article class="card reveal" style="--reveal-delay: 0ms">
-              <div><img width="50%" src="./img/logo-nivelup.png"</div>
-              <h3>WPA Escolar</h3>
-              <p>Construcción rápida y estable de plataformas web y mobile orientadas a negocio.</p>
+              <div><img width="50%" src="./img/logo-nivelup.png"></div>
+              <h3>Etapa Escolar</h3>
+              <p>Plataforma educativa que facilita la gestión académica, comunicación y seguimiento del progreso estudiantil.</p>
             </article>
             <article class="card reveal" style="--reveal-delay: 70ms">
-              <div><img width="70%" src="./img/logo-talentflow.png"</div>
+              <div style="padding:12px 0;"><img width="70%" src="./img/logo-talentflow.png"></div>
               <h3>Recursos Humanos</h3>
-              <p>Interfaces modernas con enfoque en usabilidad, accesibilidad y experiencia visual.</p>
+              <p>Solución digital para optimizar la gestión de personas en organizaciones modernas que
+centraliza procesos y mejora la comunicación.</p>
             </article>
             <article class="card reveal" style="--reveal-delay: 140ms">
-              <div class="icon-badge">🔐</div>
-              <h3>Arquitectura segura</h3>
-              <p>Infraestructura robusta y prácticas de seguridad para escalar con confianza.</p>
+              <div style="padding:16px 0;"><img width="40%" src="./img/logo-nubli.png"></div>
+              <h3>Primera Infancia</h3>
+              <p>Conecta educadoras y familias en tiempo real para compartir avances, actividades y comunicación de forma simple y segura.</p>
             </article>
             <article class="card reveal" style="--reveal-delay: 210ms">
-              <div class="icon-badge">📈</div>
-              <h3>Optimización continua</h3>
-              <p>Medición y mejora constante para maximizar conversión y performance.</p>
+              <div style="padding:0px 0;"><img width="50%" src="./img/logo-looksy.png"></div>
+              <h3>Smart Fashion</h3>
+              <p>Herramienta inteligente para analizar y potenciar el rendimiento en moda digital.
+Optimiza decisiones con métricas claras.</p>
             </article>
           </div>
         </div>
@@ -1271,7 +1277,7 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
                 </div>
               </div>
               <p class="error-message" id="formError" aria-live="polite"></p>
-              <button class="btn" type="submit">Enviar mensaje</button>
+              <button class="btn" type="submit" id="submitBtn">Enviar mensaje</button>
               <p class="success-message" id="formSuccess" aria-live="polite"></p>
             </form>
           </div>
@@ -1301,15 +1307,48 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
     </footer>
     </div>
 
-    <script>
-      const navbar = document.getElementById("navbar");
-      const menuBtn = document.getElementById("menuBtn");
-      const navLinks = document.querySelector(".nav-links");
-      const form = document.getElementById("contactForm");
-      const formError = document.getElementById("formError");
-      const formSuccess = document.getElementById("formSuccess");
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-      // Datos de los proyectos para la franja púrpura
+    <script>
+      // ─── Supabase ────────────────────────────────────────────────────────────
+      const SUPABASE_URL  = 'https://nzvoglbztklzwteulols.supabase.co';
+      const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im56dm9nbGJ6dGtsend0ZXVsb2xzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzY1NjIsImV4cCI6MjA5MjQ1MjU2Mn0.CNGwukG1eoqB9UZFdGZ45XjxLoOCG2JtKCXWiuMoTfs';
+      const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+      // ─── Navbar ──────────────────────────────────────────────────────────────
+      const navbar   = document.getElementById("navbar");
+      const menuBtn  = document.getElementById("menuBtn");
+      const navLinks = document.querySelector(".nav-links");
+
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 12);
+      });
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+
+      // ─── Reveal on scroll ────────────────────────────────────────────────────
+      const revealItems    = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16 }
+      );
+      revealItems.forEach((item) => revealObserver.observe(item));
+
+      // ─── Showcase strip ──────────────────────────────────────────────────────
       const projectsData = {
         'item-1': {
           title: 'Celigot - Plataforma Social',
@@ -1331,103 +1370,75 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
         },
         'item-4': {
           title: 'Un Cupo - Suite Empresarial',
-          description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+          description: 'Nemo enim ipsam voluptatem quia vacaciones sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
           logo: './img/logo-uncupo.png',
           image: './img/ft4.png'
         }
       };
 
-      const item1 = document.getElementById("item-1");
-      const purpleStrip = document.getElementById("purpleStrip");
-      const showcaseGrid = document.getElementById("showcaseGrid");
-      const stripTitle = document.querySelector(".strip-title");
-      const stripDescription = document.querySelector(".strip-description");
-      const stripLogo = document.getElementById("stripLogo");
-      const stripImage = document.getElementById("stripImage");
-      
-      let isAnimated = false;
-      let currentItem = null;
+      const item1          = document.getElementById("item-1");
+      const purpleStrip    = document.getElementById("purpleStrip");
+      const showcaseGrid   = document.getElementById("showcaseGrid");
+      const stripTitle     = document.querySelector(".strip-title");
+      const stripDescEl    = document.querySelector(".strip-description");
+      const stripLogo      = document.getElementById("stripLogo");
+      const stripImage     = document.getElementById("stripImage");
+
+      let isAnimated   = false;
+      let currentItem  = null;
       let isResponsive = window.innerWidth < 1024;
 
-      // Detectar cambios de tamaño de pantalla
       window.addEventListener("resize", () => {
         isResponsive = window.innerWidth < 1024;
       });
 
       const toggleAnimation = (clickedItem) => {
-        // Si ya hay algo abierto y es lo mismo que clickeamos, lo cerramos
-        if (isAnimated && currentItem === clickedItem) {
-          closeCurrent();
-          return;
-        }
-
-        // Si hay algo abierto pero es OTRO item, cerramos el actual y abrimos el nuevo
+        if (isAnimated && currentItem === clickedItem) { closeCurrent(); return; }
         if (isAnimated && currentItem !== clickedItem) {
           if (isResponsive) {
-            // En móvil cerramos y abrimos rápido
             purpleStrip.classList.remove("active");
-            setTimeout(() => {
-              openItem(clickedItem);
-            }, 300);
+            setTimeout(() => openItem(clickedItem), 300);
           } else {
             closeCurrent();
-            setTimeout(() => {
-              openItem(clickedItem);
-            }, 800);
+            setTimeout(() => openItem(clickedItem), 800);
           }
           return;
         }
-
-        // Si no hay nada abierto, abrimos
         openItem(clickedItem);
       };
 
       const openItem = (clickedItem) => {
-        isAnimated = true;
+        isAnimated  = true;
         currentItem = clickedItem;
-        
-        const projectId = clickedItem.id;
-        const projectInfo = projectsData[projectId];
+
+        const projectInfo = projectsData[clickedItem.id];
         if (projectInfo) {
-          stripTitle.textContent = projectInfo.title;
-          stripDescription.textContent = projectInfo.description;
-          stripLogo.src = projectInfo.logo;
-          stripImage.src = projectInfo.image;
+          stripTitle.textContent    = projectInfo.title;
+          stripDescEl.textContent   = projectInfo.description;
+          stripLogo.src             = projectInfo.logo;
+          stripImage.src            = projectInfo.image;
         }
-        
+
         if (isResponsive) {
-          // MOVER EL ELEMENTO EN EL DOM
           clickedItem.after(purpleStrip);
-          
-          // Forzar un reflow para que el navegador note el cambio de posición
           void purpleStrip.offsetWidth;
-          
           setTimeout(() => {
             purpleStrip.classList.add("active");
-            
-            // Scroll a la IMAGEN seleccionada
             setTimeout(() => {
-              const offset = 100;
-              const elementRect = clickedItem.getBoundingClientRect().top;
-              const offsetPosition = elementRect + window.pageYOffset - offset;
-
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-              });
+              const offset          = 100;
+              const elementRect     = clickedItem.getBoundingClientRect().top;
+              const offsetPosition  = elementRect + window.pageYOffset - offset;
+              window.scrollTo({ top: offsetPosition, behavior: "smooth" });
             }, 150);
           }, 50);
         } else {
-          const rect1 = item1.getBoundingClientRect();
+          const rect1      = item1.getBoundingClientRect();
           const rectCurrent = clickedItem.getBoundingClientRect();
-          const deltaX = rect1.left - rectCurrent.left;
-          const deltaY = rect1.top - rectCurrent.top;
-          
-          const allItems = Array.from(document.querySelectorAll(".showcase-item"));
-          const otherItems = allItems.filter(item => item !== item1 && item !== clickedItem);
-          
-          otherItems.forEach(item => item.classList.add("fade-out"));
-          
+          const deltaX     = rect1.left - rectCurrent.left;
+          const deltaY     = rect1.top  - rectCurrent.top;
+          const allItems   = Array.from(document.querySelectorAll(".showcase-item"));
+          const otherItems = allItems.filter(i => i !== item1 && i !== clickedItem);
+          otherItems.forEach(i => i.classList.add("fade-out"));
           clickedItem.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
           clickedItem.classList.add("move-to-first");
           purpleStrip.classList.add("active");
@@ -1436,89 +1447,74 @@ Coordina la captación de clientes, la comunicación, la inteligencia artificial
 
       const closeCurrent = () => {
         purpleStrip.classList.remove("active");
-        
         if (!isResponsive && currentItem) {
           currentItem.style.transform = "";
           currentItem.classList.remove("move-to-first");
-          
           setTimeout(() => {
-            document.querySelectorAll(".showcase-item").forEach(item => {
-              item.classList.remove("fade-out");
-            });
+            document.querySelectorAll(".showcase-item").forEach(i => i.classList.remove("fade-out"));
           }, 800);
         }
-        
-        isAnimated = false;
+        isAnimated  = false;
         currentItem = null;
       };
 
-      // Limpiar listeners antiguos y asignar nuevos
       document.querySelectorAll(".showcase-item").forEach(item => {
-        item.onclick = null; // Limpiar cualquier handler previo
         item.addEventListener("click", () => toggleAnimation(item));
       });
 
       document.querySelector(".close-strip").addEventListener("click", (e) => {
         e.stopPropagation();
-        if (isAnimated) {
-          closeCurrent();
-        }
+        if (isAnimated) closeCurrent();
       });
 
-      window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 12);
-      });
+      // ─── Formulario de contacto con Supabase ─────────────────────────────────
+      const form       = document.getElementById("contactForm");
+      const formError  = document.getElementById("formError");
+      const formSuccess = document.getElementById("formSuccess");
+      const submitBtn  = document.getElementById("submitBtn");
 
-      menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-      });
-
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => navLinks.classList.remove("open"));
-      });
-
-      const revealItems = document.querySelectorAll(".reveal");
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.16 }
-      );
-
-      revealItems.forEach((item) => revealObserver.observe(item));
-
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        formError.textContent = "";
+        formError.textContent   = "";
         formSuccess.textContent = "";
 
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
-        const message = form.message.value.trim();
+        const nombre  = form.name.value.trim();
+        const email   = form.email.value.trim();
+        const mensaje = form.message.value.trim();
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-        if (!name || !email || !message) {
+        if (!nombre || !email || !mensaje) {
           formError.textContent = "Completa todos los campos antes de enviar.";
           return;
         }
-
         if (!emailPattern.test(email)) {
           formError.textContent = "Ingresa un email válido.";
           return;
         }
-
-        if (message.length < 10) {
+        if (mensaje.length < 10) {
           formError.textContent = "El mensaje debe tener al menos 10 caracteres.";
           return;
         }
 
-        form.reset();
-        formSuccess.textContent = "Mensaje enviado correctamente. Te contactaremos pronto.";
+        submitBtn.disabled     = true;
+        submitBtn.textContent  = "Enviando...";
+
+        try {
+          const { error } = await supabaseClient
+            .from('leads')
+            .insert([{ nombre, email, mensaje }]);
+
+          if (error) throw error;
+
+          form.reset();
+          formSuccess.textContent = "¡Mensaje enviado! Te contactaremos pronto.";
+        } catch (err) {
+          console.error("Error al enviar:", err);
+          formError.textContent = "Ocurrió un error al enviar. Intentá de nuevo.";
+        } finally {
+          submitBtn.disabled    = false;
+          submitBtn.textContent = "Enviar mensaje";
+        }
       });
     </script>
   </body>
