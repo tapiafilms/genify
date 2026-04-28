@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Genify - Business Operating System</title>
+    <title>Genofy - Business Operating System</title>
+    <link rel="icon" type="image/png" href="./img/favico.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -62,7 +63,7 @@
         width: 100%;
         max-width: 1600px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 0px;
       }
 
       .section {
@@ -116,7 +117,7 @@
       }
 
       .logo img {
-        width: 140px;
+        width: 180px;
         object-fit: contain;
       }
 
@@ -545,14 +546,16 @@
 
       .strip-logo {
         height: 100px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0rem;
       }
 
       .strip-title {
-        font-size: 2.2rem;
+        font-size: 25px;
         font-weight: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 0rem;
         color: #fff;
+        padding-top: 0;
+        margin-top: 0;
       }
 
       .strip-description {
@@ -563,13 +566,13 @@
 
       .strip-visual {
         flex-shrink: 0;
-        width: 350px;
+        width: 445px;
         position: relative;
       }
 
       .strip-visual img {
         width: 100%;
-        filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+        /*filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));*/
       }
 
       .close-strip {
@@ -811,8 +814,7 @@
       .about-media {
         border-radius: var(--radius-lg);
         overflow: hidden;
-        border: 1px solid var(--border-soft);
-        box-shadow: var(--shadow-soft);
+        border: 0px solid var(--border-soft);
       }
 
       .about-media img {
@@ -1086,16 +1088,17 @@
     <div class="landing">
     <header class="navbar" id="navbar">
       <div class="container nav-inner">
-        <a class="logo" href="#inicio" aria-label="Genify inicio">
-          <img src="./img/logo.png" alt="Logo Genify" />
+        <a class="logo" href="#inicio" aria-label="Genofy inicio">
+          <img src="./img/logo.png" alt="Logo Genofy" />
       
         </a>
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
         <nav class="nav-links">
           <a href="#inicio">Inicio</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#open">Open</a>
+          <a href="#servicios">Smart</a>
+          <a href="#dxp">DXP</a>
+          <a href="#contacto">Connect</a>
         </nav>
       </div>
     </header>
@@ -1110,7 +1113,7 @@
             <p>
               <b>Productos digitales modernos</b> con una gran experiencia visual, rendimiento sólido y enfoque en resultados medibles para tu marca.
             </p>
-            <a class="btn" href="#servicios">Probar ahora</a>
+            <a class="btn" href="#dxp">Probar ahora</a>
           </div>
           <div class="hero-visual reveal">
             <span class="hero-phone-glow" aria-hidden="true"></span>
@@ -1122,13 +1125,13 @@
             <img
               class="hero-phone-float"
               src="./img/genify-phone.png"
-              alt="Telefono Genify flotando sobre mano robotica"
+              alt="Telefono Genofy flotando sobre mano robotica"
             />
           </div>
         </div>
       </section>
 
-      <section class="showcase-strip section" aria-label="Proyectos destacados" style="margin-top:0;">
+      <section class="showcase-strip section" aria-label="Proyectos destacados" style="margin-top:0;" id="open">
         <div class="container">
           <div class="mid-title reveal">
             <h2><span>Open Service Platforms</span></h2>
@@ -1150,10 +1153,10 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
                     sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
                     Et harum quidem rerum facilis es
                   </p>
-                  <a id="stripButton" class="btn" href="https://www.celigot.cl" target="_blank" style="margin-top: 1.5rem;">Visitar sitio</a>
+                  <a id="stripButton" class="btn" href="https://www.celigot.cl" target="_blank" style="margin-top: 1.5rem;">Abrir</a>
                 </div>
                 <div class="strip-visual">
-                  <img id="stripImage" src="./img/call-to-action.png" alt="Detalle del producto" style="mask-image: linear-gradient(to left, black, transparent); -webkit-mask-image: linear-gradient(to left, black, transparent);">
+                  <img id="stripImage" src="./img/call-to-action.png" alt="Detalle del producto">
                 </div>
                 <span class="close-strip">X cerrar</span>
               </div>
@@ -1227,30 +1230,44 @@ Optimiza decisiones con métricas claras.</p>
         </div>
       </section>
 
-      <section class="section" id="nosotros">
+      <section class="section" id="dxp">
         <div class="container about-wrap">
           <div class="about-copy reveal">
             <h2 class="section-title">Business Operating System</h2>
             <p>
-              Esta DXP (Digital Experience Platform) es el núcleo que impulsa todo el ecosistema digital.
-Permite crear, automatizar y gestionar múltiples plataformas desde un solo lugar.
-Integra captación, comunicación, inteligencia artificial y operación para conectar empresas y personas de forma eficiente y escalable.
+             Esta <b>DXP (Digital Experience Platform)</b> es el núcleo de tu ecosistema digital.
+
+Un solo sistema para crear, automatizar y gestionar todas tus plataformas.
+Sin fricción. Sin herramientas desconectadas.
+
+Desde la captación hasta la operación, todo ocurre en un mismo flujo.<br><br>
+
+Un usuario llega, interactúa y el sistema responde al instante:
+califica el lead, automatiza la comunicación y ejecuta acciones sin intervención manual.<br>
+
+La inteligencia artificial no es un complemento. Es parte del sistema.
+Aprende, responde y optimiza cada interacción en tiempo real.<br><br>
+
+<b>El resultado es simple:</b>
+tu negocio funciona de forma continua, rápida y escalable.
+
+Menos gestión. Más crecimiento.
             </p>
 
           </div>
           <figure class="about-media reveal">
-            <img src="./img/call-to-action.png" alt="Vista de producto móvil en ambiente neón" />
+            <img src="./img/Genofy-core.png" alt="Genofy Core" />
           </figure>
         </div>
         <div class="container phone-stack">
           <figure class="phone-card reveal">
-            <img src="./img/ft1.png" alt="Interfaz de aplicación destacada 1" />
+            <img src="./img/" alt="Sales Assistant IA embebible para ecommerce" />
           </figure>
           <figure class="phone-card reveal">
-            <img src="./img/ft2.png" alt="Interfaz de aplicación destacada 2" />
+            <img src="./img/" alt="Interfaz de aplicación destacada 2" />
           </figure>
           <figure class="phone-card reveal">
-            <img src="./img/ft4.png" alt="Interfaz de aplicación destacada 3" />
+            <img src="./img/" alt="Interfaz de aplicación destacada 3" />
           </figure>
         </div>
 
@@ -1295,21 +1312,14 @@ Integra captación, comunicación, inteligencia artificial y operación para con
     <footer class="footer">
       <div class="container footer-wrap">
         <strong class="logo">
-          <img src="./img/logo.png" alt="Logo Genify" />
-          <span class="logo-text">Geni<span>fy</span></span>
+          <img src="./img/logo.png" alt="Logo Genofy" />
         </strong>
-        <div class="footer-links">
-          <a href="#inicio">Inicio</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto">Contacto</a>
-        </div>
         <div class="socials">
           <a class="social-chip" href="#" aria-label="Instagram">IG</a>
           <a class="social-chip" href="#" aria-label="LinkedIn">in</a>
           <a class="social-chip" href="#" aria-label="X">X</a>
         </div>
-        <small>© 2026 Genify. Todos los derechos reservados.</small>
+        <small>© 2026 Genofy. Todos los derechos reservados.</small>
       </div>
     </footer>
     </div>
@@ -1361,28 +1371,28 @@ Integra captación, comunicación, inteligencia artificial y operación para con
           title: 'Plataforma Social',
           description: 'Celigot es un ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad. Impulsado por IA para descubrir opciones seguras y tomar decisiones informadas. La infraestructura que redefine la experiencia celíaca.',
           logo: './img/logo-celigot.png',
-          image: './img/ft1.png',
+          image: './img/img-celigot.png',
           url: 'https://www.celigot.cl'
         },
         'item-2': {
           title: 'Experiencias Móviles',
           description: 'Wufly es una plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital. Desde servicios hasta adopción, potenciado por IA y conexión en tiempo real. Redefiniendo el cuidado y la gestión del mundo animal.',
           logo: './img/logo-wufly.png',
-          image: './img/ft2.png',
+          image: './img/img-wufly.png',
           url: 'https://wufly.vercel.app/'
         },
         'item-3': {
           title: 'Conección Digital',
           description: 'Maestrio es Marketplace inteligente para servicios del hogar, rápido, confiable y escalable. Conecta usuarios con profesionales verificados mediante IA. La nueva forma de resolver lo cotidiano.',
           logo: './img/logo-maestrio.png',
-          image: './img/ft3.png',
+          image: './img/img-maestrio.png',
           url: 'https://www.maestrio.cl'
         },
         'item-4': {
           title: 'Viajes Interurbanos',
           description: 'Un Cupo es una red de movilidad compartida para optimizar viajes interurbanos. Conecta pasajeros y conductores en tiempo real, reduciendo costos y fricción. Infraestructura digital para una nueva forma de viajar.',
           logo: './img/logo-uncupo.png',
-          image: './img/ft4.png',
+          image: './img/img-uncupo.png',
           url: 'https://uncupo.vercel.app'
         }
       };
