@@ -928,11 +928,30 @@
         font-size: 0.93rem;
       }
 
+      .bg-footer-img {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 55%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 55%);
+      }
+
+      .bg-footer-img img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
       .footer {
         border-top: 1px solid rgba(255, 255, 255, 0.12);
         margin-top: 2rem;
         padding: 2rem 0;
         background: linear-gradient(180deg, rgba(8, 3, 26, 0), rgba(9, 4, 24, 0.84));
+        position: relative;
+        z-index: 1;
       }
 
       .footer-wrap {
@@ -1315,6 +1334,10 @@ Menos gestión. Más crecimiento.
         </div>
       </section>
     </main>
+
+    <div class="bg-footer-img">
+      <img src="./img/bg-footer.png" alt="" aria-hidden="true" />
+    </div>
 
     <footer class="footer">
       <div class="container footer-wrap">
