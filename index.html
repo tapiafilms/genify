@@ -1766,7 +1766,33 @@ Menos gestión. Más crecimiento.
         
         
         // ── iPhone Modal NivelUp ──
-const iphoneModal = document.getElementById('iphoneModal');
+// ── iPhone Modal NivelUp ──
+document.addEventListener('DOMContentLoaded', () => {
+  const iphoneModal = document.getElementById('iphoneModal');
+  const iphoneVideo = document.getElementById('iphoneVideo');
+  const iphoneClose = document.getElementById('iphoneClose');
+  const nivelupCard = document.querySelector('#servicios article.card');
+
+  nivelupCard.classList.add('card-clickable');
+
+  nivelupCard.addEventListener('click', () => {
+    iphoneModal.classList.add('active');
+    iphoneVideo.currentTime = 0;
+    iphoneVideo.play();
+  });
+
+  iphoneClose.addEventListener('click', () => {
+    iphoneModal.classList.remove('active');
+    iphoneVideo.pause();
+  });
+
+  iphoneModal.addEventListener('click', (e) => {
+    if (e.target === iphoneModal) {
+      iphoneModal.classList.remove('active');
+      iphoneVideo.pause();
+    }
+  });
+});
 const iphoneVideo = document.getElementById('iphoneVideo');
 const iphoneClose = document.getElementById('iphoneClose');
 const nivelupCard = document.querySelector('#servicios article.card');
