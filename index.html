@@ -777,22 +777,22 @@
       }
 
       .card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-soft);
-        border-radius: var(--radius-md);
-        padding: 1.5rem;
-        box-shadow: var(--shadow-soft);
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                    border-color 0.3s ease, 
-                    box-shadow 0.4s ease;
-      }
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.7s ease !important,
+            border-color 0.7s ease !important,
+            box-shadow 0.7s ease !important;
+}
 
-      .card:hover {
-        transform: scale(1.05) translateY(-5px);
-        border-color: rgba(120, 197, 255, 0.6);
-        box-shadow: 0 30px 60px rgba(8, 2, 31, 0.7);
-        z-index: 10;
-      }
+.card:hover {
+  transform: scale(1.03);
+  border-color: rgba(120, 197, 255, 0.4);
+  box-shadow: 0 24px 48px rgba(8, 2, 31, 0.6);
+  z-index: 10;
+}
 
       .icon-badge {
         width: 42px;
@@ -1182,7 +1182,121 @@
 
         
         
-        
+   /* ── iPhone Modal ── */
+.iphone-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 1, 18, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.iphone-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.iphone {
+  width: 300px;
+  height: 620px;
+  background: #0d0d0d;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow:
+    0 0 0 6px #1a1a1a,
+    0 0 0 7px rgba(255,255,255,0.08),
+    0 40px 80px rgba(0,0,0,0.8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.85) translateY(30px);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.iphone-overlay.active .iphone {
+  transform: scale(1) translateY(0);
+}
+
+.iphone-notch {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 28px;
+  background: #0d0d0d;
+  border-radius: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.iphone-notch::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 48px;
+  overflow: hidden;
+  background: #000;
+}
+
+.iphone-screen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.iphone-btn-side {
+  position: absolute;
+  right: -8px;
+  top: 120px;
+  width: 4px;
+  height: 60px;
+  background: #2a2a2a;
+  border-radius: 2px;
+}
+
+.iphone-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.iphone-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+}
+
+.card-clickable {
+  cursor: pointer;
+}     
     </style>
   </head>
   <body>
@@ -1649,6 +1763,47 @@ Menos gestión. Más crecimiento.
           submitBtn.textContent = "Enviar mensaje";
         }
       });
+        
+        
+        // ── iPhone Modal NivelUp ──
+const iphoneModal = document.getElementById('iphoneModal');
+const iphoneVideo = document.getElementById('iphoneVideo');
+const iphoneClose = document.getElementById('iphoneClose');
+const nivelupCard = document.querySelector('.cards-grid .card:first-child');
+
+nivelupCard.classList.add('card-clickable');
+
+nivelupCard.addEventListener('click', () => {
+  iphoneModal.classList.add('active');
+  iphoneVideo.currentTime = 0;
+  iphoneVideo.play();
+});
+
+iphoneClose.addEventListener('click', () => {
+  iphoneModal.classList.remove('active');
+  iphoneVideo.pause();
+});
+
+iphoneModal.addEventListener('click', (e) => {
+  if (e.target === iphoneModal) {
+    iphoneModal.classList.remove('active');
+    iphoneVideo.pause();
+  }
+});
+        
+        
     </script>
+      <!-- iPhone Modal -->
+<div class="iphone-overlay" id="iphoneModal">
+  <button class="iphone-close" id="iphoneClose">✕ cerrar</button>
+  <div class="iphone">
+    <div class="iphone-notch"></div>
+    <div class="iphone-btn-side"></div>
+    <div class="iphone-screen">
+      <video id="iphoneVideo" src="https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4" 
+             playsinline loop muted></video>
+    </div>
+  </div>
+</div>
   </body>
 </html>
