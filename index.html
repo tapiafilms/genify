@@ -1150,6 +1150,18 @@
   overflow: hidden;
   top: -253px; /* Posición para escritorio */
 }
+.titu-flota{
+    position: absolute;
+    padding: 10px 32px;
+    background-color: #000000;
+    z-index: 99;
+    width: 200px;
+    left: 0;
+    top: 38px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+            
+   }
 
 /* --- AJUSTES PARA MÓVILES --- */
 @media (max-width: 768px) {
@@ -1161,6 +1173,11 @@
   .maestrio-wrapper {
     top: -321px; /* Ajuste para centrar el avatar en pantallas pequeñas */
   }
+ .titu-flota {
+    width: 156px;
+    left: 0;
+    top: 16px;
+ }
 }
 
         
@@ -1341,6 +1358,7 @@ Menos gestión. Más crecimiento.
 
           </div>
           <figure class="maestrio-frame reveal">
+              <div class="titu-flota"><img src="img/logo-maestrio.png"></div>
               <div class="maestrio-wrapper">
                 <iframe src="https://pwa-maestrio.vercel.app/" style="width: 100%; height: 100%; border: none;" title="Asistente Maestrio"></iframe>
               </div>
