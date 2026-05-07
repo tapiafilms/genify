@@ -1765,20 +1765,28 @@ Menos gestión. Más crecimiento.
       });
         
         
-        // ── iPhone Modal NivelUp ──
-// ── iPhone Modal NivelUp ──
+// ── iPhone Modal ──
 document.addEventListener('DOMContentLoaded', () => {
   const iphoneModal = document.getElementById('iphoneModal');
   const iphoneVideo = document.getElementById('iphoneVideo');
   const iphoneClose = document.getElementById('iphoneClose');
-  const nivelupCard = document.querySelector('#servicios article.card');
+  const cards = document.querySelectorAll('#servicios article.card');
 
-  nivelupCard.classList.add('card-clickable');
+  const videos = [
+    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4', // Etapa Escolar
+    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4', // Recursos Humanos
+    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4', // Primera Infancia
+    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4', // Smart Fashion
+  ];
 
-  nivelupCard.addEventListener('click', () => {
-    iphoneModal.classList.add('active');
-    iphoneVideo.currentTime = 0;
-    iphoneVideo.play();
+  cards.forEach((card, i) => {
+    card.classList.add('card-clickable');
+    card.addEventListener('click', () => {
+      iphoneVideo.src = videos[i];
+      iphoneModal.classList.add('active');
+      iphoneVideo.currentTime = 0;
+      iphoneVideo.play();
+    });
   });
 
   iphoneClose.addEventListener('click', () => {
@@ -1792,29 +1800,6 @@ document.addEventListener('DOMContentLoaded', () => {
       iphoneVideo.pause();
     }
   });
-});
-const iphoneVideo = document.getElementById('iphoneVideo');
-const iphoneClose = document.getElementById('iphoneClose');
-const nivelupCard = document.querySelector('#servicios article.card');
-
-nivelupCard.classList.add('card-clickable');
-
-nivelupCard.addEventListener('click', () => {
-  iphoneModal.classList.add('active');
-  iphoneVideo.currentTime = 0;
-  iphoneVideo.play();
-});
-
-iphoneClose.addEventListener('click', () => {
-  iphoneModal.classList.remove('active');
-  iphoneVideo.pause();
-});
-
-iphoneModal.addEventListener('click', (e) => {
-  if (e.target === iphoneModal) {
-    iphoneModal.classList.remove('active');
-    iphoneVideo.pause();
-  }
 });
         
         
