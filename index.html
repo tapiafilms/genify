@@ -623,25 +623,31 @@
         }
 
         .strip-content {
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: auto;
-          gap: 1rem;
-          pointer-events: none;
-          min-width: auto;
-          text-align: center;
-        }
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            gap: 1rem;
+            pointer-events: none;
+            min-width: auto;
+            text-align: center;
+          }
+          
+          .purple-strip.active .strip-content .btn {
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 200;
+          }
 
-        .purple-strip.active .strip-content {
-          opacity: 1;
-          pointer-events: auto;
-          transition-delay: 0.2s;
-        }
+          .purple-strip.active .strip-content {
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 0.2s;
+          }
 
         .strip-info {
           max-width: 100%;
