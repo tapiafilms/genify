@@ -1026,120 +1026,48 @@
         transform: translateY(0);
       }
 
-      /* ─── CONTENEDOR DE LUCIÉRNAGAS ─── */
-      .luciernagas-footer {
-        position: relative;
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 2;
-        margin-top: 2rem;
-      }
+      @media (max-width: 820px) {
+        .menu-btn {
+          display: grid;
+          place-items: center;
+        }
 
-      /* Luciérnaga individual */
-      .luciernaga {
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background: #ffff88;
-        border-radius: 50%;
-        box-shadow: 
-          0 0 6px #ffff88,
-          0 0 12px #ffee55,
-          0 0 20px #ffcc33;
-        animation: volarLuciernaga 6s infinite ease-in-out,
-                   brillarLuciernaga 2s infinite ease-in-out;
-        pointer-events: none;
-        will-change: transform, opacity;
-      }
+        .nav-links {
+          position: absolute;
+          top: calc(100% + 0.5rem);
+          left: 4%;
+          right: 4%;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.75rem;
+          padding: 0.95rem;
+          border-radius: 16px;
+          border: 1px solid var(--border-soft);
+          background: rgba(10, 4, 28, 0.95);
+          box-shadow: var(--shadow-soft);
+          opacity: 0;
+          pointer-events: none;
+          transform: translateY(-8px);
+          transition: opacity 0.24s ease, transform 0.24s ease;
+        }
 
-      @keyframes volarLuciernaga {
-        0%, 100% {
-          transform: translate(0, 0) scale(1);
-        }
-        25% {
-          transform: translate(30px, -20px) scale(0.8);
-        }
-        50% {
-          transform: translate(-20px, -10px) scale(1.2);
-        }
-        75% {
-          transform: translate(-30px, 20px) scale(0.9);
-        }
-      }
-
-      @keyframes brillarLuciernaga {
-        0%, 100% {
-          opacity: 0.3;
-        }
-        50% {
+        .nav-links.open {
           opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0);
         }
-      }
 
-      @media (max-width: 768px) {
-        .footer-wrap {
-          justify-items: center;
-          text-align: center;
+        .nav-inner > .btn {
+          display: none;
         }
-        .socials {
-          justify-content: center;
+
+        .hero-chip {
+          font-size: 0.62rem;
+          padding: 0.3rem 0.52rem;
         }
+        
         .showcase-grid {
           grid-template-columns: 1fr;
-        }
-          .container {
-            padding: 0 20px;
-        }
-
-          .logo img {
-            width: 150px;
-            object-fit: contain;
-          }
-          .logo{
-              margin:0;
-          }
-
-        .purple-strip.active {
-          max-height: 500px;
-          padding: 1.2rem;
-        }
-
-        .strip-title {
-          font-size: 1.1rem;
-        }
-
-        .strip-description {
-          font-size: 0.8rem;
-        }
-        .hero {
-        padding:20px;
-        margin-top: 90px;
-      }
-        .hero-phone-float {
-          left: 0px;
-          top: 0%;
-      }
-      .hero-icons-float {
-        left: -27px;
-        top: 0%;
-      }
-      .hero-content {
-          border: 0px solid #624991;
-          background: none;
-          padding: 0!important
-      }
-      .hero-phone-glow {
-          left: calc(80% - 74px);
-      }
-      .mid-title {
-          text-align: left!important;
-          max-width: 100%!important;
-          }
-        
-        .luciernagas-footer {
-          height: 150px;
         }
       }
 
@@ -1654,9 +1582,6 @@ Menos gestión. Más crecimiento.
       <img src="./img/bg-footer.png" alt="" aria-hidden="true" />
     </div>
 
-    <!-- CONTENEDOR DE LUCIÉRNAGAS -->
-    <div class="luciernagas-footer" id="luciernagasFooter"></div>
-
     <footer class="footer">
       <div class="container footer-wrap">
         <strong class="logo">
@@ -1967,89 +1892,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', resize);
         resize();
         requestAnimationFrame(draw);
-      })();
-
-      // ─── LUCIÉRNAGAS EN EL FOOTER ────────────────────────────────────────────
-      (function () {
-        const contenedor = document.getElementById('luciernagasFooter');
-        if (!contenedor) return;
-
-        const NUMERO_LUCIERNAGAS = 15; // Ajusta la cantidad aquí
-        const luciernagas = [];
-
-        // Crear luciérnagas
-        for (let i = 0; i < NUMERO_LUCIERNAGAS; i++) {
-          const luciernaga = document.createElement('div');
-          luciernaga.className = 'luciernaga';
-          
-          // Posición inicial aleatoria
-          const x = Math.random() * 100;
-          const y = Math.random() * 100;
-          
-          // Tamaño aleatorio (pequeño)
-          const tamaño = Math.random() * 2 + 2;
-          
-          // Duración de animaciones aleatorias
-          const duracionVuelo = Math.random() * 4 + 4;
-          const duracionBrillo = Math.random() * 1.5 + 1;
-          
-          // Retraso aleatorio
-          const retraso = Math.random() * 5;
-          
-          luciernaga.style.cssText = `
-            left: ${x}%;
-            top: ${y}%;
-            width: ${tamaño}px;
-            height: ${tamaño}px;
-            animation-duration: ${duracionVuelo}s, ${duracionBrillo}s;
-            animation-delay: ${retraso}s;
-            background: #ffff88;
-            box-shadow: 0 0 ${tamaño * 2}px #ffff88,
-                       0 0 ${tamaño * 4}px #ffee55,
-                       0 0 ${tamaño * 8}px #ffcc33;
-          `;
-          
-          contenedor.appendChild(luciernaga);
-          
-          // Guardar referencia y datos de movimiento
-          luciernagas.push({
-            element: luciernaga,
-            x: x,
-            y: y,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5
-          });
-        }
-
-        // Animar posición sutilmente
-        function animarLuciernagas() {
-          luciernagas.forEach(lucy => {
-            // Movimiento aleatorio suave
-            lucy.vx += (Math.random() - 0.5) * 0.1;
-            lucy.vy += (Math.random() - 0.5) * 0.1;
-            
-            // Limitar velocidad
-            const maxVel = 0.4;
-            lucy.vx = Math.max(-maxVel, Math.min(maxVel, lucy.vx));
-            lucy.vy = Math.max(-maxVel, Math.min(maxVel, lucy.vy));
-            
-            // Actualizar posición
-            lucy.x += lucy.vx;
-            lucy.y += lucy.vy;
-            
-            // Mantener dentro del contenedor (con margen)
-            if (lucy.x < 5 || lucy.x > 95) lucy.vx *= -1;
-            if (lucy.y < 5 || lucy.y > 95) lucy.vy *= -1;
-            
-            // Aplicar posición
-            lucy.element.style.left = lucy.x + '%';
-            lucy.element.style.top = lucy.y + '%';
-          });
-          
-          requestAnimationFrame(animarLuciernagas);
-        }
-
-        animarLuciernagas();
       })();
 
     </script>
