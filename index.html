@@ -1577,8 +1577,9 @@ Menos gestión. Más crecimiento.
       </section>
     </main>
 
-    <div class="bg-footer-img">
+    <div class="bg-footer-img" style="position:relative;">
       <img src="./img/bg-footer.png" alt="" aria-hidden="true" />
+      <canvas id="firefliesCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
     </div>
 
     <footer class="footer">
@@ -1885,6 +1886,86 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = `rgba(255,255,255,${s.alpha.toFixed(2)})`;
             ctx.fill();
           });
+          requestAnimationFrame(draw);
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+        requestAnimationFrame(draw);
+      })();
+
+      // ─── Luciérnagas en el footer ─────────────────────────────────────────────
+      (function () {
+        const canvas = document.getElementById('firefliesCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let flies = [];
+
+        const resize = () => {
+          canvas.width  = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+          buildFlies();
+        };
+
+        const buildFlies = () => {
+          const count = 28;
+          const cx = canvas.width / 2;
+          flies = Array.from({ length: count }, () => {
+            const spread = canvas.width * 0.32;
+            return {
+              x:       cx + (Math.random() - 0.5) * spread * 2,
+              y:       canvas.height * (0.38 + Math.random() * 0.55),
+              vx:      (Math.random() - 0.5) * 0.45,
+              vy:      (Math.random() - 0.5) * 0.35,
+              r:       Math.random() * 1.6 + 0.8,
+              alpha:   0,
+              glow:    0,
+              phase:   Math.random() * Math.PI * 2,
+              blinkSpeed: Math.random() * 0.012 + 0.005,
+              wander:  Math.random() * 0.018 + 0.006,
+              angle:   Math.random() * Math.PI * 2,
+            };
+          });
+        };
+
+        const draw = (t) => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const cx = canvas.width / 2;
+
+          flies.forEach(f => {
+            f.angle  += (Math.random() - 0.5) * f.wander;
+            f.vx     += Math.cos(f.angle) * 0.04;
+            f.vy     += Math.sin(f.angle) * 0.04;
+            f.vx     *= 0.96;
+            f.vy     *= 0.96;
+            f.x      += f.vx;
+            f.y      += f.vy;
+
+            const maxSpread = canvas.width * 0.38;
+            if (Math.abs(f.x - cx) > maxSpread) f.vx *= -1;
+            if (f.y < canvas.height * 0.3)       f.vy  = Math.abs(f.vy);
+            if (f.y > canvas.height * 0.95)      f.vy  = -Math.abs(f.vy);
+
+            f.alpha = 0.1 + 0.9 * Math.max(0, Math.sin(t * f.blinkSpeed + f.phase));
+            f.glow  = f.alpha;
+
+            if (f.alpha > 0.08) {
+              const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r * 7);
+              grad.addColorStop(0,   `rgba(180,255,140,${(f.glow * 0.55).toFixed(2)})`);
+              grad.addColorStop(0.4, `rgba(140,255,100,${(f.glow * 0.18).toFixed(2)})`);
+              grad.addColorStop(1,   'rgba(100,220,80,0)');
+              ctx.beginPath();
+              ctx.arc(f.x, f.y, f.r * 7, 0, Math.PI * 2);
+              ctx.fillStyle = grad;
+              ctx.fill();
+
+              ctx.beginPath();
+              ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(220,255,180,${f.alpha.toFixed(2)})`;
+              ctx.fill();
+            }
+          });
+
           requestAnimationFrame(draw);
         };
 
