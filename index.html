@@ -859,8 +859,8 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
-        border: 1px solid var(--border-soft);
-        padding: 30px;
+        border: 0px solid var(--border-soft);
+        padding: 0px;
         border-radius: 22px;
       }
 
@@ -1110,6 +1110,13 @@
           .logo{
               margin:0;
           }
+          .phone-stack {
+        padding: 20px;
+         }
+          
+          .section {
+            padding: 2rem 0;
+        }
 
         .purple-strip.active {
           max-height: 500px;
@@ -1225,7 +1232,6 @@
   border-radius: 24px;
   overflow: hidden;
   border: 8px solid rgba(255,255,255,0.1);
-  background: #070316;
   position: relative;
   width: 95%;
   display: flex;
@@ -1259,13 +1265,11 @@
 /* --- AJUSTES PARA MÓVILES --- */
 @media (max-width: 768px) {
   .maestrio-frame {
-    height: 440px;
+    height: 200px;
       margin:0;
       width:100%;/* Marco más pequeño en móvil */
   }
-  .maestrio-wrapper {
-    top: -321px; /* Ajuste para centrar el avatar en pantallas pequeñas */
-  }
+
  .titu-flota {
     width: 156px;
     left: 0;
@@ -1574,7 +1578,7 @@ Menos gestión. Más crecimiento.
           </figure>
 
         </div>
-        <div class="container phone-stack" style="border:0px; padding:0px;">
+        <div class="container phone-stack">
           <figure class="reveal" style="margin:0;">
             <img src="./img/assistent2.png" alt="Captura Inteligente de Clientes" />
           </figure>
@@ -1607,7 +1611,7 @@ Menos gestión. Más crecimiento.
           </figure>
 
         </div>
-        <div class="container phone-stack" style="border: 0px; padding:0;">
+        <div class="container phone-stack">
           <figure class="reveal" style="margin:0;">
             <img src="./img/cuentajoy1.png" alt="Captura Inteligente de Clientes" />
           </figure>
