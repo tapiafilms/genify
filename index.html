@@ -288,6 +288,8 @@
         min-height: 773px;
         padding: clamp(1.2rem, 2.4vw, 2.4rem);
         background: url("./img/call-to-action.png") center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
       }
 
       .hero-copy h1 {
@@ -743,6 +745,11 @@
           text-align: left!important;
           max-width: 100%!important;
           }
+        
+        .luciernagas-footer {
+          max-width: 90%;
+          height: 150px;
+        }
       }
 
       .mid-title {
@@ -1028,13 +1035,16 @@
 
       /* ─── CONTENEDOR DE LUCIÉRNAGAS ─── */
       .luciernagas-footer {
-        position: relative;
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
         width: 100%;
+        max-width: 600px;
         height: 200px;
         overflow: hidden;
         pointer-events: none;
         z-index: 2;
-        margin-top: 2rem;
       }
 
       /* Luciérnaga individual */
@@ -1042,12 +1052,12 @@
         position: absolute;
         width: 3px;
         height: 3px;
-        background: #ffff88;
+        background: #ffffff;
         border-radius: 50%;
         box-shadow: 
-          0 0 6px #ffff88,
-          0 0 12px #ffee55,
-          0 0 20px #ffcc33;
+          0 0 6px #ffffff,
+          0 0 12px #f0f0ff,
+          0 0 20px #e0e0ff;
         animation: volarLuciernaga 6s infinite ease-in-out,
                    brillarLuciernaga 2s infinite ease-in-out;
         pointer-events: none;
@@ -1059,22 +1069,22 @@
           transform: translate(0, 0) scale(1);
         }
         25% {
-          transform: translate(30px, -20px) scale(0.8);
+          transform: translate(25px, -15px) scale(0.8);
         }
         50% {
-          transform: translate(-20px, -10px) scale(1.2);
+          transform: translate(-15px, -8px) scale(1.2);
         }
         75% {
-          transform: translate(-30px, 20px) scale(0.9);
+          transform: translate(-25px, 15px) scale(0.9);
         }
       }
 
       @keyframes brillarLuciernaga {
         0%, 100% {
-          opacity: 0.3;
+          opacity: 0.2;
         }
         50% {
-          opacity: 1;
+          opacity: 0.9;
         }
       }
 
@@ -1139,6 +1149,7 @@
           }
         
         .luciernagas-footer {
+          max-width: 90%;
           height: 150px;
         }
       }
@@ -1403,10 +1414,10 @@
 
     <main>
       <section class="hero" id="inicio">
-        <canvas id="starsCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
         <span class="hero-bg-image" aria-hidden="true"></span>
         <span class="hero-glow right"></span>
         <div class="container hero-content">
+          <canvas id="starsCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
           <div class="hero-copy reveal">
             <h1>Sistemas que impulsan negocios reales</h1>
             <p>
@@ -1654,10 +1665,10 @@ Menos gestión. Más crecimiento.
       <img src="./img/bg-footer.png" alt="" aria-hidden="true" />
     </div>
 
-    <!-- CONTENEDOR DE LUCIÉRNAGAS -->
-    <div class="luciernagas-footer" id="luciernagasFooter"></div>
-
     <footer class="footer">
+      <!-- CONTENEDOR DE LUCIÉRNAGAS DENTRO DEL FOOTER -->
+      <div class="luciernagas-footer" id="luciernagasFooter"></div>
+      
       <div class="container footer-wrap">
         <strong class="logo">
           <img src="./img/logo.png" alt="Logo Genofy" />
@@ -1932,10 +1943,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let stars = [];
+        let heroContent = document.querySelector('.hero-content');
 
         const resize = () => {
-          canvas.width  = canvas.offsetWidth;
-          canvas.height = canvas.offsetHeight;
+          canvas.width  = heroContent.offsetWidth;
+          canvas.height = heroContent.offsetHeight;
           buildStars();
         };
 
@@ -1964,7 +1976,11 @@ document.addEventListener('DOMContentLoaded', () => {
           requestAnimationFrame(draw);
         };
 
-        window.addEventListener('resize', resize);
+        const resizeObserver = new ResizeObserver(() => {
+          resize();
+        });
+        
+        resizeObserver.observe(heroContent);
         resize();
         requestAnimationFrame(draw);
       })();
@@ -1974,7 +1990,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contenedor = document.getElementById('luciernagasFooter');
         if (!contenedor) return;
 
-        const NUMERO_LUCIERNAGAS = 15; // Ajusta la cantidad aquí
+        const NUMERO_LUCIERNAGAS = 20;
         const luciernagas = [];
 
         // Crear luciérnagas
@@ -1982,19 +1998,19 @@ document.addEventListener('DOMContentLoaded', () => {
           const luciernaga = document.createElement('div');
           luciernaga.className = 'luciernaga';
           
-          // Posición inicial aleatoria
-          const x = Math.random() * 100;
-          const y = Math.random() * 100;
+          // Posición inicial aleatoria dentro del contenedor
+          const x = 15 + Math.random() * 70;
+          const y = 10 + Math.random() * 80;
           
-          // Tamaño aleatorio (pequeño)
-          const tamaño = Math.random() * 2 + 2;
+          // Tamaño aleatorio (más pequeño)
+          const tamaño = Math.random() * 2 + 1.5;
           
           // Duración de animaciones aleatorias
-          const duracionVuelo = Math.random() * 4 + 4;
-          const duracionBrillo = Math.random() * 1.5 + 1;
+          const duracionVuelo = Math.random() * 5 + 4;
+          const duracionBrillo = Math.random() * 1.5 + 0.8;
           
           // Retraso aleatorio
-          const retraso = Math.random() * 5;
+          const retraso = Math.random() * 4;
           
           luciernaga.style.cssText = `
             left: ${x}%;
@@ -2003,10 +2019,10 @@ document.addEventListener('DOMContentLoaded', () => {
             height: ${tamaño}px;
             animation-duration: ${duracionVuelo}s, ${duracionBrillo}s;
             animation-delay: ${retraso}s;
-            background: #ffff88;
-            box-shadow: 0 0 ${tamaño * 2}px #ffff88,
-                       0 0 ${tamaño * 4}px #ffee55,
-                       0 0 ${tamaño * 8}px #ffcc33;
+            background: #ffffff;
+            box-shadow: 0 0 ${tamaño * 1.5}px #ffffff,
+                       0 0 ${tamaño * 3}px #f0f0ff,
+                       0 0 ${tamaño * 6}px #e0e0ff;
           `;
           
           contenedor.appendChild(luciernaga);
@@ -2016,8 +2032,8 @@ document.addEventListener('DOMContentLoaded', () => {
             element: luciernaga,
             x: x,
             y: y,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3
           });
         }
 
@@ -2025,11 +2041,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function animarLuciernagas() {
           luciernagas.forEach(lucy => {
             // Movimiento aleatorio suave
-            lucy.vx += (Math.random() - 0.5) * 0.1;
-            lucy.vy += (Math.random() - 0.5) * 0.1;
+            lucy.vx += (Math.random() - 0.5) * 0.08;
+            lucy.vy += (Math.random() - 0.5) * 0.08;
             
-            // Limitar velocidad
-            const maxVel = 0.4;
+            // Limitar velocidad (más lento)
+            const maxVel = 0.3;
             lucy.vx = Math.max(-maxVel, Math.min(maxVel, lucy.vx));
             lucy.vy = Math.max(-maxVel, Math.min(maxVel, lucy.vy));
             
@@ -2037,9 +2053,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lucy.x += lucy.vx;
             lucy.y += lucy.vy;
             
-            // Mantener dentro del contenedor (con margen)
-            if (lucy.x < 5 || lucy.x > 95) lucy.vx *= -1;
-            if (lucy.y < 5 || lucy.y > 95) lucy.vy *= -1;
+            // Mantener dentro del área central del contenedor
+            if (lucy.x < 10) { lucy.x = 10; lucy.vx *= -1; }
+            if (lucy.x > 90) { lucy.x = 90; lucy.vx *= -1; }
+            if (lucy.y < 5) { lucy.y = 5; lucy.vy *= -1; }
+            if (lucy.y > 95) { lucy.y = 95; lucy.vy *= -1; }
             
             // Aplicar posición
             lucy.element.style.left = lucy.x + '%';
