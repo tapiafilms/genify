@@ -796,16 +796,32 @@
   border-radius: var(--radius-md);
   padding: 1.5rem;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.7s ease !important,
-            border-color 0.7s ease !important,
-            box-shadow 0.7s ease !important;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(180, 130, 255, 0.13) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: scale(1.03);
-  border-color: rgba(120, 197, 255, 0.4);
-  box-shadow: 0 24px 48px rgba(8, 2, 31, 0.6);
+  border-color: rgba(160, 110, 255, 0.45);
+  box-shadow: 0 28px 56px rgba(8, 2, 31, 0.65), 0 0 0 0.5px rgba(160,110,255,0.2);
   z-index: 10;
+}
+
+.card:hover::after {
+  opacity: 1;
 }
 
       .icon-badge {
@@ -1393,7 +1409,61 @@
 
 .card-clickable {
   cursor: pointer;
-}     
+}
+
+/* ── Entertainment Tabs ── */
+.ent-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 0;
+}
+
+.ent-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-soft);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: -1px;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+.ent-tab:hover {
+  color: var(--text-main);
+}
+
+.ent-tab.active {
+  color: #fff;
+  border-bottom-color: var(--primary);
+  background: linear-gradient(to bottom, rgba(122,59,255,0.08), transparent);
+}
+
+.ent-panel {
+  display: none;
+}
+
+.ent-panel.active {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .ent-tabs {
+    gap: 0.25rem;
+  }
+  .ent-tab {
+    font-size: 0.78rem;
+    padding: 0.65rem 0.8rem;
+  }
+}
     </style>
   </head>
   <body>
@@ -1594,36 +1664,137 @@ Menos gestión. Más crecimiento.
         
         
          <section class="section" id="entertainment">
-        <div class="container about-wrap">
-          <div class="about-copy reveal">
-              <div style="width: 135px;padding-bottom: 8px;"><img src="./img/entert.png"></div>
-            <h2 class="section-title">Interactive Experiences</h2>
-            <p>
-             Creamos experiencias digitales interactivas que combinan animación, inteligencia artificial y diseño moderno para conectar con las personas de una forma más entretenida y memorable. Desde cuentos interactivos hasta personajes animados y experiencias para niños, transformamos ideas en contenido vivo que responde, se mueve e interactúa en tiempo real.<br><br>Así diseñamos <span style="color:#a647fd;"><b>CuentaJoy</b></span>, una plataforma que sorprende, entretiene e invita a interactuar. Animación avanzada con inteligencia artificial que crea personajes, historias y mundos interactivos que hacen que cada producto se sienta único y vivo.
-            </p>
-                <a href="http://www.cuentajoy.cl" target="_blank"><button class="btn" type="submit" id="submitBtn">Entrar</button></a>
+        <div class="container">
+          <div style="width: 135px;padding-bottom: 8px;"><img src="./img/entert.png"></div>
+
+          <!-- ── Tab Nav ── -->
+          <div class="ent-tabs" role="tablist">
+            <button class="ent-tab active" data-tab="interactive" role="tab" aria-selected="true">Interactive Experiences</button>
+            <button class="ent-tab" data-tab="ai-portrait" role="tab" aria-selected="false">AI Portrait Experience</button>
+            <button class="ent-tab" data-tab="games" role="tab" aria-selected="false">Games</button>
+            <button class="ent-tab" data-tab="intent" role="tab" aria-selected="false">Intent</button>
           </div>
-          <figure class="maestrio-frame reveal">
-              
-              <div class="maestrio-wrapper">
-                <img src="./img/cuentajoy.png">
+
+          <!-- ── Tab: Interactive Experiences ── -->
+          <div class="ent-panel active" id="tab-interactive" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title">Interactive Experiences</h2>
+                <p>
+                  Creamos experiencias digitales interactivas que combinan animación, inteligencia artificial y diseño moderno para conectar con las personas de una forma más entretenida y memorable. Desde cuentos interactivos hasta personajes animados y experiencias para niños, transformamos ideas en contenido vivo que responde, se mueve e interactúa en tiempo real.<br><br>Así diseñamos <span style="color:#a647fd;"><b>CuentaJoy</b></span>, una plataforma que sorprende, entretiene e invita a interactuar. Animación avanzada con inteligencia artificial que crea personajes, historias y mundos interactivos que hacen que cada producto se sienta único y vivo.
+                </p>
+                <a href="http://www.cuentajoy.cl" target="_blank"><button class="btn" type="button">Entrar</button></a>
               </div>
-          </figure>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper">
+                  <img src="./img/cuentajoy.png">
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/cuentajoy1.png" alt="Captura Inteligente de Clientes" />
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/cuentajoy2.png" alt="Sales Assistant IA embebible para ecommerce" />
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/cuentajoy3.png" alt="Sales Assistant IA embebible para ecommerce" />
+              </figure>
+            </div>
+          </div>
+
+          <!-- ── Tab: AI Portrait Experience ── -->
+          <div class="ent-panel" id="tab-ai-portrait" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title">AI Portrait Experience</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br>
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <button class="btn" type="button">Explorar</button>
+              </div>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(122,59,255,0.18),rgba(58,201,255,0.12));height:100%;">
+                  <span style="font-size:4rem;opacity:0.4;">🤳</span>
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(122,59,255,0.1);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">🎨</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(58,201,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">✨</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(199,148,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">🖼️</span>
+              </figure>
+            </div>
+          </div>
+
+          <!-- ── Tab: Games ── -->
+          <div class="ent-panel" id="tab-games" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title">Games</h2>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<br><br>
+                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                </p>
+                <button class="btn" type="button">Jugar</button>
+              </div>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(58,201,255,0.18),rgba(122,59,255,0.12));height:100%;">
+                  <span style="font-size:4rem;opacity:0.4;">🎮</span>
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(58,201,255,0.1);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">🕹️</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(122,59,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">🏆</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(199,148,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">⭐</span>
+              </figure>
+            </div>
+          </div>
+
+          <!-- ── Tab: Intent ── -->
+          <div class="ent-panel" id="tab-intent" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title">Intent</h2>
+                <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.<br><br>
+                  Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                </p>
+                <button class="btn" type="button">Descubrir</button>
+              </div>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(199,148,255,0.18),rgba(122,59,255,0.12));height:100%;">
+                  <span style="font-size:4rem;opacity:0.4;">🎯</span>
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(199,148,255,0.1);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">💡</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(122,59,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">🔮</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(58,201,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">📡</span>
+              </figure>
+            </div>
+          </div>
 
         </div>
-        <div class="container phone-stack">
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/cuentajoy1.png" alt="Captura Inteligente de Clientes" />
-          </figure>
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/cuentajoy2.png" alt="Sales Assistant IA embebible para ecommerce" />
-          </figure>
-            <figure class="reveal" style="margin:0;">
-            <img src="./img/cuentajoy3.png" alt="Sales Assistant IA embebible para ecommerce" />
-          </figure>
-
-        </div>
-
       </section>
         
         
@@ -2073,6 +2244,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animarLuciernagas();
       })();
+
+      // ─── Tilt 3D en cards de Smart Service Platforms ─────────────────────────
+      (function () {
+        const cards = document.querySelectorAll('#servicios .card');
+        const MAX_TILT = 12;
+        const SCALE = 1.04;
+
+        cards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width  / 2;
+            const cy = rect.height / 2;
+            const rotX = ((y - cy) / cy) * -MAX_TILT;
+            const rotY = ((x - cx) / cx) *  MAX_TILT;
+            const mxPct = ((x / rect.width)  * 100).toFixed(1) + '%';
+            const myPct = ((y / rect.height) * 100).toFixed(1) + '%';
+            card.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+            card.style.transform  = `perspective(700px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${SCALE})`;
+            card.style.setProperty('--mx', mxPct);
+            card.style.setProperty('--my', myPct);
+          });
+
+          const reset = () => {
+            card.style.transition = 'transform 0.55s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease, border-color 0.4s ease';
+            card.style.transform  = 'perspective(700px) rotateX(0deg) rotateY(0deg) scale(1)';
+          };
+
+          card.addEventListener('mouseleave', reset);
+          card.addEventListener('blur',       reset);
+        });
+      })();
+
+      // ─── Entertainment Tabs ──────────────────────────────────────────────────
+      document.querySelectorAll('.ent-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.tab;
+          document.querySelectorAll('.ent-tab').forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          document.querySelectorAll('.ent-panel').forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          document.getElementById('tab-' + target).classList.add('active');
+        });
+      });
 
     </script>
       <!-- iPhone Modal -->
