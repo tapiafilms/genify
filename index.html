@@ -1353,6 +1353,30 @@
   overflow: hidden;
   top: 0; /* Posición para escritorio */
 }
+/* ── Intent Meter video blend ── */
+/* ── Intent Meter video ── */
+.intent-meter-frame {
+  height: auto !important;
+  background: #08021f;
+}
+
+.intent-meter-wrapper {
+  position: relative !important;
+  height: auto !important;
+  top: auto !important;
+  width: 100%;
+  background: #070316;
+}
+
+.intent-meter-wrapper video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: screen;
+
+}
+
 .titu-flota{
     position: absolute;
     padding: 10px 32px;
@@ -1585,11 +1609,11 @@
         <div class="container hero-content">
           <canvas id="starsCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
           <div class="hero-copy reveal">
-            <h1>Sistemas que impulsan negocios reales</h1>
+            <h1>Aquí se construye lo que viene:</h1>
             <p>
-              <b>Productos digitales modernos</b> con una gran experiencia visual, rendimiento sólido y enfoque en resultados medibles para tu marca.
+              <b>plataformas vivas, experiencias IA y sistemas que operan solos.</b><br>Somos el equipo detrás de productos como CuentaJoy, el AI Portrait Experience y la app Wufly. Combinamos inteligencia artificial, automatización y diseño para construir cosas que antes no existían.
             </p>
-            <a class="btn" href="#dxp">Probar ahora</a>
+            <a class="btn" href="#dxp">Conoce el sistema</a>
           </div>
           <div class="hero-visual reveal">
             <span class="hero-phone-glow" aria-hidden="true"></span>
@@ -1606,6 +1630,400 @@
           </div>
         </div>
       </section>
+
+      <!-- ═══════════════════════════════════════════════
+           ¿QUÉ ES GENOFY? — nueva sección
+      ════════════════════════════════════════════════ -->
+      <style>
+        /* ── ¿Qué es Genofy? ── */
+        .que-es {
+          padding: 6rem 0 5rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .que-es::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:#1b0e33;
+          pointer-events: none;
+        }
+
+        .que-es-inner {
+          display: grid;
+          gap: 3.5rem;
+        }
+
+        /* Encabezado con video + texto */
+        .que-es-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2.5rem;
+          max-width: 900px;
+          margin: 0 auto;
+          text-align: left;
+        }
+
+        .que-es-avatar {
+          flex-shrink: 0;
+          width: 200px;
+          aspect-ratio: 1 / 1;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 7px solid rgba(122, 59, 255, 0.45);
+          box-shadow: 0 0 40px rgba(122, 59, 255, 0.3), 0 20px 48px rgba(8, 2, 31, 0.5);
+          position: relative;
+        }
+
+        .que-es-avatar video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .avatar-mute-btn {
+          position: absolute;
+          bottom: 48px;
+          right: 16px;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          border: 1px solid rgba(255,255,255,0.25);
+          background: rgba(10, 5, 30, 0.72);
+          backdrop-filter: blur(6px);
+          color: #fff;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+          transition: background 0.2s ease, transform 0.2s ease;
+          z-index: 10;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .avatar-mute-btn:hover {
+          background: rgba(122, 59, 255, 0.6);
+          transform: scale(1.1);
+        }
+
+        .que-es-text {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        @media (max-width: 640px) {
+          .que-es-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .que-es-text {
+            align-items: center;
+          }
+        }
+
+        .que-es-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.78rem;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--secondary);
+          margin-bottom: 1.1rem;
+          padding: 0.35rem 0.9rem;
+          border: 1px solid rgba(58, 201, 255, 0.28);
+          border-radius: 999px;
+          background: rgba(58, 201, 255, 0.07);
+        }
+
+        .que-es-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 600;
+          line-height: 1.05;
+          letter-spacing: -0.025em;
+          margin: 0 0 1.2rem;
+        }
+
+        .que-es-title em {
+          font-style: normal;
+          background: linear-gradient(92deg, #8a4dff, #d4a8ff 48%, #52d1ff);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .que-es-lead {
+          color: var(--text-soft);
+          font-size: 1.05rem;
+          line-height: 1.65;
+          margin: 0;
+        }
+
+        /* Los 3 pilares */
+        .pilares-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        @media (min-width: 680px) {
+          .pilares-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        .pilar {
+          position: relative;
+          border-radius: 20px;
+          border: 1px solid var(--border-soft);
+          background: var(--bg-card);
+          padding: 1.8rem 1.6rem 2rem;
+          overflow: hidden;
+          transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+          cursor: default;
+        }
+
+        .pilar:hover {
+          border-color: rgba(140, 100, 255, 0.5);
+          transform: translateY(-4px);
+          box-shadow: 0 24px 52px rgba(8, 2, 31, 0.6);
+        }
+
+        /* Glow de fondo propio de cada pilar */
+        .pilar::before {
+          content: "";
+          position: absolute;
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          filter: blur(48px);
+          opacity: 0.22;
+          top: -40px;
+          right: -40px;
+          pointer-events: none;
+          transition: opacity 0.35s ease;
+        }
+
+        .pilar:hover::before {
+          opacity: 0.4;
+        }
+
+        .pilar--os::before      { background: #7a3bff; }
+        .pilar--exp::before     { background: #3ac9ff; }
+        .pilar--community::before { background: #c794ff; }
+
+        /* Línea de color superior */
+        .pilar::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 1.6rem;
+          right: 1.6rem;
+          height: 2px;
+          border-radius: 0 0 2px 2px;
+          transition: opacity 0.35s ease;
+          opacity: 0.6;
+        }
+
+        .pilar:hover::after { opacity: 1; }
+
+        .pilar--os::after         { background: linear-gradient(90deg, #7a3bff, #c794ff); }
+        .pilar--exp::after        { background: linear-gradient(90deg, #3ac9ff, #7a3bff); }
+        .pilar--community::after  { background: linear-gradient(90deg, #c794ff, #52d1ff); }
+
+        .pilar-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 14px;
+          display: grid;
+          place-items: center;
+          font-size: 1.3rem;
+          margin-bottom: 1.2rem;
+          border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .pilar--os .pilar-icon        { background: linear-gradient(145deg, rgba(122,59,255,0.38), rgba(199,148,255,0.18)); }
+        .pilar--exp .pilar-icon       { background: linear-gradient(145deg, rgba(58,201,255,0.32), rgba(122,59,255,0.18)); }
+        .pilar--community .pilar-icon { background: linear-gradient(145deg, rgba(199,148,255,0.32), rgba(82,209,255,0.18)); }
+
+        .pilar-tag {
+          font-size: 0.68rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--text-soft);
+          margin-bottom: 0.5rem;
+        }
+
+        .pilar-name {
+          font-size: 1.18rem;
+          font-weight: 700;
+          margin: 0 0 0.7rem;
+          letter-spacing: -0.01em;
+        }
+
+        .pilar-desc {
+          color: var(--text-soft);
+          font-size: 0.85rem;
+          line-height: 1.6;
+          margin: 0 0 1.4rem;
+        }
+
+        .pilar-items {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
+        .pilar-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.78rem;
+          color: var(--text-soft);
+          font-weight: 500;
+        }
+
+        .pilar-item::before {
+          content: "";
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+
+        .pilar--os .pilar-item::before        { background: #7a3bff; }
+        .pilar--exp .pilar-item::before       { background: #3ac9ff; }
+        .pilar--community .pilar-item::before { background: #c794ff; }
+
+        /* Conector entre pilares (desktop) */
+        .pilares-connectors {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          gap: 0;
+          position: relative;
+          margin-top: -0.5rem;
+        }
+
+        @media (min-width: 680px) {
+          .pilares-connectors {
+            display: flex;
+          }
+        }
+
+        /* Frase cierre */
+        .que-es-cierre {
+          text-align: center;
+          max-width: 600px;
+          margin: 0.5rem auto 0;
+        }
+
+        .que-es-cierre p {
+          font-size: 1rem;
+          line-height: 1.65;
+          color: var(--text-soft);
+          margin: 0;
+        }
+
+        .que-es-cierre strong {
+          color: var(--text-main);
+        }
+      </style>
+
+      <section class="que-es" id="que-es" aria-label="¿Qué es Genofy?">
+        <div class="container que-es-inner">
+
+          <!-- Encabezado -->
+          <header class="que-es-header reveal">
+            <!-- Avatar video en loop -->
+            <div class="que-es-avatar">
+              <video id="avatarVideo" src="./img/avatar-bienvenida.mp4" loop playsinline></video>
+              <button class="avatar-mute-btn" id="avatarMuteBtn" title="Silenciar">🔊</button>
+            </div>
+            <!-- Texto alineado a la izquierda -->
+            <div class="que-es-text">
+              <span class="que-es-eyebrow">✦ Nuestro Ecosistema</span>
+              <h2 class="que-es-title">
+                <em>¿Qué es Genofy?</em>
+              </h2>
+              <p class="que-es-lead">
+                Es la marca que crea y opera sus propios productos digitales: plataformas para comunidades, sistemas inteligentes para empresas y experiencias interactivas con IA. Todo construido bajo una misma arquitectura tecnológica.
+              </p>
+            </div>
+          </header>
+
+          <!-- Los 3 pilares -->
+          <div class="pilares-grid">
+
+            <!-- Pilar 1: OS -->
+            <article class="pilar pilar--os reveal" style="--reveal-delay: 0ms">
+              <div class="pilar-icon">⚡</div>
+              <p class="pilar-tag">Para empresas</p>
+              <h3 class="pilar-name">Genofy OS</h3>
+              <p class="pilar-desc">
+                Infraestructura digital que conecta captación, atención y operación en un flujo automatizado. La IA es el motor, no un complemento.
+              </p>
+              <ul class="pilar-items" role="list">
+                <li class="pilar-item">Automatización omnicanal</li>
+                <li class="pilar-item">IA conversacional integrada</li>
+                <li class="pilar-item">Panel centralizado</li>
+                <li class="pilar-item">Seguimiento automático de leads</li>
+              </ul>
+            </article>
+
+            <!-- Pilar 2: Experiences -->
+            <article class="pilar pilar--exp reveal" style="--reveal-delay: 100ms">
+              <div class="pilar-icon">✨</div>
+              <p class="pilar-tag">Experiencias IA</p>
+              <h3 class="pilar-name">Genofy Experiences</h3>
+              <p class="pilar-desc">
+                Animación, reconocimiento facial, narrativa y tiempo real combinados para crear experiencias que van más allá de una pantalla.
+              </p>
+              <ul class="pilar-items" role="list">
+                <li class="pilar-item">AI Portrait Experience</li>
+                <li class="pilar-item">CuentaJoy — cuentos IA para niños</li>
+                <li class="pilar-item">Avatares interactivos en tiempo real</li>
+                <li class="pilar-item">Activaciones para eventos corporativos</li>
+              </ul>
+            </article>
+
+            <!-- Pilar 3: Community -->
+            <article class="pilar pilar--community reveal" style="--reveal-delay: 200ms">
+              <div class="pilar-icon">🌐</div>
+              <p class="pilar-tag">Para comunidades</p>
+              <h3 class="pilar-name">Genofy Community</h3>
+              <p class="pilar-desc">
+                Plataformas verticales donde personas, servicios y automatización conviven. Gratuitas para usuarios, sostenidas por marcas aliadas.
+              </p>
+              <ul class="pilar-items" role="list">
+                <li class="pilar-item">Celigot — vida sin gluten</li>
+                <li class="pilar-item">Wufly — ecosistema de mascotas</li>
+                <li class="pilar-item">Maestrio — servicios del hogar</li>
+                <li class="pilar-item">Un Cupo — movilidad compartida</li>
+              </ul>
+            </article>
+
+          </div>
+
+          <!-- Frase cierre -->
+          <div class="que-es-cierre reveal">
+            <p>
+              Tres líneas distintas, <strong>un solo ecosistema tecnológico</strong>. Cada producto que construimos aprende del siguiente.
+            </p>
+          </div>
+
+        </div>
+      </section>
+      <!-- ═══ fin ¿Qué es Genofy? ════════════════════════════════════ -->
 
       <section class="showcase-strip section" aria-label="Proyectos destacados" style="margin-top:0;" id="open">
         <div class="container">
@@ -1644,8 +2062,9 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
                 <p>Ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad.</p>
               </div>
             </article>
-            <article class="showcase-item reveal" style="--reveal-delay: 80ms" id="item-2">
-              <img src="./img/ft2.png" alt="Proyecto de comunidad digital" />
+            <article class="showcase-item reveal" style="--reveal-delay: 80ms;position:relative;" id="item-2">
+              <video id="wuflyVideo" src="./img/wufly-avatar.mp4" loop playsinline style="height:320px;width:100%;object-fit:cover;display:block;position:relative;z-index:1;"></video>
+              <button class="avatar-mute-btn" id="wuflyMuteBtn" title="Silenciar" style="bottom:58px;right:8px;z-index:3;">🔊</button>
               <div class="showcase-copy">
                 <h4>Wufly</h4>
                 <p>Plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital.</p>
@@ -1706,7 +2125,7 @@ Optimiza decisiones con métricas claras.</p>
         </div>
       </section>
 
-      <section class="section" id="dxp">
+      <section class="section" id="dxp" style="background: #070316;">
         <div class="container about-wrap">
           <div class="about-copy reveal">
               <div style="width: 85px;padding-bottom: 8px;"><img src="./img/premium.png"></div>
@@ -1732,11 +2151,11 @@ Menos gestión. Más crecimiento.
             </p>
 <a href="http://intent-meter.vercel.app" target="_blank"><button class="btn" type="submit" id="submitBtn">Ver Demo</button></a>
           </div>
-          <figure class="maestrio-frame reveal" style="border: 0px;">
-              
-              <div class="maestrio-wrapper">
-                <img src="./img/intent-meter.png">
+          <figure class="maestrio-frame reveal intent-meter-frame" style="border: 0px;">
+              <div class="maestrio-wrapper intent-meter-wrapper">
+                <video id="intentMeterVideo" src="./img/intent-meter.mp4" loop playsinline></video>
               </div>
+              <button style="display:none;" id="intentMeterMuteBtn" title="Silenciar" style=""></button>
           </figure>
 
         </div>
@@ -1785,8 +2204,14 @@ Menos gestión. Más crecimiento.
               </figure>
             </div>
             <div class="phone-stack" style="margin-top:2.2rem;">
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/cuentajoy1.png" alt="Captura Inteligente de Clientes" />
+              <figure class="reveal" style="margin:0;position:relative;">
+                <video id="personajeVideo" src="./img/personaje.mp4" loop playsinline style="width: 98%;
+    height: 96%;
+    object-fit: cover;
+    border-radius: 32px;
+    display: block;
+    border: 9px solid #ffffff33;"></video>
+                <button class="avatar-mute-btn" id="personajeMuteBtn" title="Silenciar" style="bottom:10px;right:10px;">🔊</button>
               </figure>
               <figure class="reveal" style="margin:0;">
                 <img src="./img/cuentajoy2.png" alt="Sales Assistant IA embebible para ecommerce" />
@@ -1899,7 +2324,7 @@ El resultado es una experiencia inmersiva donde cada asistente se convierte en p
         <div class="container">
           <h2 class="section-title tit-color reveal">Connect</h2>
           <p class="section-subtitle reveal">
-            ¿Te gustó?, acá es donde empezamos:
+            <b>¿Construimos algo diferente?</b><br>Si tienes una idea que no encaja en lo convencional, conversemos.
           </p>
           <div class="contact-box reveal">
             <form id="contactForm" novalidate>
@@ -2393,6 +2818,127 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('tab-' + target).classList.add('active');
         });
       });
+
+      // ─── Avatar: play con audio al entrar en pantalla ────────────────────────
+      (function () {
+        const video = document.getElementById('avatarVideo');
+        const muteBtn = document.getElementById('avatarMuteBtn');
+        if (!video || !muteBtn) return;
+
+        video.muted = false;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {
+                // Si el navegador bloquea audio, reproducir muteado y avisar
+                video.muted = true;
+                muteBtn.textContent = '🔇';
+                video.play();
+              });
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.4 });
+
+        observer.observe(video);
+
+        muteBtn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+      })();
+
+      // ─── Personaje CuentaJoy: play con audio al entrar en pantalla ──────────
+      (function () {
+        const video = document.getElementById('personajeVideo');
+        const muteBtn = document.getElementById('personajeMuteBtn');
+        if (!video || !muteBtn) return;
+
+        video.muted = false;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {
+                video.muted = true;
+                muteBtn.textContent = '🔇';
+                video.play();
+              });
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.4 });
+
+        observer.observe(video);
+
+        muteBtn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+      })();
+
+      // ─── Wufly: play con audio al entrar en pantalla ────────────────────────
+      (function () {
+        const video = document.getElementById('wuflyVideo');
+        const muteBtn = document.getElementById('wuflyMuteBtn');
+        if (!video || !muteBtn) return;
+
+        video.muted = false;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {
+                video.muted = true;
+                muteBtn.textContent = '🔇';
+                video.play();
+              });
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.4 });
+
+        observer.observe(video);
+
+        muteBtn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+      })();
+
+      // ─── Intent Meter: play con audio al entrar en pantalla ─────────────────
+      (function () {
+        const video = document.getElementById('intentMeterVideo');
+        const muteBtn = document.getElementById('intentMeterMuteBtn');
+        if (!video || !muteBtn) return;
+
+        video.muted = false;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {
+                video.muted = true;
+                muteBtn.textContent = '🔇';
+                video.play();
+              });
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.4 });
+
+        observer.observe(video);
+
+        muteBtn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+      })();
 
     </script>
       <!-- iPhone Modal -->
