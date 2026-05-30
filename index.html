@@ -3,1404 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Genofy crea y opera productos digitales: plataformas para comunidades, sistemas inteligentes para empresas y experiencias interactivas con IA. CuentaJoy, Wufly, Celigot y más." />
     <title>Genofy - Business Operating System</title>
-    <link rel="icon" type="image/png" href="./img/favico.png" />
+    <link rel="icon" type="image/png" href="./img/favico.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --bg-main: #070316;
-        --bg-surface: #120829;
-        --bg-card: rgba(20, 12, 46, 0.78);
-        --text-main: #f5f3ff;
-        --text-soft: #b8b4d1;
-        --primary: #7a3bff;
-        --secondary: #3ac9ff;
-        --accent: #c794ff;
-        --border-soft: rgba(255, 255, 255, 0.13);
-        --shadow-soft: 0 20px 55px rgba(8, 2, 31, 0.54);
-        --radius-lg: 24px;
-        --radius-md: 16px;
-        --radius-sm: 12px;
-        --container: 1120px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Montserrat", sans-serif;
-        color: var(--text-main);
-        background: radial-gradient(circle at 15% 15%, rgba(137, 69, 255, 0.28), transparent 38%),
-          radial-gradient(circle at 85% 12%, rgba(42, 195, 255, 0.2), transparent 36%),
-          radial-gradient(circle at 50% 82%, rgba(127, 61, 255, 0.16), transparent 35%),
-          var(--bg-main);
-        line-height: 1.5;
-        letter-spacing: 0.01em;
-        position: relative;
-        overflow-x: hidden;
-      }
-
-      .landing {
-        width: 100%;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 0 0px;
-      }
-
-      .section {
-        padding: 5rem 0;
-        position: relative;
-      }
-
-      .section-title {
-        font-size: clamp(1.85rem, 3.3vw, 2.8rem);
-        margin: 0;
-        line-height: 1.08;
-        letter-spacing: -0.02em;
-      }
-
-      .section-subtitle {
-        color: var(--text-soft);
-        margin-top: 0.8rem;
-        max-width: 700px;
-      }
-
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        transition: all 0.3s ease;
-        padding: 0.95rem 0;
-      }
-
-      .navbar.scrolled {
-        background: rgba(8, 3, 26, 0.92);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 20px rgba(3, 1, 12, 0.45);
-      }
-
-      .nav-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
-        min-height: 64px;
-      }
-
-      .logo {
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.55rem;
-        color: var(--text-main);
-      }
-
-      .logo img {
-        width: 180px;
-        object-fit: contain;
-      }
-
-      .logo-text {
-        font-weight: 800;
-        letter-spacing: 0.4px;
-        font-size: 1.32rem;
-      }
-
-      .logo-text span {
-        color: var(--secondary);
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--text-soft);
-        font-weight: 500;
-        font-size: 0.93rem;
-        transition: color 0.2s ease;
-      }
-
-      .nav-links a:hover {
-        color: #ffffff;
-      }
-
-      .menu-btn {
-        display: none;
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        border: 1px solid var(--border-soft);
-        background: rgba(18, 9, 43, 0.7);
-        color: var(--text-main);
-        font-size: 1.15rem;
-      }
-
-      .btn {
-        border: none;
-        border-radius: 999px;
-        padding: 0.82rem 1.45rem;
-        color: #ffffff;
-        font-weight: 700;
-        font-family: inherit;
-        cursor: pointer;
-        background: linear-gradient(95deg, var(--primary), #a354ff 55%, var(--secondary));
-        box-shadow: 0 10px 28px rgba(110, 43, 255, 0.45);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        isolation: isolate;
-        overflow: hidden;
-      }
-
-      .btn:hover {
-        transform: translateY(-3px);
-        filter: brightness(1.08);
-        box-shadow: 0 14px 32px rgba(107, 56, 255, 0.58);
-      }
-
-      .btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -120%;
-        width: 80%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0.35),
-          rgba(255, 255, 255, 0)
-        );
-        transform: skewX(-25deg);
-        transition: left 0.45s ease;
-        z-index: -1;
-      }
-
-      .btn:hover::before {
-        left: 130%;
-      }
-
-      .btn:disabled {
-        opacity: 0.65;
-        cursor: not-allowed;
-        transform: none;
-        filter: none;
-      }
-
-      .hero {
-        height: 860px;
-        display: grid;
-        align-items: center;
-        position: relative;
-        padding-top: 5.4rem;
-        overflow: hidden;
-        background: #1b0e33;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(9, 4, 27, 0.22), rgba(8, 3, 26, 0.95));
-        z-index: -2;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: auto -10% -30% auto;
-        width: 300px;
-        aspect-ratio: 1;
-        background: radial-gradient(circle, rgba(122, 43, 255, 0.45) 0%, transparent 70%);
-        filter: blur(5px);
-        z-index: -1;
-      }
-
-      .hero-bg-image {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(100%, 1200px);
-        height: 100%;
-        background: url("./img/call-to-action.png") center/cover no-repeat;
-        opacity: 1;
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      .hero-glow {
-        position: absolute;
-        width: 420px;
-        height: 420px;
-        border-radius: 999px;
-        filter: blur(35px);
-        pointer-events: none;
-        opacity: 0.35;
-      }
-
-      .hero-glow.left {
-        left: -140px;
-        bottom: -120px;
-        background: #5a20ff;
-      }
-
-      .hero-glow.right {
-        right: -130px;
-        top: 90px;
-        background: #2dd0ff;
-      }
-
-      .hero-content {
-        display: grid;
-        gap: 2.5rem;
-        border: 1px solid #624991;
-        border-radius: 20px;
-        min-height: 773px;
-        padding: clamp(1.2rem, 2.4vw, 2.4rem);
-        background: url("./img/call-to-action.png") center/cover no-repeat;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-copy h1 {
-        font-size: clamp(2.1rem, 6.8vw, 4rem);
-        line-height: 1.02;
-        margin: 0;
-        max-width: 630px;
-        letter-spacing: -0.03em;
-        text-wrap: balance;
-      }
-
-      .hero-copy p {
-        color: var(--text-soft);
-        max-width: 610px;
-        margin: 1.2rem 0 1.8rem;
-        text-wrap: pretty;
-      }
-
-      .hero-visual {
-        justify-self: center;
-        width: min(420px, 92%);
-        border-radius: var(--radius-lg);
-        background: transparent;
-        border: none;
-        padding: 0;
-        box-shadow: none;
-        position: relative;
-        min-height: 440px;
-        display: grid;
-        place-items: center;
-      }
-
-      .hero-phone-glow {
-        position: absolute;
-        width: min(390px, 96%);
-        aspect-ratio: 1;
-        border-radius: 999px;
-        left: calc(50% - 70px);
-        top: 43%;
-        transform: translate(-50%, -50%);
-        background: 
-        radial-gradient(circle, rgb(255 255 255 / 82%) 0%, rgb(255 255 255 / 58%) 34%, rgba(64, 211, 255, 0.34) 56%, rgba(18, 9, 43, 0) 76%);
-        filter: blur(18px);
-        z-index: 1;
-        pointer-events: none;
-        animation: pulseGlow 2.9s ease-in-out infinite;
-        mix-blend-mode: screen;
-      }
-
-      .hero-icons-float {
-        position: absolute;
-        width: min(980px, 120%);
-        max-width: none;
-        z-index: 1;
-        left: -120px;
-        top: -5%;
-        animation: floatIcons 5.8s ease-in-out infinite;
-        filter: drop-shadow(0 20px 36px rgba(64, 29, 142, 0.38));
-      }
-
-      .hero-phone-float {
-        position: relative;
-        width: min(240px, 63%);
-        left: -80px;
-        top: -15%;
-        z-index: 2;
-        animation: floatPhone 4.1s ease-in-out infinite;
-        filter: drop-shadow(0 22px 44px rgba(6, 2, 23, 0.58));
-      }
-
-      @keyframes floatPhone {
-        0%,
-        100% {
-          transform: translateY(0) translateX(0) rotate(-1.5deg);
-        }
-        50% {
-          transform: translateY(-16px) translateX(3px) rotate(1deg);
-        }
-      }
-
-      @keyframes floatIcons {
-        0%,
-        100% {
-          transform: translateY(-4px) translateX(0) scale(1);
-        }
-        40% {
-          transform: translateY(8px) translateX(-5px) scale(1.015);
-        }
-        70% {
-          transform: translateY(-10px) translateX(4px) scale(0.99);
-        }
-      }
-
-      @keyframes pulseGlow {
-        0%,
-        100% {
-          opacity: 0.72;
-          transform: translate(-50%, -50%) scale(0.93);
-        }
-        50% {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1.09);
-        }
-      }
-
-      .hero-chip {
-        position: absolute;
-        background: rgba(13, 7, 33, 0.86);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 999px;
-        font-size: 0.68rem;
-        color: #e9e3ff;
-        padding: 0.34rem 0.58rem;
-        box-shadow: 0 10px 20px rgba(7, 2, 24, 0.48);
-      }
-
-      .hero-chip.top {
-        top: -12px;
-        right: 10px;
-      }
-
-      .hero-chip.left {
-        left: -14px;
-        bottom: 60px;
-      }
-
-      .hero-chip.right {
-        right: -14px;
-        bottom: 36px;
-      }
-
-      .showcase-strip {
-        margin-top: -2rem;
-        position: relative;
-        z-index: 2;
-      }
-
-      .showcase-strip::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: url("./img/bg.png") center/cover no-repeat;
-        z-index: -1;
-      }
-
-      .showcase-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.85rem;
-        position: relative;
-      }
-
-      .showcase-item {
-        background: rgba(13, 8, 33, 0.86);
-        border: 1px solid var(--border-soft);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--shadow-soft);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        cursor: pointer;
-      }
-
-      .showcase-item:hover {
-        border-color: rgba(114, 193, 255, 0.52);
-        box-shadow: 0 24px 52px rgba(13, 6, 39, 0.68);
-      }
-
-      .showcase-item img {
-        height: 320px;
-        width: 100%;
-        object-fit: cover;
-        transform: scale(1);
-        transform-origin: center;
-        transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-        position: relative;
-        z-index: 1;
-      }
-
-      .showcase-item:hover img {
-        transform: scale(1.15);
-      }
-
-      .showcase-copy {
-        padding: 0.8rem 0.9rem 1rem;
-        position: relative;
-        z-index: 2;
-        background: rgba(13, 8, 33, 0.96);
-      }
-
-      .showcase-copy h4 {
-        margin: 0;
-        font-size: 0.95rem;
-      }
-
-      .showcase-copy p {
-        margin: 0.35rem 0 0;
-        color: var(--text-soft);
-        font-size: 0.84rem;
-      }
-
-      /* Estilos para la nueva animación paso a paso */
-      .showcase-item.fade-out {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .showcase-item.move-to-first {
-        position: relative;
-        z-index: 100;
-      }
-
-      /* Franja púrpura */
-      .purple-strip {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 0;
-        background: #1f1741;
-        border: 1px solid #473f70;
-        border-radius: 16px;
-        z-index: 90;
-        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
-        pointer-events: none;
-        opacity: 0;
-        overflow: hidden;
-      }
-
-      .purple-strip.active {
-        opacity: 1;
-        width: 100%;
-      }
-
-      .strip-content {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        padding: 2rem 3rem 2rem 412px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100%;
-        gap: 2rem;
-        pointer-events: none;
-        min-width: 1000px;
-      }
-
-      .purple-strip.active .strip-content {
-        opacity: 1;
-        pointer-events: auto;
-        transition-delay: 0.6s;
-      }
-
-      .strip-info {
-        max-width: 600px;
-      }
-
-      .strip-logo {
-        height: 100px;
-        margin-bottom: 0rem;
-      }
-
-      .strip-title {
-        font-size: 25px;
-        font-weight: 700;
-        margin-bottom: 0rem;
-        color: #fff;
-        padding-top: 0;
-        margin-top: 0;
-      }
-
-      .strip-description {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      .strip-visual {
-        flex-shrink: 0;
-        width: 445px;
-        position: relative;
-      }
-
-      .strip-visual img {
-        width: 100%;
-        /*filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));*/
-      }
-
-      .close-strip {
-        position: absolute;
-        top: 1.5rem;
-        right: 2rem;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.85rem;
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      .close-strip:hover {
-        color: #fff;
-      }
-
-      @media (max-width: 1024px) {
-        .showcase-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
-        }
-
-        .purple-strip {
-          position: static;
-          width: 100%;
-          height: auto;
-          max-height: 0;
-          background: #1f1741;
-          border: none;
-          border-radius: 0;
-          z-index: -1;
-          transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.6s ease, margin 0.6s ease;
-          pointer-events: auto;
-          opacity: 1;
-          overflow: hidden;
-          grid-column: 1 / -1;
-          margin-top: -30px;
-          padding: 0 1.5rem; /* Padding lateral constante para evitar saltos */
-        }
-
-        .purple-strip.active {
-          max-height: 1000px; /* Suficiente para el contenido */
-          border: 1px solid #473f70;
-          border-radius: 0px 0px 16px 16px;
-          padding: 1.5rem;
-          margin-bottom: 1rem;
-        }
-
-        .strip-content {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: auto;
-            gap: 1rem;
-            pointer-events: none;
-            min-width: auto;
-            text-align: center;
-          }
-          
-          .purple-strip.active .strip-content .btn {
-            pointer-events: auto !important;
-            position: relative;
-            z-index: 200;
-          }
-
-          .purple-strip.active .strip-content {
-            opacity: 1;
-            pointer-events: auto;
-            transition-delay: 0.2s;
-          }
-
-        .strip-info {
-          max-width: 100%;
-        }
-
-        .strip-logo {
-          height: 40px;
-          margin-bottom: 0.8rem;
-          margin-top: 25px;
-        }
-
-        .strip-title {
-          font-size: 1.3rem;
-          margin-bottom: 0.6rem;
-        }
-
-        .strip-description {
-          font-size: 0.85rem;
-          line-height: 1.5;
-        }
-
-        .strip-visual {
-          width: 120px;
-          display: none;
-        }
-
-        .close-strip {
-          display: none;
-        }
-
-        .showcase-item.fade-out {
-          opacity: 1;
-          pointer-events: auto;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .footer-wrap {
-          justify-items: center;
-          text-align: center;
-        }
-        .socials {
-          justify-content: center;
-        }
-        .showcase-grid {
-          grid-template-columns: 1fr;
-        }
-          .container {
-            padding: 0 20px;
-        }
-
-          .logo img {
-            width: 150px;
-            object-fit: contain;
-          }
-          .logo{
-              margin:0;
-          }
-
-        .purple-strip.active {
-          max-height: 500px;
-          padding: 1.2rem;
-        }
-
-        .strip-title {
-          font-size: 1.1rem;
-        }
-
-        .strip-description {
-          font-size: 0.8rem;
-        }
-        .hero {
-        padding:20px;
-        margin-top: 90px;
-      }
-        .hero-phone-float {
-          left: 0px;
-          top: 0%;
-      }
-      .hero-icons-float {
-        left: -27px;
-        top: 0%;
-      }
-      .hero-content {
-          border: 0px solid #624991;
-          background: none;
-          padding: 0!important
-      }
-      .hero-phone-glow {
-          left: calc(80% - 74px);
-      }
-      .mid-title {
-          text-align: left!important;
-          max-width: 100%!important;
-          }
-        
-        .luciernagas-footer {
-          max-width: 90%;
-          height: 150px;
-        }
-      }
-
-      .mid-title {
-        text-align: left;
-        margin: 0px;
-        max-width: 50%;
-        margin-bottom: 38px;
-        }
-
-      .mid-title h2 {
-        margin: 0;
-        font-size: clamp(1.9rem, 4.1vw, 3rem);
-        line-height: 1.06;
-        letter-spacing: -0.02em;
-      }
-
-      .mid-title h2 span {
-        background: linear-gradient(92deg, #8a4dff, #d4a8ff 48%, #52d1ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .tit-color {
-        background: linear-gradient(92deg, #8a4dff, #d4a8ff 48%, #52d1ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .mid-title p {
-        color: var(--text-soft);
-      }
-
-      .cards-grid {
-        display: grid;
-        gap: 1.2rem;
-        margin-top: 2.1rem;
-      }
-
-      .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.7s ease !important,
-            border-color 0.7s ease !important,
-            box-shadow 0.7s ease !important;
-}
-
-.card:hover {
-  transform: scale(1.03);
-  border-color: rgba(120, 197, 255, 0.4);
-  box-shadow: 0 24px 48px rgba(8, 2, 31, 0.6);
-  z-index: 10;
-}
-
-      .icon-badge {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: linear-gradient(145deg, rgba(127, 61, 255, 0.32), rgba(51, 210, 255, 0.25));
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        display: grid;
-        place-items: center;
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-      }
-
-      .card h3 {
-        margin: 0 0 0.5rem;
-        font-size: 1.2rem;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--text-soft);
-        font-size: 0.8rem;
-        line-height: 1.5;
-      }
-
-      .about-wrap {
-        display: grid;
-        gap: 1.6rem;
-        align-items: center;
-      }
-
-      .about-copy p {
-        color: var(--text-soft);
-        text-wrap: pretty;
-      }
-
-      .about-media {
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        border: 0px solid var(--border-soft);
-      }
-
-      .about-media img {
-        min-height: 260px;
-        object-fit: cover;
-      }
-
-      .phone-stack {
-        margin-top: 2.2rem;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        border: 1px solid var(--border-soft);
-        padding: 30px;
-        border-radius: 22px;
-      }
-
-      .phone-card {
-        border-radius: 20px;
-        overflow: hidden;
-        border: 1px solid var(--border-soft);
-        box-shadow: var(--shadow-soft);
-        background: rgba(15, 8, 39, 0.8);
-      }
-
-      .phone-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .core-banner {
-        margin-top: 3rem;
-        border-radius: 30px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: var(--shadow-soft);
-        background: radial-gradient(circle at 50% 20%, rgba(128, 74, 255, 0.25), transparent 55%),
-          linear-gradient(180deg, rgba(20, 10, 50, 0.95), rgba(10, 6, 28, 0.95));
-        padding: 1.3rem;
-      }
-
-      .core-banner img {
-        width: 100%;
-        border-radius: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .contact-box {
-        margin-top: 2rem;
-        padding: 1.2rem;
-        border-radius: var(--radius-lg);
-        background: linear-gradient(165deg, rgba(28, 16, 61, 0.95), rgba(13, 9, 36, 0.95));
-        border: 1px solid var(--border-soft);
-        box-shadow: var(--shadow-soft);
-      }
-
-      .form-grid {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .field {
-        display: grid;
-        gap: 0.45rem;
-      }
-
-      label {
-        font-size: 0.9rem;
-        color: #ddd8f8;
-        font-weight: 500;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(14, 8, 34, 0.75);
-        color: var(--text-main);
-        border-radius: var(--radius-sm);
-        padding: 0.88rem 0.95rem;
-        font-family: inherit;
-        outline: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      input:focus,
-      textarea:focus {
-        border-color: rgba(51, 210, 255, 0.55);
-        box-shadow: 0 0 0 3px rgba(51, 210, 255, 0.18);
-      }
-
-      textarea {
-        min-height: 130px;
-        resize: vertical;
-      }
-
-      .error-message {
-        min-height: 1.4em;
-        color: #ff87a3;
-        font-size: 0.84rem;
-      }
-
-      .success-message {
-        color: #9fffd9;
-        margin-top: 0.75rem;
-        font-size: 0.93rem;
-      }
-
-      main {
-        position: relative;
-        z-index: 1;
-      }
-
-      .bg-footer-img {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        pointer-events: none;
-        z-index: 0;
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 55%);
-        mask-image: linear-gradient(to bottom, transparent 0%, black 55%);
-      }
-
-      .bg-footer-img img {
-        width: 100%;
-        display: block;
-        object-fit: cover;
-      }
-
-      .footer {
-        margin-top: 2rem;
-        padding: 2rem 0;
-        position: relative;
-        z-index: 1;
-      }
-
-      .footer-wrap {
-        display: grid;
-        gap: 1.3rem;
-        justify-items: start;
-        text-align: left;
-      }
-
-      .footer-links,
-      .socials {
-        display: flex;
-        gap: 0.9rem;
-        flex-wrap: wrap;
-        justify-content: start;
-      }
-
-      .footer a {
-        color: var(--text-soft);
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-
-      .footer a:hover {
-        color: #ffffff;
-      }
-
-      .social-chip {
-        width: 35px;
-        height: 35px;
-        border-radius: 999px;
-        display: grid;
-        place-items: center;
-        background: rgba(127, 61, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        color: #d9ccff;
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(22px);
-        transition: opacity 0.65s ease, transform 0.65s ease;
-        transition-delay: var(--reveal-delay, 0ms);
-      }
-
-      .reveal.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ─── CONTENEDOR DE LUCIÉRNAGAS ─── */
-      .luciernagas-footer {
-        position: absolute;
-        top: -100px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 600px;
-        height: 200px;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 2;
-      }
-
-      /* Luciérnaga individual */
-      .luciernaga {
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background: #ffffff;
-        border-radius: 50%;
-        box-shadow: 
-          0 0 6px #ffffff,
-          0 0 12px #f0f0ff,
-          0 0 20px #e0e0ff;
-        animation: volarLuciernaga 6s infinite ease-in-out,
-                   brillarLuciernaga 2s infinite ease-in-out;
-        pointer-events: none;
-        will-change: transform, opacity;
-      }
-
-      @keyframes volarLuciernaga {
-        0%, 100% {
-          transform: translate(0, 0) scale(1);
-        }
-        25% {
-          transform: translate(25px, -15px) scale(0.8);
-        }
-        50% {
-          transform: translate(-15px, -8px) scale(1.2);
-        }
-        75% {
-          transform: translate(-25px, 15px) scale(0.9);
-        }
-      }
-
-      @keyframes brillarLuciernaga {
-        0%, 100% {
-          opacity: 0.2;
-        }
-        50% {
-          opacity: 0.9;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .footer-wrap {
-          justify-items: center;
-          text-align: center;
-        }
-        .socials {
-          justify-content: center;
-        }
-        .showcase-grid {
-          grid-template-columns: 1fr;
-        }
-          .container {
-            padding: 0 20px;
-        }
-
-          .logo img {
-            width: 150px;
-            object-fit: contain;
-          }
-          .logo{
-              margin:0;
-          }
-
-        .purple-strip.active {
-          max-height: 500px;
-          padding: 1.2rem;
-        }
-
-        .strip-title {
-          font-size: 1.1rem;
-        }
-
-        .strip-description {
-          font-size: 0.8rem;
-        }
-        .hero {
-        padding:20px;
-        margin-top: 90px;
-      }
-        .hero-phone-float {
-          left: 0px;
-          top: 0%;
-      }
-      .hero-icons-float {
-        left: -27px;
-        top: 0%;
-      }
-      .hero-content {
-          border: 0px solid #624991;
-          background: none;
-          padding: 0!important
-      }
-      .hero-phone-glow {
-          left: calc(80% - 74px);
-      }
-      .mid-title {
-          text-align: left!important;
-          max-width: 100%!important;
-          }
-        
-        .luciernagas-footer {
-          max-width: 90%;
-          height: 150px;
-        }
-      }
-
-      @media (min-width: 760px) {
-        .section {
-          padding: 6rem 0;
-        }
-
-        .hero-content {
-          grid-template-columns: 1.2fr 0.8fr;
-          align-items: center;
-        }
-
-        .cards-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .about-wrap {
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-        }
-
-        .form-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .field-message {
-          grid-column: 1 / -1;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .hero-content {
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 1.8rem;
-        }
-
-        .hero-copy h1 {
-          font-size: clamp(3rem, 5.1vw, 4.25rem);
-        }
-
-        .section-subtitle {
-          font-size: 1.02rem;
-        }
-
-        .cards-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-
-        .phone-stack {
-          grid-template-columns: repeat(3, 1fr);
-        }
-
-        .contact-box {
-          padding: 1.8rem;
-        }
-
-        .footer {
-          padding: 2.6rem 0;
-        }
-      }
-
-      @media (min-width: 1380px) {
-        .hero-copy h1 {
-          max-width: 700px;
-        }
-      }
-        
-        
-        /* Contenedor principal (el marco) */
-.maestrio-frame {
-  border-radius: 24px;
-  overflow: hidden;
-  border: 8px solid rgba(255,255,255,0.1);
-  background: #070316;
-  position: relative;
-  width: 95%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 400px; /* Altura para escritorio */
-}
-
-/* El envoltorio que mueve el iframe */
-.maestrio-wrapper {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 1000px;
-  overflow: hidden;
-  top: 0; /* Posición para escritorio */
-}
-.titu-flota{
-    position: absolute;
-    padding: 10px 32px;
-    background-color: #000000;
-    z-index: 99;
-    width: 200px;
-    left: 0;
-    top: 38px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-            
-   }
-
-/* --- AJUSTES PARA MÓVILES --- */
-@media (max-width: 768px) {
-  .maestrio-frame {
-    height: 440px;
-      margin:0;
-      width:100%;/* Marco más pequeño en móvil */
-  }
-  .maestrio-wrapper {
-    top: -321px; /* Ajuste para centrar el avatar en pantallas pequeñas */
-  }
- .titu-flota {
-    width: 156px;
-    left: 0;
-    top: 16px;
- }
-}
-
-        
-        
-   /* ── iPhone Modal ── */
-.iphone-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(4, 1, 18, 0.82);
-  backdrop-filter: blur(8px);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-
-.iphone-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.iphone {
-  width: 300px;
-  height: 620px;
-  background: #0d0d0d;
-  border-radius: 50px;
-  border: 2px solid rgba(255,255,255,0.15);
-  box-shadow:
-    0 0 0 6px #1a1a1a,
-    0 0 0 7px rgba(255,255,255,0.08),
-    0 40px 80px rgba(0,0,0,0.8);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform: scale(0.85) translateY(30px);
-  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-}
-
-.iphone-overlay.active .iphone {
-  transform: scale(1) translateY(0);
-}
-
-.iphone-notch {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 110px;
-  height: 28px;
-  background: #0d0d0d;
-  border-radius: 20px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.iphone-notch::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background: #1a1a1a;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.iphone-screen {
-  width: 100%;
-  height: 100%;
-  border-radius: 48px;
-  overflow: hidden;
-  background: #000;
-}
-
-.iphone-screen video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.iphone-btn-side {
-  position: absolute;
-  right: -8px;
-  top: 120px;
-  width: 4px;
-  height: 60px;
-  background: #2a2a2a;
-  border-radius: 2px;
-}
-
-.iphone-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.85rem;
-  cursor: pointer;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 999px;
-  padding: 0.4rem 1rem;
-  transition: all 0.2s ease;
-}
-
-.iphone-close:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.15);
-}
-
-.card-clickable {
-  cursor: pointer;
-}     
-    </style>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="landing">
     <header class="navbar" id="navbar">
       <div class="container nav-inner">
         <a class="logo" href="#inicio" aria-label="Genofy inicio">
-          <img src="./img/logo.png" alt="Logo Genofy" />
+          <img src="./img/logo.webp" alt="Logo Genofy" />
       
         </a>
-        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
         <nav class="nav-links">
           <a href="#inicio">Inicio</a>
           <a href="#open">Open</a>
@@ -1419,27 +45,118 @@
         <div class="container hero-content">
           <canvas id="starsCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
           <div class="hero-copy reveal">
-            <h1>Sistemas que impulsan negocios reales</h1>
+            <h1>Automatiza, escala y conecta tu negocio con IA</h1>
             <p>
-              <b>Productos digitales modernos</b> con una gran experiencia visual, rendimiento sólido y enfoque en resultados medibles para tu marca.
+              Genofy crea plataformas digitales, experiencias interactivas y sistemas de automatización diseñados para que tu empresa opere sin fricción, 24/7.<br><br>
+              <b>Desde la captación hasta la operación, todo en un solo ecosistema.</b>
             </p>
-            <a class="btn" href="#dxp">Probar ahora</a>
+            <a class="btn" href="#open">Explorar el ecosistema</a>
           </div>
           <div class="hero-visual reveal">
             <span class="hero-phone-glow" aria-hidden="true"></span>
             <img
               class="hero-icons-float"
-              src="./img/genify-icons.png"
+              src="./img/genify-icons.webp"
               alt="Iconos flotantes alrededor del dispositivo"
             />
             <img
               class="hero-phone-float"
-              src="./img/genify-phone.png"
+              src="./img/genify-phone.webp"
               alt="Telefono Genofy flotando sobre mano robotica"
             />
           </div>
         </div>
       </section>
+
+      <!-- ═══════════════════════════════════════════════
+           ¿QUÉ ES GENOFY? — nueva sección
+      ════════════════════════════════════════════════ -->
+
+      <section class="que-es" id="que-es" aria-label="¿Qué es Genofy?">
+        <div class="container que-es-inner">
+
+          <!-- Encabezado -->
+          <header class="que-es-header reveal">
+            <!-- Avatar video en loop -->
+            <div class="que-es-avatar">
+              <video id="avatarVideo" src="./img/avatar-bienvenida.mp4" loop playsinline muted></video>
+              <button class="avatar-mute-btn" id="avatarMuteBtn" title="Silenciar">🔊</button>
+            </div>
+            <!-- Texto alineado a la izquierda -->
+            <div class="que-es-text">
+              <span class="que-es-eyebrow">✦ Nuestro Ecosistema</span>
+              <h2 class="que-es-title">
+                <em>¿Qué es Genofy?</em>
+              </h2>
+              <p class="que-es-lead">
+                Es la marca que crea y opera sus propios productos digitales: plataformas para comunidades, sistemas inteligentes para empresas y experiencias interactivas con IA. Todo construido bajo una misma arquitectura tecnológica.
+              </p>
+            </div>
+          </header>
+
+          <!-- Los 3 pilares -->
+          <div class="pilares-grid">
+
+            <!-- Pilar 1: OS -->
+            <article class="pilar pilar--os reveal" style="--reveal-delay: 0ms">
+              <div class="pilar-icon">⚡</div>
+              <p class="pilar-tag">Para empresas</p>
+              <h3 class="pilar-name">Genofy OS</h3>
+              <p class="pilar-desc">
+                Infraestructura digital que conecta captación, atención y operación en un flujo automatizado. La IA es el motor, no un complemento.
+              </p>
+              <ul class="pilar-items" role="list">
+                <li class="pilar-item">Automatización omnicanal</li>
+                <li class="pilar-item">IA conversacional integrada</li>
+                <li class="pilar-item">Panel centralizado</li>
+                <li class="pilar-item">Seguimiento automático de leads</li>
+              </ul>
+            </article>
+
+            <!-- Pilar 2: Experiences -->
+            <article class="pilar pilar--exp reveal" style="--reveal-delay: 100ms">
+              <div class="pilar-icon">✨</div>
+              <p class="pilar-tag">Experiencias IA</p>
+              <h3 class="pilar-name">Genofy Experiences</h3>
+              <p class="pilar-desc">
+                Animación, reconocimiento facial, narrativa y tiempo real combinados para crear experiencias que van más allá de una pantalla.
+              </p>
+              <ul class="pilar-items" role="list">
+                <li class="pilar-item">AI Portrait Experience</li>
+                <li class="pilar-item">CuentaJoy — cuentos IA para niños</li>
+                <li class="pilar-item">Avatares interactivos en tiempo real</li>
+                <li class="pilar-item">Activaciones para eventos corporativos</li>
+              </ul>
+            </article>
+
+            <!-- Pilar 3: Community -->
+            <article class="pilar pilar--community reveal" style="--reveal-delay: 200ms">
+              <div class="pilar-icon">🌐</div>
+              <p class="pilar-tag">Para comunidades</p>
+              <h3 class="pilar-name">Genofy Community</h3>
+              <p class="pilar-desc">
+                Plataformas verticales donde personas, servicios y automatización conviven. Gratuitas para usuarios, sostenidas por marcas aliadas.
+              </p>
+              <ul class="pilar-items" role="list">
+                <li class="pilar-item">Celigot — vida sin gluten</li>
+                <li class="pilar-item">Wufly — ecosistema de mascotas</li>
+                <li class="pilar-item">Maestrio — servicios del hogar</li>
+                <li class="pilar-item">Un Cupo — movilidad compartida</li>
+              </ul>
+            </article>
+
+          </div>
+
+          <!-- Frase cierre -->
+          <div class="que-es-cierre reveal">
+            <p>
+              Tres líneas distintas, <strong>un solo ecosistema tecnológico</strong>. Cada producto que construimos aprende del siguiente.
+            </p>
+          </div>
+
+        </div>
+      </section>
+      <!-- ═══ fin ¿Qué es Genofy? ════════════════════════════════════ -->
 
       <section class="showcase-strip section" aria-label="Proyectos destacados" style="margin-top:0;" id="open">
         <div class="container">
@@ -1455,7 +172,7 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
             <div class="purple-strip" id="purpleStrip">
               <div class="strip-content">
                 <div class="strip-info">
-                  <img id="stripLogo" src="./img/logo-wufly.png" alt="Project Logo" class="strip-logo" style="object-fit: contain;">
+                  <img id="stripLogo" src="./img/logo-wufly.webp" alt="Project Logo" class="strip-logo" style="object-fit: contain;" loading="lazy">
                   <h3 class="strip-title">At vero eos et accusamus</h3>
                   <p class="strip-description">
                     ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
@@ -1466,34 +183,35 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
                   <a id="stripButton" class="btn" href="https://www.celigot.cl" target="_blank" style="margin-top: 1.5rem;">Abrir</a>
                 </div>
                 <div class="strip-visual">
-                  <img id="stripImage" src="./img/call-to-action.png" alt="Detalle del producto">
+                  <img id="stripImage" src="./img/call-to-action.webp" alt="Detalle del producto" loading="lazy">
                 </div>
                 <span class="close-strip">X cerrar</span>
               </div>
             </div>
             <article class="showcase-item reveal" style="--reveal-delay: 0ms" id="item-1">
-              <img src="./img/ft1.png" alt="Proyecto de entretenimiento" />
+              <img src="./img/ft1.webp" alt="Proyecto de entretenimiento" / loading="lazy">
               <div class="showcase-copy">
                 <h4>Celigot</h4>
                 <p>Ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad.</p>
               </div>
             </article>
-            <article class="showcase-item reveal" style="--reveal-delay: 80ms" id="item-2">
-              <img src="./img/ft2.png" alt="Proyecto de comunidad digital" />
+            <article class="showcase-item reveal" style="--reveal-delay: 80ms;position:relative;" id="item-2">
+              <video id="wuflyVideo" src="./img/wufly-avatar.mp4" loop playsinline muted style="height:320px;width:100%;object-fit:cover;display:block;position:relative;z-index:1;"></video>
+              <button class="avatar-mute-btn" id="wuflyMuteBtn" title="Silenciar" style="bottom:58px;right:8px;z-index:3;">🔊</button>
               <div class="showcase-copy">
                 <h4>Wufly</h4>
                 <p>Plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital.</p>
               </div>
             </article>
             <article class="showcase-item reveal" style="--reveal-delay: 160ms" id="item-3">
-              <img src="./img/ft5.png" alt="Aplicación con interfaz visual moderna" />
+              <img src="./img/ft5.webp" alt="Aplicación con interfaz visual moderna" / loading="lazy">
               <div class="showcase-copy">
                 <h4>Maestrio</h4>
                 <p>Marketplace inteligente para servicios del hogar, rápido, confiable y escalable.</p>
               </div>
             </article>
             <article class="showcase-item reveal" style="--reveal-delay: 240ms" id="item-4">
-              <img src="./img/ft4.png" alt="Equipo usando app en entorno real" />
+              <img src="./img/ft4.webp" alt="Equipo usando app en entorno real" / loading="lazy">
               <div class="showcase-copy">
                 <h4>Un Cupo</h4>
                 <p>Conecta pasajeros y conductores en tiempo real, reduciendo costos y fricción.</p>
@@ -1515,23 +233,23 @@ Potenciada por IA para conectar empresas y clientes de manera eficiente y contin
           </p>
           <div class="cards-grid">
             <article class="card reveal" style="--reveal-delay: 0ms">
-              <div><img width="50%" src="./img/logo-nivelup.png"></div>
+              <div><img width="50%" src="./img/logo-nivelup.webp" loading="lazy"></div>
               <h3>Etapa Escolar</h3>
               <p>Plataforma educativa que facilita la gestión académica, comunicación y seguimiento del progreso estudiantil.</p>
             </article>
             <article class="card reveal" style="--reveal-delay: 70ms">
-              <div style="padding:12px 0;"><img width="70%" src="./img/logo-talentflow.png"></div>
+              <div style="padding:12px 0;"><img width="70%" src="./img/logo-talentflow.webp" loading="lazy"></div>
               <h3>Recursos Humanos</h3>
               <p>Solución digital para optimizar la gestión de personas en organizaciones modernas que
 centraliza procesos y mejora la comunicación.</p>
             </article>
             <article class="card reveal" style="--reveal-delay: 140ms">
-              <div style="padding:16px 0;"><img width="40%" src="./img/logo-nubli.png"></div>
+              <div style="padding:16px 0;"><img width="40%" src="./img/logo-nubli.webp" loading="lazy"></div>
               <h3>Primera Infancia</h3>
               <p>Conecta educadoras y familias en tiempo real para compartir avances, actividades y comunicación de forma simple y segura.</p>
             </article>
             <article class="card reveal" style="--reveal-delay: 210ms">
-              <div style="padding:0px 0;"><img width="50%" src="./img/logo-looksy.png"></div>
+              <div style="padding:0px 0;"><img width="50%" src="./img/logo-looksy.webp" loading="lazy"></div>
               <h3>Smart Fashion</h3>
               <p>Herramienta inteligente para analizar y potenciar el rendimiento en moda digital.
 Optimiza decisiones con métricas claras.</p>
@@ -1540,10 +258,10 @@ Optimiza decisiones con métricas claras.</p>
         </div>
       </section>
 
-      <section class="section" id="dxp">
+      <section class="section" id="dxp" style="background: #070316;">
         <div class="container about-wrap">
           <div class="about-copy reveal">
-              <div style="width: 85px;padding-bottom: 8px;"><img src="./img/premium.png"></div>
+              <div style="width: 85px;padding-bottom: 8px;"><img src="./img/premium.webp" loading="lazy"></div>
             <h2 class="section-title">Business Operating System</h2>
             <p>
              Esta <b>DXP (Digital Experience Platform)</b> es el núcleo de tu ecosistema digital.
@@ -1564,25 +282,25 @@ tu negocio funciona de forma continua, rápida y escalable.
 
 Menos gestión. Más crecimiento.
             </p>
-<a href="http://intent-meter.vercel.app" target="_blank"><button class="btn" type="submit" id="submitBtn">Ver Demo</button></a>
+<a href="http://intent-meter.vercel.app" target="_blank"><button class="btn" type="button" id="demoBtnDXP">Ver Demo</button></a>
           </div>
-          <figure class="maestrio-frame reveal" style="border: 0px;">
-              
-              <div class="maestrio-wrapper">
-                <img src="./img/intent-meter.png">
+          <figure class="maestrio-frame reveal intent-meter-frame" style="border: 0px;">
+              <div class="maestrio-wrapper intent-meter-wrapper">
+                <video id="intentMeterVideo" src="./img/intent-meter.mp4" loop playsinline muted></video>
               </div>
+              <button style="display:none;" id="intentMeterMuteBtn" title="Silenciar" style=""></button>
           </figure>
 
         </div>
-        <div class="container phone-stack" style="border:0px; padding:0px;">
+        <div class="container phone-stack">
           <figure class="reveal" style="margin:0;">
-            <img src="./img/assistent2.png" alt="Captura Inteligente de Clientes" />
+            <img src="./img/assistent2.webp" alt="Captura Inteligente de Clientes" / loading="lazy">
           </figure>
           <figure class="reveal" style="margin:0;">
-            <img src="./img/assistent.png" alt="Sales Assistant IA embebible para ecommerce" />
+            <img src="./img/assistent.webp" alt="Sales Assistant IA embebible para ecommerce" / loading="lazy">
           </figure>
           <figure class="reveal" style="margin:0;">
-            <img src="./img/assistent3.png" alt="Conversión y Agendamiento" />
+            <img src="./img/assistent3.webp" alt="Conversión y Agendamiento" / loading="lazy">
           </figure>
         </div>
 
@@ -1590,36 +308,153 @@ Menos gestión. Más crecimiento.
         
         
          <section class="section" id="entertainment">
-        <div class="container about-wrap">
-          <div class="about-copy reveal">
-              <div style="width: 135px;padding-bottom: 8px;"><img src="./img/entert.png"></div>
-            <h2 class="section-title">Interactive Experiences</h2>
-            <p>
-             Creamos experiencias digitales interactivas que combinan animación, inteligencia artificial y diseño moderno para conectar con las personas de una forma más entretenida y memorable. Desde cuentos interactivos hasta personajes animados y experiencias para niños, transformamos ideas en contenido vivo que responde, se mueve e interactúa en tiempo real.<br><br>Así diseñamos <span style="color:#a647fd;"><b>CuentaJoy</b></span>, una plataforma que sorprende, entretiene e invita a interactuar. Animación avanzada con inteligencia artificial que crea personajes, historias y mundos interactivos que hacen que cada producto se sienta único y vivo.
-            </p>
-                <a href="http://www.cuentajoy.cl" target="_blank"><button class="btn" type="submit" id="submitBtn">Entrar</button></a>
+        <div class="container">
+          <div style="width: 135px;padding-bottom: 8px;"><img src="./img/entert.webp" loading="lazy"></div>
+          <h2 class="section-title">Interactive Experiences</h2>
+            <div style="height:25px;"></div>
+          <!-- ── Tab Nav ── -->
+          <div class="ent-tabs" role="tablist">
+            <button class="ent-tab active" data-tab="interactive" role="tab" aria-selected="true">Cuenta Joy</button>
+            <button class="ent-tab" data-tab="ai-portrait" role="tab" aria-selected="false">AI Portrait Experience</button>
+            <button class="ent-tab" data-tab="games" role="tab" aria-selected="false">mirrAI</button>
+            <!-- Games tab: oculto hasta tener contenido definitivo -->
           </div>
-          <figure class="maestrio-frame reveal">
-              
-              <div class="maestrio-wrapper">
-                <img src="./img/cuentajoy.png">
+
+          <!-- ── Tab: Interactive Experiences ── -->
+          <div class="ent-panel active" id="tab-interactive" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title" style="font-size:24px;">Cuenta Joy</h2>
+                <p>
+                  Creamos experiencias digitales interactivas que combinan animación, inteligencia artificial y diseño moderno para conectar con las personas de una forma más entretenida y memorable. Desde cuentos interactivos hasta personajes animados y experiencias para niños, transformamos ideas en contenido vivo que responde, se mueve e interactúa en tiempo real.<br><br>Así diseñamos <span style="color:#a647fd;"><b>CuentaJoy</b></span>, una plataforma que sorprende, entretiene e invita a interactuar. Animación avanzada con inteligencia artificial que crea personajes, historias y mundos interactivos que hacen que cada producto se sienta único y vivo.
+                </p>
+                <a href="http://www.cuentajoy.cl" target="_blank"><button class="btn" type="button">Entrar</button></a>
               </div>
-          </figure>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper">
+                  <img src="./img/cuentajoy.webp" loading="lazy">
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;position:relative;">
+                <video id="personajeVideo" src="./img/personaje.mp4" loop playsinline muted style="width: 98%;
+    height: 96%;
+    object-fit: cover;
+    border-radius: 32px;
+    display: block;
+    border: 9px solid #ffffff33;"></video>
+                <button class="avatar-mute-btn" id="personajeMuteBtn" title="Silenciar" style="bottom:10px;right:10px;">🔊</button>
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/cuentajoy2.webp" alt="Sales Assistant IA embebible para ecommerce" / loading="lazy">
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/cuentajoy3.webp" alt="Sales Assistant IA embebible para ecommerce" / loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <!-- ── Tab: AI Portrait Experience ── -->
+          <div class="ent-panel" id="tab-ai-portrait" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title" style="font-size:24px;">AI Portrait Experience</h2>
+                <p>
+                  Genofy AI Portrait Experience es un sistema interactivo de alta tecnología diseñado para eventos corporativos. Combina reconocimiento facial, un avatar con inteligencia artificial, captura fotográfica automática y transformación cinematográfica de imágenes mediante IA generativa.
+El resultado es una experiencia inmersiva donde cada asistente se convierte en protagonista de una portada editorial premium, entregada al instante vía código QR. No es una cabina fotográfica: es una nueva categoría de activación experiencial.
+                    <br><br>
+                  Consiste en un tótem vertical con pantalla touch, avatar animado y cámara inteligente. El sistema detecta personas frente a la pantalla, interactúa con ellas a través de un personaje virtual con voz y expresiones, captura fotografías automáticamente y las transforma en retratos cinematográficos estilo revista usando inteligencia artificial generativa.
+                </p>
+                <a class="btn" href="#contacto" onclick="prefillContact('AI Portrait Experience')">Solicitar información</a>
+              </div>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper">
+                  <img src="./img/totem.webp" loading="lazy">
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/totem1.webp" alt="AI Portrait Experience" / loading="lazy">
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/totem2.webp" alt="AI Portrait Experience" / loading="lazy">
+              </figure>
+              <figure class="reveal" style="margin:0;position:relative;">
+                <video id="avatarEventoVideo" src="./img/avatar-evento.mp4" loop playsinline muted style="width: 98%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 32px;
+    display: block;
+    border: 7px solid #ffffff33;margin-top:3px;"></video>
+                <button class="avatar-mute-btn" id="avatarEventoMuteBtn" title="Silenciar" style="bottom:47px;right:26px;">🔊</button>
+              </figure>
+            </div>
+          </div>
+
+          <!-- ── Tab: Games ── -->
+          <div class="ent-panel" id="tab-games" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title" style="font-size:24px;">mirrAI</h2>
+                <p>
+                  MIRRAI es un espejo inteligente de cuerpo completo diseñado para tiendas de retail y moda. Integra inteligencia artificial conversacional, cámara, micrófono y una interfaz visual moderna para asistir clientes en tiempo real.<br><br>
+                  El objetivo es crear una experiencia premium e interactiva que ayude a las tiendas a mejorar atención al cliente, aumentar ventas, modernizar su imagen y obtener métricas de comportamiento de usuarios.<br><br>
+                    El cliente se posiciona frente al espejo. Un avatar animado aparece en pantalla y conversa con el usuario mediante voz o touch. El sistema recomienda prendas, muestra tallas disponibles, colores, materiales, videos y consejos de moda personalizados.
+                </p>
+                <a class="btn" href="#contacto" onclick="prefillContact('mirrAI')">Solicitar información</a>
+              </div>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper">
+                  <img src="./img/mirror.webp" loading="lazy">
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/mirror1.webp" alt="AI Portrait Experience" / loading="lazy">
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/mirror2.webp" alt="AI Portrait Experience" / loading="lazy">
+              </figure>
+              <figure class="reveal" style="margin:0;">
+                <img src="./img/mirror3.webp" alt="AI Portrait Experience" / loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <!-- ── Tab: Intent ── -->
+          <div class="ent-panel" id="tab-intent" role="tabpanel">
+            <div class="about-wrap">
+              <div class="about-copy reveal">
+                <h2 class="section-title" style="font-size:24px;">Games</h2>
+                <p>
+                  Genofy desarrolla experiencias de juego interactivas impulsadas por inteligencia artificial. Desde mecánicas de gamificación hasta mundos generativos, cada proyecto convierte la interacción en algo memorable.<br><br>
+                  Combinamos diseño, narrativa y tecnología en tiempo real para crear productos que entretienen, fidelizan y generan datos valiosos para las marcas que los adoptan.
+                </p>
+                <button class="btn" type="button">Descubrir</button>
+              </div>
+              <figure class="maestrio-frame reveal">
+                <div class="maestrio-wrapper" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(199,148,255,0.18),rgba(122,59,255,0.12));height:100%;">
+                  <span style="font-size:4rem;opacity:0.4;">🎯</span>
+                </div>
+              </figure>
+            </div>
+            <div class="phone-stack" style="margin-top:2.2rem;">
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(199,148,255,0.1);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">💡</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(122,59,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">🔮</span>
+              </figure>
+              <figure class="reveal" style="margin:0;border-radius:20px;overflow:hidden;background:rgba(58,201,255,0.08);border:1px solid var(--border-soft);min-height:200px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:3rem;opacity:0.3;">📡</span>
+              </figure>
+            </div>
+          </div>
 
         </div>
-        <div class="container phone-stack" style="border: 0px; padding:0;">
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/cuentajoy1.png" alt="Captura Inteligente de Clientes" />
-          </figure>
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/cuentajoy2.png" alt="Sales Assistant IA embebible para ecommerce" />
-          </figure>
-            <figure class="reveal" style="margin:0;">
-            <img src="./img/cuentajoy3.png" alt="Sales Assistant IA embebible para ecommerce" />
-          </figure>
-
-        </div>
-
       </section>
         
         
@@ -1629,7 +464,7 @@ Menos gestión. Más crecimiento.
         <div class="container">
           <h2 class="section-title tit-color reveal">Connect</h2>
           <p class="section-subtitle reveal">
-            ¿Te gustó?, acá es donde empezamos:
+            <b>¿Construimos algo diferente?</b><br>Si tienes una idea que no encaja en lo convencional, conversemos.
           </p>
           <div class="contact-box reveal">
             <form id="contactForm" novalidate>
@@ -1641,6 +476,18 @@ Menos gestión. Más crecimiento.
                 <div class="field">
                   <label for="email">Email</label>
                   <input id="email" name="email" type="email" placeholder="tu@email.com" required />
+                </div>
+                <div class="field field-message" style="grid-column: 1 / -1;">
+                  <label for="interest">¿Qué te interesa?</label>
+                  <select id="interest" name="interest">
+                    <option value="">Selecciona una opción...</option>
+                    <option value="Genofy OS">Genofy OS — Automatización para empresas</option>
+                    <option value="AI Portrait Experience">AI Portrait Experience — Experiencias para eventos</option>
+                    <option value="mirrAI">mirrAI — Espejo inteligente para retail</option>
+                    <option value="CuentaJoy">CuentaJoy — Experiencias IA para niños</option>
+                    <option value="Open Platforms">Open Platforms — Celigot, Wufly, Maestrio, Un Cupo</option>
+                    <option value="Otro">Otro</option>
+                  </select>
                 </div>
                 <div class="field field-message">
                   <label for="message">Mensaje</label>
@@ -1662,7 +509,7 @@ Menos gestión. Más crecimiento.
     </main>
 
     <div class="bg-footer-img">
-      <img src="./img/bg-footer.png" alt="" aria-hidden="true" />
+      <img src="./img/bg-footer.webp" alt="" aria-hidden="true" / loading="lazy">
     </div>
 
     <footer class="footer">
@@ -1671,13 +518,16 @@ Menos gestión. Más crecimiento.
       
       <div class="container footer-wrap">
         <strong class="logo">
-          <img src="./img/logo.png" alt="Logo Genofy" />
+          <img src="./img/logo.webp" alt="Logo Genofy" />
         </strong>
-        <div class="socials">
-          <a class="social-chip" href="#" aria-label="Instagram">IG</a>
-          <a class="social-chip" href="#" aria-label="LinkedIn">in</a>
-          <a class="social-chip" href="#" aria-label="X">X</a>
-        </div>
+        <nav class="footer-nav" aria-label="Navegación footer">
+          <a href="#open">Open</a>
+          <a href="#servicios">Smart</a>
+          <a href="#dxp">DXP</a>
+          <a href="#entertainment">Entertainment</a>
+          <a href="#contacto">Connect</a>
+        </nav>
+        <!-- socials: agregar cuando estén disponibles -->
         <small>© 2026 Genofy. Todos los derechos reservados.</small>
       </div>
     </footer>
@@ -1686,400 +536,25 @@ Menos gestión. Más crecimiento.
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script>
-      // ─── Supabase ────────────────────────────────────────────────────────────
-      const SUPABASE_URL  = 'https://nzvoglbztklzwteulols.supabase.co';
-      const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im56dm9nbGJ6dGtsend0ZXVsb2xzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NzY1NjIsImV4cCI6MjA5MjQ1MjU2Mn0.CNGwukG1eoqB9UZFdGZ45XjxLoOCG2JtKCXWiuMoTfs';
-      const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-
-      // ─── Navbar ──────────────────────────────────────────────────────────────
-      const navbar   = document.getElementById("navbar");
-      const menuBtn  = document.getElementById("menuBtn");
-      const navLinks = document.querySelector(".nav-links");
-
-      window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 12);
-      });
-
-      menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-      });
-
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => navLinks.classList.remove("open"));
-      });
-
-      // ─── Reveal on scroll ────────────────────────────────────────────────────
-      const revealItems    = document.querySelectorAll(".reveal");
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.16 }
-      );
-      revealItems.forEach((item) => revealObserver.observe(item));
-
-      // ─── Showcase strip ──────────────────────────────────────────────────────
-      const projectsData = {
-        'item-1': {
-          title: 'Plataforma Social',
-          description: 'Celigot es un ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad. Impulsado por IA para descubrir opciones seguras y tomar decisiones informadas. La infraestructura que redefine la experiencia celíaca.',
-          logo: './img/logo-celigot.png',
-          image: './img/img-celigot.png',
-          url: 'https://celigot.cl'
-        },
-        'item-2': {
-          title: 'Experiencias Móviles',
-          description: 'Wufly es una plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital. Desde servicios hasta adopción, potenciado por IA y conexión en tiempo real. Redefiniendo el cuidado y la gestión del mundo animal.',
-          logo: './img/logo-wufly.png',
-          image: './img/img-wufly.png',
-          url: 'https://wufly.cl/'
-        },
-        'item-3': {
-          title: 'Conección Digital',
-          description: 'Maestrio es Marketplace inteligente para servicios del hogar, rápido, confiable y escalable. Conecta usuarios con profesionales verificados mediante IA. La nueva forma de resolver lo cotidiano.',
-          logo: './img/logo-maestrio.png',
-          image: './img/img-maestrio.png',
-          url: 'https://pwa-maestrio.vercel.app/'
-        },
-        'item-4': {
-          title: 'Viajes Interurbanos',
-          description: 'Un Cupo es una red de movilidad compartida para optimizar viajes interurbanos. Conecta pasajeros y conductores en tiempo real, reduciendo costos y fricción. Infraestructura digital para una nueva forma de viajar.',
-          logo: './img/logo-uncupo.png',
-          image: './img/img-uncupo.png',
-          url: 'https://uncupo.vercel.app'
-        }
-      };
-
-      const item1          = document.getElementById("item-1");
-      const purpleStrip    = document.getElementById("purpleStrip");
-      const showcaseGrid   = document.getElementById("showcaseGrid");
-      const stripTitle     = document.querySelector(".strip-title");
-      const stripDescEl    = document.querySelector(".strip-description");
-      const stripLogo      = document.getElementById("stripLogo");
-      const stripImage     = document.getElementById("stripImage");
-      const stripButton    = document.getElementById("stripButton");
-
-      let isAnimated   = false;
-      let currentItem  = null;
-      let isResponsive = window.innerWidth < 1024;
-
-      window.addEventListener("resize", () => {
-        isResponsive = window.innerWidth < 1024;
-      });
-
-      const toggleAnimation = (clickedItem) => {
-        if (isAnimated && currentItem === clickedItem) { closeCurrent(); return; }
-        if (isAnimated && currentItem !== clickedItem) {
-          if (isResponsive) {
-            purpleStrip.classList.remove("active");
-            setTimeout(() => openItem(clickedItem), 300);
-          } else {
-            closeCurrent();
-            setTimeout(() => openItem(clickedItem), 800);
-          }
-          return;
-        }
-        openItem(clickedItem);
-      };
-
-      const openItem = (clickedItem) => {
-        isAnimated  = true;
-        currentItem = clickedItem;
-
-        const projectInfo = projectsData[clickedItem.id];
-        if (projectInfo) {
-          stripTitle.textContent    = projectInfo.title;
-          stripDescEl.textContent   = projectInfo.description;
-          stripLogo.src             = projectInfo.logo;
-          stripImage.src            = projectInfo.image;
-          stripButton.href          = projectInfo.url;
-        }
-
-        if (isResponsive) {
-          clickedItem.after(purpleStrip);
-          void purpleStrip.offsetWidth;
-          setTimeout(() => {
-            purpleStrip.classList.add("active");
-            setTimeout(() => {
-              const offset          = 100;
-              const elementRect     = clickedItem.getBoundingClientRect().top;
-              const offsetPosition  = elementRect + window.pageYOffset - offset;
-              window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-            }, 150);
-          }, 50);
-        } else {
-          const rect1      = item1.getBoundingClientRect();
-          const rectCurrent = clickedItem.getBoundingClientRect();
-          const deltaX     = rect1.left - rectCurrent.left;
-          const deltaY     = rect1.top  - rectCurrent.top;
-          const allItems   = Array.from(document.querySelectorAll(".showcase-item"));
-          const otherItems = allItems.filter(i => i !== item1 && i !== clickedItem);
-          otherItems.forEach(i => i.classList.add("fade-out"));
-          clickedItem.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-          clickedItem.classList.add("move-to-first");
-          purpleStrip.classList.add("active");
-        }
-      };
-
-      const closeCurrent = () => {
-        purpleStrip.classList.remove("active");
-        if (!isResponsive && currentItem) {
-          currentItem.style.transform = "";
-          currentItem.classList.remove("move-to-first");
-          setTimeout(() => {
-            document.querySelectorAll(".showcase-item").forEach(i => i.classList.remove("fade-out"));
-          }, 800);
-        }
-        isAnimated  = false;
-        currentItem = null;
-      };
-
-      document.querySelectorAll(".showcase-item").forEach(item => {
-        item.addEventListener("click", () => toggleAnimation(item));
-      });
-
-      document.querySelector(".close-strip").addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (isAnimated) closeCurrent();
-      });
-
-      // ─── Formulario de contacto con Supabase ─────────────────────────────────
-      const form       = document.getElementById("contactForm");
-      const formError  = document.getElementById("formError");
-      const formSuccess = document.getElementById("formSuccess");
-      const submitBtn  = document.getElementById("submitBtn");
-
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        formError.textContent   = "";
-        formSuccess.textContent = "";
-
-        const nombre  = form.name.value.trim();
-        const email   = form.email.value.trim();
-        const mensaje = form.message.value.trim();
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-        if (!nombre || !email || !mensaje) {
-          formError.textContent = "Completa todos los campos antes de enviar.";
-          return;
-        }
-        if (!emailPattern.test(email)) {
-          formError.textContent = "Ingresa un email válido.";
-          return;
-        }
-        if (mensaje.length < 10) {
-          formError.textContent = "El mensaje debe tener al menos 10 caracteres.";
-          return;
-        }
-
-        submitBtn.disabled     = true;
-        submitBtn.textContent  = "Enviando...";
-
-        try {
-          const { error } = await supabaseClient
-            .from('leads')
-            .insert([{ nombre, email, mensaje }]);
-
-          if (error) throw error;
-
-          form.reset();
-          formSuccess.textContent = "¡Mensaje enviado! Te contactaremos pronto.";
-        } catch (err) {
-          console.error("Error al enviar:", err);
-          formError.textContent = "Ocurrió un error al enviar. Intentalo de nuevo.";
-        } finally {
-          submitBtn.disabled    = false;
-          submitBtn.textContent = "Enviar mensaje";
-        }
-      });
-        
-        
-// ── iPhone Modal ──
-document.addEventListener('DOMContentLoaded', () => {
-  const iphoneModal = document.getElementById('iphoneModal');
-  const iphoneVideo = document.getElementById('iphoneVideo');
-  const iphoneClose = document.getElementById('iphoneClose');
-  const cards = document.querySelectorAll('#servicios article.card');
-
-  const videos = [
-    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778193039/pantalla1_1_voyze0.mp4', // Etapa Escolar
-    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4', // Recursos Humanos
-    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4', // Primera Infancia
-    'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4', // Smart Fashion
-  ];
-
-  cards.forEach((card, i) => {
-    card.classList.add('card-clickable');
-    card.addEventListener('click', () => {
-      iphoneVideo.src = videos[i];
-      iphoneModal.classList.add('active');
-      iphoneVideo.currentTime = 0;
-      iphoneVideo.play();
-    });
-  });
-
-  iphoneClose.addEventListener('click', () => {
-    iphoneModal.classList.remove('active');
-    iphoneVideo.pause();
-  });
-
-  iphoneModal.addEventListener('click', (e) => {
-    if (e.target === iphoneModal) {
-      iphoneModal.classList.remove('active');
-      iphoneVideo.pause();
-    }
-  });
-});
-
-      // ─── Estrellas en el hero ─────────────────────────────────────────────────
-      (function () {
-        const canvas = document.getElementById('starsCanvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let stars = [];
-        let heroContent = document.querySelector('.hero-content');
-
-        const resize = () => {
-          canvas.width  = heroContent.offsetWidth;
-          canvas.height = heroContent.offsetHeight;
-          buildStars();
-        };
-
-        const buildStars = () => {
-          const count = Math.floor((canvas.width * canvas.height) / 2500);
-          stars = Array.from({ length: count }, () => ({
-            x:     Math.random() * canvas.width,
-            y:     Math.random() * canvas.height,
-            r:     Math.random() * 0.7 + 0.2,
-            alpha: Math.random(),
-            speed: Math.random() * 0.008 + 0.003,
-            dir:   Math.random() > 0.5 ? 1 : -1,
-            phase: Math.random() * Math.PI * 2,
-          }));
-        };
-
-        const draw = (t) => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          stars.forEach(s => {
-            s.alpha = 0.15 + 0.85 * (0.5 + 0.5 * Math.sin(t * s.speed * s.dir + s.phase));
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255,255,255,${s.alpha.toFixed(2)})`;
-            ctx.fill();
-          });
-          requestAnimationFrame(draw);
-        };
-
-        const resizeObserver = new ResizeObserver(() => {
-          resize();
-        });
-        
-        resizeObserver.observe(heroContent);
-        resize();
-        requestAnimationFrame(draw);
-      })();
-
-      // ─── LUCIÉRNAGAS EN EL FOOTER ────────────────────────────────────────────
-      (function () {
-        const contenedor = document.getElementById('luciernagasFooter');
-        if (!contenedor) return;
-
-        const NUMERO_LUCIERNAGAS = 20;
-        const luciernagas = [];
-
-        // Crear luciérnagas
-        for (let i = 0; i < NUMERO_LUCIERNAGAS; i++) {
-          const luciernaga = document.createElement('div');
-          luciernaga.className = 'luciernaga';
-          
-          // Posición inicial aleatoria dentro del contenedor
-          const x = 15 + Math.random() * 70;
-          const y = 10 + Math.random() * 80;
-          
-          // Tamaño aleatorio (más pequeño)
-          const tamaño = Math.random() * 2 + 1.5;
-          
-          // Duración de animaciones aleatorias
-          const duracionVuelo = Math.random() * 5 + 4;
-          const duracionBrillo = Math.random() * 1.5 + 0.8;
-          
-          // Retraso aleatorio
-          const retraso = Math.random() * 4;
-          
-          luciernaga.style.cssText = `
-            left: ${x}%;
-            top: ${y}%;
-            width: ${tamaño}px;
-            height: ${tamaño}px;
-            animation-duration: ${duracionVuelo}s, ${duracionBrillo}s;
-            animation-delay: ${retraso}s;
-            background: #ffffff;
-            box-shadow: 0 0 ${tamaño * 1.5}px #ffffff,
-                       0 0 ${tamaño * 3}px #f0f0ff,
-                       0 0 ${tamaño * 6}px #e0e0ff;
-          `;
-          
-          contenedor.appendChild(luciernaga);
-          
-          // Guardar referencia y datos de movimiento
-          luciernagas.push({
-            element: luciernaga,
-            x: x,
-            y: y,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3
-          });
-        }
-
-        // Animar posición sutilmente
-        function animarLuciernagas() {
-          luciernagas.forEach(lucy => {
-            // Movimiento aleatorio suave
-            lucy.vx += (Math.random() - 0.5) * 0.08;
-            lucy.vy += (Math.random() - 0.5) * 0.08;
-            
-            // Limitar velocidad (más lento)
-            const maxVel = 0.3;
-            lucy.vx = Math.max(-maxVel, Math.min(maxVel, lucy.vx));
-            lucy.vy = Math.max(-maxVel, Math.min(maxVel, lucy.vy));
-            
-            // Actualizar posición
-            lucy.x += lucy.vx;
-            lucy.y += lucy.vy;
-            
-            // Mantener dentro del área central del contenedor
-            if (lucy.x < 10) { lucy.x = 10; lucy.vx *= -1; }
-            if (lucy.x > 90) { lucy.x = 90; lucy.vx *= -1; }
-            if (lucy.y < 5) { lucy.y = 5; lucy.vy *= -1; }
-            if (lucy.y > 95) { lucy.y = 95; lucy.vy *= -1; }
-            
-            // Aplicar posición
-            lucy.element.style.left = lucy.x + '%';
-            lucy.element.style.top = lucy.y + '%';
-          });
-          
-          requestAnimationFrame(animarLuciernagas);
-        }
-
-        animarLuciernagas();
-      })();
-
-    </script>
+    <script src="./script.js"></script>
       <!-- iPhone Modal -->
 <div class="iphone-overlay" id="iphoneModal">
   <button class="iphone-close" id="iphoneClose">✕ cerrar</button>
-  <div class="iphone">
-    <div class="iphone-notch"></div>
-    <div class="iphone-btn-side"></div>
-    <div class="iphone-screen">
-      <video id="iphoneVideo" src="https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4" 
-             playsinline loop muted></video>
+  <div class="iphone-modal-inner">
+    <div class="iphone">
+      <div class="iphone-notch"></div>
+      <div class="iphone-btn-side"></div>
+      <div class="iphone-screen">
+        <video id="iphoneVideo" src="https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4"
+               playsinline loop muted></video>
+      </div>
+    </div>
+    <div class="iphone-info">
+      <p class="iphone-info-tag" id="iphoneTag">Smart Service Platform</p>
+      <h3 class="iphone-info-title" id="iphoneTitle">Producto</h3>
+      <p class="iphone-info-desc" id="iphoneDesc"></p>
+      <ul class="iphone-info-features" id="iphoneFeatures"></ul>
+      <a class="btn" id="iphoneCtaBtn" href="#contacto">Solicitar demo</a>
     </div>
   </div>
 </div>
