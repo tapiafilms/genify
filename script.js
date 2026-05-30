@@ -46,29 +46,29 @@ const projectsData = {
   'item-1': {
     title: 'Plataforma Social',
     description: 'Celigot es un ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad. Impulsado por IA para descubrir opciones seguras y tomar decisiones informadas. La infraestructura que redefine la experiencia celíaca.',
-    logo: './img/logo-celigot.png',
-    image: './img/img-celigot.png',
+    logo: './img/logo-celigot.webp',
+    image: './img/img-celigot.webp',
     url: 'https://celigot.cl'
   },
   'item-2': {
     title: 'Experiencias Móviles',
     description: 'Wufly es una plataforma que integra todo el ecosistema de mascotas en una sola experiencia digital. Desde servicios hasta adopción, potenciado por IA y conexión en tiempo real. Redefiniendo el cuidado y la gestión del mundo animal.',
-    logo: './img/logo-wufly.png',
-    image: './img/img-wufly.png',
+    logo: './img/logo-wufly.webp',
+    image: './img/img-wufly.webp',
     url: 'https://wufly.cl/'
   },
   'item-3': {
     title: 'Conexión Digital',
     description: 'Maestrio es Marketplace inteligente para servicios del hogar, rápido, confiable y escalable. Conecta usuarios con profesionales verificados mediante IA. La nueva forma de resolver lo cotidiano.',
-    logo: './img/logo-maestrio.png',
-    image: './img/img-maestrio.png',
+    logo: './img/logo-maestrio.webp',
+    image: './img/img-maestrio.webp',
     url: 'https://pwa-maestrio.vercel.app/'
   },
   'item-4': {
     title: 'Viajes Interurbanos',
     description: 'Un Cupo es una red de movilidad compartida para optimizar viajes interurbanos. Conecta pasajeros y conductores en tiempo real, reduciendo costos y fricción. Infraestructura digital para una nueva forma de viajar.',
-    logo: './img/logo-uncupo.png',
-    image: './img/img-uncupo.png',
+    logo: './img/logo-uncupo.webp',
+    image: './img/img-uncupo.webp',
     url: 'https://uncupo.vercel.app'
   }
 };
