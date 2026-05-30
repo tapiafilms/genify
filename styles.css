@@ -40,6 +40,14 @@ body {
 .landing {
   width: 100%;
 }
+.color{
+
+    background: linear-gradient(92deg, #8a4dff, #d4a8ff 24%, #52d1ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+}
 
 img {
   max-width: 100%;
@@ -1955,6 +1963,10 @@ select option {
     padding: 1rem 1.5rem 2rem;
   }
 
+  .iphone-modal-inner .iphone {
+    display: none;
+  }
+
   .iphone-info {
     width: 100%;
     text-align: center;
@@ -1975,5 +1987,50 @@ select option {
   #dxp .phone-stack figure img {
     padding: 0 16px;
     box-sizing: border-box;
+  }
+}
+
+/* ── Hero quick routes ── */
+.hero-routes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.hero-routes-label {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero-route-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-decoration: none;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.hero-route-chip:hover {
+  color: #fff;
+  border-color: rgba(122, 59, 255, 0.55);
+  background: rgba(122, 59, 255, 0.12);
+}
+
+@media (max-width: 768px) {
+  .hero-routes {
+    gap: 0.5rem;
+  }
+  .hero-route-chip {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
   }
 }
