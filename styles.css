@@ -1730,24 +1730,24 @@ main {
 
   .pilar:hover::after { opacity: 1; }
 
-  .pilar--os::after         { background: linear-gradient(90deg, #7a3bff, #c794ff); }
-  .pilar--exp::after        { background: linear-gradient(90deg, #3ac9ff, #7a3bff); }
-  .pilar--community::after  { background: linear-gradient(90deg, #c794ff, #52d1ff); }
+  .pilar--os::after         { background: transparent; }
+  .pilar--exp::after        { background: transparent; }
+  .pilar--community::after  { background: transparent; }
 
   .pilar-icon {
-    width: 46px;
+    width: 63px;
     height: 46px;
-    border-radius: 14px;
+    border-radius: 0px;
     display: grid;
     place-items: center;
     font-size: 1.3rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 2.2rem;
+    border: 0px solid rgba(255,255,255,0.12);
   }
 
-  .pilar--os .pilar-icon        { background: linear-gradient(145deg, rgba(122,59,255,0.38), rgba(199,148,255,0.18)); }
-  .pilar--exp .pilar-icon       { background: linear-gradient(145deg, rgba(58,201,255,0.32), rgba(122,59,255,0.18)); }
-  .pilar--community .pilar-icon { background: linear-gradient(145deg, rgba(199,148,255,0.32), rgba(82,209,255,0.18)); }
+  .pilar--os .pilar-icon        { background: transparent; }
+  .pilar--exp .pilar-icon       { background: transparent; }
+  .pilar--community .pilar-icon { background: transparent; }
 
   .pilar-tag {
     font-size: 0.68rem;
