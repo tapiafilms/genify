@@ -1734,6 +1734,56 @@ main {
   .pilar--exp::after        { background: transparent; }
   .pilar--community::after  { background: transparent; }
 
+  /* Imagen de fondo con tono morado para cada pilar */
+  .pilar--os,
+  .pilar--exp,
+  .pilar--community {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    isolation: isolate;
+  }
+
+  .pilar--os::before,
+  .pilar--exp::before,
+  .pilar--community::before {
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+  }
+
+  /* Capa de imagen de fondo por pilar */
+  .pilar--os .pilar-bg,
+  .pilar--exp .pilar-bg,
+  .pilar--community .pilar-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    pointer-events: none;
+    background:#1b0e33;
+  }
+
+  .pilar--os .pilar-bg img,
+  .pilar--exp .pilar-bg img,
+  .pilar--community .pilar-bg img {
+    position: absolute;
+    right: 0;
+    width: 60%;
+    object-position: right center;
+    opacity: 0.30;
+    mix-blend-mode: exclusion;
+    display: block;
+    border-radius: 0;
+  }
+
+  /* Todo el contenido debe estar sobre la imagen */
+  .pilar > *:not(.pilar-bg) {
+    position: relative;
+    z-index: 1;
+  }
+
   .pilar-icon {
     width: 63px;
     height: 46px;
