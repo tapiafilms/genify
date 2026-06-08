@@ -1531,8 +1531,53 @@ main {
 
 /* ── ¿Qué es Genofy? ── */
 /* ── ¿Qué es Genofy? ── */
+
+  /* Fila superior: header (avatar+texto) a la izquierda, logos a la derecha */
+  .que-es-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .que-es-top-row .que-es-header {
+    flex: 1;
+    max-width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+  }
+
+  .que-es-logos {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .que-es-logos img {
+    width: 150px;
+    object-fit: contain;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 24px rgba(122,59,255,0.25));
+  }
+
+  @media (max-width: 768px) {
+    .que-es-top-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .que-es-logos {
+      justify-content: center;
+      width: 100%;
+    }
+    .que-es-logos img {
+      width: 180px;
+    }
+  }
+
   .que-es {
-    padding: 6rem 0 5rem;
+    padding: 4rem 0 5rem;
     position: relative;
     overflow: hidden;
   }
@@ -2038,6 +2083,9 @@ select option {
     padding: 0 16px;
     box-sizing: border-box;
   }
+    .que-es-logos{
+        display:none;
+    }
 }
 
 /* ── Hero quick routes ── */
