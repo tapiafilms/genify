@@ -58,7 +58,7 @@ img {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 0px;
+  padding: 0 30px;
 }
 
 .section {
@@ -245,6 +245,8 @@ img {
   padding-top: 5.4rem;
   overflow: hidden;
   background: #1b0e33;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .hero::before {
@@ -995,7 +997,6 @@ img {
   grid-template-columns: 1fr;
   gap: 1rem;
   border: 0px solid var(--border-soft);
-  padding: 0px;
   border-radius: 22px;
 }
 
