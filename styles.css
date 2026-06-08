@@ -1297,7 +1297,7 @@ main {
   
   /* Contenedor principal (el marco) */
 .maestrio-frame {
-  border-radius: 24px;
+
   overflow: hidden;
   border: 8px solid rgba(255,255,255,0.1);
   position: relative;
@@ -1522,10 +1522,14 @@ main {
 @media (max-width: 600px) {
   .ent-tabs {
     gap: 0.25rem;
+      padding-top: 20px;
   }
   .ent-tab {
     font-size: 0.78rem;
     padding: 0.65rem 0.8rem;
+  }
+    .phone-stack {
+    padding-bottom: 50px;
   }
 }
 
@@ -2084,6 +2088,9 @@ select option {
     box-sizing: border-box;
   }
     .que-es-logos{
+        display:none;
+    }
+    .logos-geno{
         display:none;
     }
 }
