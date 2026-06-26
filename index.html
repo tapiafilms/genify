@@ -50,12 +50,7 @@
               <b>Desde la captación hasta la operación, todo en un solo ecosistema.</b>
             </p>
             <a class="btn" href="#open">Explorar el ecosistema</a>
-            <div class="hero-routes">
-              <span class="hero-routes-label">¿Qué buscas?</span>
-              <a class="hero-route-chip" href="#servicios">Digitalizar mi empresa</a>
-              <a class="hero-route-chip" href="#entertainment">Experiencia para mi evento</a>
-              <a class="hero-route-chip" href="#open">Plataforma para mi comunidad</a>
-            </div>
+
           </div>
           <div class="hero-visual reveal">
             <span class="hero-phone-glow" aria-hidden="true"></span>
@@ -170,7 +165,7 @@
       <section class="showcase-strip section" aria-label="Proyectos destacados" style="margin-top:0;" id="open">
         <div class="container">
           <div class="mid-title reveal">
-            <h2><span>Genofy Community</span></h2>
+            <h2><span>Gen Community</span></h2>
             <p>
               <span style="color:#fff"><b>Servicios Comunitarios Digitales para personas</b>.</span> Son aplicaciones diseñadas para ayudar a la comunidad en distintos aspectos del día a día.
 Permiten acceder a información, resolver necesidades y conectar con servicios de forma simple y gratuita.
@@ -236,7 +231,7 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
         <div class="container about-wrap">
           <div class="about-copy reveal">
               <div style="width: 85px;padding-bottom: 8px;"><img src="./img/premium.webp" loading="lazy"></div>
-            <h2 class="section-title color">Genofy OS</h2>
+            <h2 class="section-title color">Gen OS</h2>
               <h2 style="font-size: 24px;margin: 3px 0px;">Business Operating System</h2>
             <p>
               Un solo sistema para captar, atender y operar tu negocio de forma continua. Sin herramientas desconectadas, sin gestión manual.
@@ -257,16 +252,66 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
           </figure>
 
         </div>
-        <div class="container phone-stack">
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/assistent2.webp" alt="Captura Inteligente de Clientes" / loading="lazy">
-          </figure>
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/assistent.webp" alt="Sales Assistant IA embebible para ecommerce" / loading="lazy">
-          </figure>
-          <figure class="reveal" style="margin:0;">
-            <img src="./img/assistent3.webp" alt="Conversión y Agendamiento" / loading="lazy">
-          </figure>
+        <!-- ── Gen OS Bento Grid ── -->
+        <div class="container gen-os-bento reveal">
+
+          <!-- Row 1: 2 image cards -->
+          <div class="gob-card gob-card--image">
+            <img src="https://picsum.photos/seed/genos1/900/560" alt="Captura Inteligente de Clientes" loading="lazy">
+            <div class="gob-overlay"></div>
+            <span class="gob-tag">✦ CAPTACIÓN</span>
+            <div class="gob-footer">
+              <h3 class="gob-title">Captura Inteligente</h3>
+              <p class="gob-subtitle">Cada lead calificado, recibido y respondido en segundos.</p>
+              <button class="gob-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">EXPLORAR ›</button>
+            </div>
+          </div>
+          <div class="gob-card gob-card--image">
+            <img src="https://picsum.photos/seed/genos2/700/560" alt="Sales Assistant IA" loading="lazy">
+            <div class="gob-overlay"></div>
+            <span class="gob-tag">✦ VENTAS IA</span>
+            <div class="gob-footer">
+              <h3 class="gob-title">Sales Assistant IA</h3>
+              <p class="gob-subtitle">Convierte visitas en clientes, 24/7 sin intervención humana.</p>
+              <button class="gob-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">EXPLORAR ›</button>
+            </div>
+          </div>
+
+          <!-- Row 2: 3 stat cards -->
+          <div class="gob-stats-row">
+            <div class="gob-card gob-card--stat gob-stat--1">
+              <span class="gob-stat-num">24/7</span>
+              <span class="gob-stat-lbl">Operación continua</span>
+            </div>
+            <div class="gob-card gob-card--stat gob-stat--2">
+              <span class="gob-stat-num">&lt; 1 min</span>
+              <span class="gob-stat-lbl">Tiempo de respuesta IA</span>
+            </div>
+            <div class="gob-card gob-card--stat gob-stat--3">
+              <span class="gob-stat-num">Omnicanal</span>
+              <span class="gob-stat-lbl">WhatsApp, web, email y más</span>
+            </div>
+          </div>
+
+          <!-- Row 3: text card + placeholder card -->
+          <div class="gob-card gob-card--text gob-text--purple">
+            <span class="gob-tag">✦ GEN OS</span>
+            <div class="gob-footer">
+              <h3 class="gob-title">Automatización omnicanal</h3>
+              <p class="gob-subtitle">El motor que aprende y optimiza cada interacción en tiempo real.</p>
+              <button class="gob-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">EXPLORAR ›</button>
+            </div>
+          </div>
+          <div class="gob-card gob-card--image gob-card--short">
+            <img src="https://picsum.photos/seed/genos3/700/320" alt="Conversión y Agendamiento" loading="lazy">
+            <div class="gob-overlay"></div>
+            <span class="gob-tag">✦ CONVERSIÓN</span>
+            <div class="gob-footer">
+              <h3 class="gob-title">Conversión y Agendamiento</h3>
+              <p class="gob-subtitle">Cierra ventas y agenda citas de forma autónoma.</p>
+            </div>
+          </div>
+
         </div>
 
       </section>
@@ -278,26 +323,24 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
 
           <div class="cards-grid">
             <article class="card reveal" style="--reveal-delay: 0ms">
+              <div style="padding:11px 0;"><img width="50%" src="./img/logo-plannia.png" loading="lazy"></div>
+              <h3>Organiza tu vida con IA</h3>
+              <p>Tu centro de control personal. Tareas, hábitos, metas y finanzas en un solo lugar, potenciado por IA real que entiende tu contexto.</p>
+            </article>
+            <article class="card reveal" style="--reveal-delay: 70ms">
               <div><img width="50%" src="./img/logo-nivelup.webp" loading="lazy"></div>
               <h3>Etapa Escolar</h3>
               <p>Plataforma educativa que facilita la gestión académica, comunicación y seguimiento del progreso estudiantil.</p>
             </article>
-            <article class="card reveal" style="--reveal-delay: 70ms">
+            <article class="card reveal" style="--reveal-delay: 140ms">
               <div style="padding:12px 0;"><img width="70%" src="./img/logo-talentflow.webp" loading="lazy"></div>
               <h3>Recursos Humanos</h3>
-              <p>Solución digital para optimizar la gestión de personas en organizaciones modernas que
-centraliza procesos y mejora la comunicación.</p>
+              <p>Solución digital para optimizar la gestión de personas en organizaciones modernas que centraliza procesos y mejora la comunicación.</p>
             </article>
-            <article class="card reveal" style="--reveal-delay: 140ms">
+            <article class="card reveal" style="--reveal-delay: 210ms">
               <div style="padding:16px 0;"><img width="40%" src="./img/logo-nubli.webp" loading="lazy"></div>
               <h3>Primera Infancia</h3>
               <p>Conecta educadoras y familias en tiempo real para compartir avances, actividades y comunicación de forma simple y segura.</p>
-            </article>
-            <article class="card reveal" style="--reveal-delay: 210ms">
-              <div style="padding:0px 0;"><img width="50%" src="./img/logo-looksy.webp" loading="lazy"></div>
-              <h3>Smart Fashion</h3>
-              <p>Herramienta inteligente para analizar y potenciar el rendimiento en moda digital.
-Optimiza decisiones con métricas claras.</p>
             </article>
           </div>
         </div>
@@ -309,8 +352,8 @@ Optimiza decisiones con métricas claras.</p>
          <section class="section" id="entertainment">
         <div class="container">
           <div style="width: 135px;padding-bottom: 8px;"><img src="./img/entert.webp" loading="lazy"></div>
-          <h2 class="section-title color">Genofy Experiences</h2>
-            <div style="height:25px;"></div>
+          <h2 class="section-title color">Gen Experiences</h2>
+            <div class="logos-geno" style="height:25px;text-align:right;"><img style="position:relative;width:320px;display:inline;margin-right: 20px;" src="img/logos-gen.png"></div>
           <!-- ── Tab Nav ── -->
           <div class="ent-tabs" role="tablist">
             <button class="ent-tab active" data-tab="ai-portrait" role="tab" aria-selected="true">AI Portrait Experience</button>
@@ -321,7 +364,7 @@ Optimiza decisiones con métricas claras.</p>
 
           <!-- ── Tab: Interactive Experiences ── -->
           <div class="ent-panel" id="tab-interactive" role="tabpanel">
-            <div class="about-wrap">
+            <div class="about-wrap about-wrap--portrait">
               <div class="about-copy reveal">
                 <h2 class="section-title" style="font-size:24px;">Cuenta Joy</h2>
                 <p>
@@ -329,72 +372,103 @@ Optimiza decisiones con métricas claras.</p>
                 </p>
                 <a href="http://www.cuentajoy.cl" target="_blank"><button class="btn" type="button">Entrar</button></a>
               </div>
-              <figure class="maestrio-frame reveal">
-                <div class="maestrio-wrapper">
-                  <img src="./img/cuentajoy.webp" loading="lazy">
+              <div class="portrait-accordion reveal" style="--reveal-delay:100ms">
+                <!-- Card 1: featured — video -->
+                <div class="portrait-card portrait-card--featured">
+                  <video id="personajeVideo" src="./img/personaje.mp4" loop playsinline muted style="width:100%;height:100%;object-fit:cover;display:block;max-width:none;"></video>
+                  <button class="avatar-mute-btn" id="personajeMuteBtn" title="Silenciar" style="bottom:3.8rem;right:0.75rem;z-index:4;">🔊</button>
+                  <div class="portrait-card-overlay"></div>
+                  <span class="portrait-card-tag">Cuenta Joy</span>
+                  <button class="portrait-card-arrow" onclick="window.open('http://www.cuentajoy.cl','_blank')" aria-label="Ver Cuenta Joy">→</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">Personaje</h4>
+                    <button class="portrait-card-cta" onclick="window.open('http://www.cuentajoy.cl','_blank')">VER EXPERIENCIA ›</button>
+                  </div>
                 </div>
-              </figure>
-            </div>
-            <div class="phone-stack" style="margin-top:2.2rem;">
-              <figure class="reveal" style="margin:0;position:relative;">
-                <video id="personajeVideo" src="./img/personaje.mp4" loop playsinline muted style="width: 98%;
-    height: 96%;
-    object-fit: cover;
-    border-radius: 32px;
-    display: block;
-    border: 9px solid #ffffff33;"></video>
-                <button class="avatar-mute-btn" id="personajeMuteBtn" title="Silenciar" style="bottom:10px;right:10px;">🔊</button>
-              </figure>
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/cuentajoy2.webp" alt="Sales Assistant IA embebible para ecommerce" / loading="lazy">
-              </figure>
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/cuentajoy3.webp" alt="Sales Assistant IA embebible para ecommerce" / loading="lazy">
-              </figure>
+                <div class="portrait-card">
+                  <img src="./img/cuentajoy.webp" alt="Cuenta Joy" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Cuenta Joy">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Cuenta Joy</h4></div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/cuentajoy2.webp" alt="Animación IA" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Animación IA">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Animación IA</h4></div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/cuentajoy3.webp" alt="Interacción" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Interacción">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Interacción</h4></div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- ── Tab: AI Portrait Experience ── -->
           <div class="ent-panel active" id="tab-ai-portrait" role="tabpanel">
-            <div class="about-wrap">
+            <div class="about-wrap about-wrap--portrait">
               <div class="about-copy reveal">
                 <h2 class="section-title" style="font-size:24px;">AI Portrait Experience</h2>
                 <p>
-                  AI Portrait Experience es un sistema interactivo de alta tecnología diseñado para eventos corporativos. Combina reconocimiento facial, avatar con inteligencia artificial, captura fotográfica automática y transformación cinematográfica de imágenes mediante IA generativa.
-El resultado es una experiencia inmersiva donde cada asistente se convierte en protagonista de una fotografía, entregada al instante vía código QR. No es una cabina fotográfica: es una nueva categoría de activación experiencial.
-                    <br><br>
-                  Consiste en un tótem vertical con pantalla touch, avatar animado y cámara inteligente. El sistema detecta personas frente a la pantalla, interactúa con ellas a través de un personaje virtual con voz y expresiones, captura fotografías automáticamente y las transforma en retratos cinematográficos estilo Pixar usando inteligencia artificial generativa.
+                  Sistema interactivo de alta tecnología diseñado para eventos corporativos. Combina reconocimiento facial, avatar con IA, captura fotográfica automática y transformación cinematográfica mediante IA generativa.
+                  <br><br>
+                  Cada asistente se convierte en protagonista de una fotografía entregada al instante vía código QR. No es una cabina fotográfica: es una nueva categoría de activación experiencial.
                 </p>
                 <a class="btn" href="https://portrait-experience.vercel.app/" target="_blank">Entrar</a>
               </div>
-              <figure class="maestrio-frame reveal">
-                <div class="maestrio-wrapper">
-                  <img src="./img/totem.webp" loading="lazy">
+
+              <!-- Accordion expandible (reemplaza maestrio-frame) -->
+              <div class="portrait-accordion reveal" style="--reveal-delay:100ms">
+                <!-- Card 1: featured — video -->
+                <div class="portrait-card portrait-card--featured">
+                  <video id="accordionAvatarVideo" src="./img/avatar-evento.mp4" loop playsinline muted style="width:100%;height:100%;object-fit:cover;display:block;max-width:none;"></video>
+                  <button class="avatar-mute-btn" id="accordionAvatarMuteBtn" title="Silenciar" style="bottom:3.8rem;right:0.75rem;z-index:4;">🔊</button>
+                  <div class="portrait-card-overlay"></div>
+                  <span class="portrait-card-tag">AI Portrait</span>
+                  <button class="portrait-card-arrow" onclick="window.open('https://portrait-experience.vercel.app/','_blank')" aria-label="Ver experiencia">→</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">Avatar Interactivo</h4>
+                    <button class="portrait-card-cta" onclick="window.open('https://portrait-experience.vercel.app/','_blank')">VER EXPERIENCIA ›</button>
+                  </div>
                 </div>
-              </figure>
+                <!-- Card 2 -->
+                <div class="portrait-card">
+                  <img src="./img/totem.webp" alt="El Tótem IA" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="El Tótem IA">↗</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">El Tótem IA</h4>
+                  </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="portrait-card">
+                  <img src="./img/totem1.webp" alt="Eventos corporativos" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Eventos corporativos">↗</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">Eventos Corp.</h4>
+                  </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="portrait-card">
+                  <img src="./img/totem2.webp" alt="Retrato estilo Pixar" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Retrato Pixar">↗</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">Retrato Pixar</h4>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="phone-stack" style="margin-top:2.2rem;">
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/totem1.webp" alt="AI Portrait Experience" / loading="lazy">
-              </figure>
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/totem2.webp" alt="AI Portrait Experience" / loading="lazy">
-              </figure>
-              <figure class="reveal" style="margin:0;position:relative;">
-                <video id="avatarEventoVideo" src="./img/avatar-evento.mp4" loop playsinline muted style="width: 98%;
-    height: 90%;
-    object-fit: cover;
-    border-radius: 32px;
-    display: block;
-    border: 7px solid #ffffff33;margin-top:3px;"></video>
-                <button class="avatar-mute-btn" id="avatarEventoMuteBtn" title="Silenciar" style="bottom:47px;right:26px;">🔊</button>
-              </figure>
-            </div>
+
           </div>
 
           <!-- ── Tab: Games ── -->
           <div class="ent-panel" id="tab-games" role="tabpanel">
-            <div class="about-wrap">
+            <div class="about-wrap about-wrap--portrait">
               <div class="about-copy reveal">
                 <h2 class="section-title" style="font-size:24px;">mirrAI</h2>
                 <p>
@@ -404,22 +478,36 @@ El resultado es una experiencia inmersiva donde cada asistente se convierte en p
                 </p>
                 <a class="btn" href="#contacto" onclick="prefillContact('mirrAI')">Solicitar información</a>
               </div>
-              <figure class="maestrio-frame reveal">
-                <div class="maestrio-wrapper">
-                  <img src="./img/mirror.webp" loading="lazy">
+              <div class="portrait-accordion reveal" style="--reveal-delay:100ms">
+                <div class="portrait-card portrait-card--featured">
+                  <img src="./img/mirror.webp" alt="mirrAI" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <span class="portrait-card-tag">mirrAI</span>
+                  <button class="portrait-card-arrow" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})" aria-label="Solicitar información">→</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">Espejo Inteligente</h4>
+                    <button class="portrait-card-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">SOLICITAR INFO ›</button>
+                  </div>
                 </div>
-              </figure>
-            </div>
-            <div class="phone-stack" style="margin-top:2.2rem;">
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/mirror1.webp" alt="AI Portrait Experience" / loading="lazy">
-              </figure>
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/mirror2.webp" alt="AI Portrait Experience" / loading="lazy">
-              </figure>
-              <figure class="reveal" style="margin:0;">
-                <img src="./img/mirror3.webp" alt="AI Portrait Experience" / loading="lazy">
-              </figure>
+                <div class="portrait-card">
+                  <img src="./img/mirror1.webp" alt="Asistente Virtual" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Asistente Virtual">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Asistente Virtual</h4></div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/mirror2.webp" alt="Catálogo IA" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Catálogo IA">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Catálogo IA</h4></div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/mirror3.webp" alt="Experiencia Retail" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Experiencia Retail">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Experiencia Retail</h4></div>
+                </div>
+              </div>
             </div>
           </div>
 

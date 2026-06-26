@@ -235,6 +235,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const products = [
     {
+      url: 'https://plannia-woad.vercel.app/',
+      title: 'Plannia',
+      desc: 'Tu centro de control personal. Tareas, hábitos, metas y finanzas en un solo lugar, potenciado por IA real que entiende tu contexto.',
+      features: []
+    },
+    {
       video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778193039/pantalla1_1_voyze0.mp4',
       title: 'Etapa Escolar',
       desc: 'Plataforma educativa que conecta colegios, docentes, estudiantes y familias en un solo ecosistema digital. Simplifica la gestión académica y mejora la comunicación en tiempo real.',
@@ -251,17 +257,12 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Nubli — Primera Infancia',
       desc: 'Conecta educadoras de párvulos y familias en tiempo real. Comparte avances, fotos, actividades y comunicaciones del día a día de forma simple y segura.',
       features: ['Registro diario de actividades', 'Galería privada para familias', 'Comunicación directa educadora-apoderado', 'Control de asistencia y alimentación']
-    },
-    {
-      video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4',
-      title: 'Looksy — Smart Fashion',
-      desc: 'Herramienta inteligente para marcas y tiendas de moda digital. Analiza el rendimiento de productos, optimiza decisiones de compra y potencia las ventas con métricas claras.',
-      features: ['Análisis de rendimiento por prenda', 'Recomendaciones de reposición con IA', 'Métricas de conversión por canal', 'Dashboard en tiempo real']
     }
   ];
 
   const openModal = (i) => {
     const p = products[i];
+    if (p.url) { window.open(p.url, '_blank'); return; }
     iphoneVideo.src       = p.video;
     iphoneTitle.textContent = p.title;
     iphoneDesc.textContent  = p.desc;
@@ -484,122 +485,105 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
   });
 });
 
-// ─── Avatar: play muteado al entrar en pantalla, usuario activa audio ──────
-(function () {
-  const video = document.getElementById('avatarVideo');
-  const muteBtn = document.getElementById('avatarMuteBtn');
-  if (!video || !muteBtn) return;
+// ─── Sistema global de audio ─────────────────────────────────────────────────
+// Los videos arrancan silenciados (requerido por los navegadores para autoplay).
+// Al primer click/toque del usuario en cualquier parte de la página se activan
+// todos los audios. Cada botón permite silenciar/activar individualmente.
 
+const MUTE_BTNS = [
+  { videoId: 'avatarVideo',          btnId: 'avatarMuteBtn'          },
+  { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
+  { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
+  { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
+  { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
+];
+
+function syncBtn(btn, muted) {
+  if (btn) btn.textContent = muted ? '🔇' : '🔊';
+}
+
+// Registrar botones individuales
+MUTE_BTNS.forEach(({ videoId, btnId }) => {
+  const video = document.getElementById(videoId);
+  const btn   = document.getElementById(btnId);
+  if (!video) return;
   video.muted = true;
-  muteBtn.textContent = '🔇';
+  syncBtn(btn, true);
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      syncBtn(btn, video.muted);
+    });
+  }
+});
 
+// Al primer gesto del usuario, activar audio en todos
+let audioUnlocked = false;
+function unlockAudio() {
+  if (audioUnlocked) return;
+  audioUnlocked = true;
+  MUTE_BTNS.forEach(({ videoId, btnId }) => {
+    const video = document.getElementById(videoId);
+    const btn   = document.getElementById(btnId);
+    if (!video) return;
+    // solo desmutear los que ya están reproduciendo; los pausados se desbloquean en fadeIn
+    if (!video.paused) video.muted = false;
+    syncBtn(btn, false);
+  });
+  document.removeEventListener('scroll',  unlockAudio);
+  document.removeEventListener('keydown', unlockAudio);
+}
+document.addEventListener('scroll',  unlockAudio, { passive: true });
+document.addEventListener('keydown', unlockAudio);
+
+// ─── IntersectionObserver para play/pause por visibilidad ───────────────────
+function makeVideoObserver(videoId) {
+  const video = document.getElementById(videoId);
+  if (!video) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        video.play();
-      } else {
-        video.pause();
-      }
+      if (entry.isIntersecting) { video.play(); }
+      else                       { video.pause(); }
     });
   }, { threshold: 0.4 });
-
   observer.observe(video);
+}
 
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? '🔇' : '🔊';
-  });
-})();
+makeVideoObserver('avatarVideo');
+makeVideoObserver('wuflyVideo');
+makeVideoObserver('intentMeterVideo');
 
-// ─── Personaje CuentaJoy: play muteado al entrar en pantalla ────────────
+// ─── Portrait Accordion (handles all instances) ───────────────────────────────
 (function () {
-  const video = document.getElementById('personajeVideo');
-  const muteBtn = document.getElementById('personajeMuteBtn');
-  if (!video || !muteBtn) return;
+  document.querySelectorAll('.portrait-accordion').forEach(function (accordion) {
+    const cards    = accordion.querySelectorAll('.portrait-card');
+    const featured = accordion.querySelector('.portrait-card--featured');
+    const video    = accordion.querySelector('video');
 
-  video.muted = true;
-  muteBtn.textContent = '🔇';
+    const setActive = (card) => {
+      cards.forEach(c => c.classList.remove('is-active'));
+      if (card) card.classList.add('is-active');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        video.play();
-      } else {
-        video.pause();
+      // Play/pause el video según si su card está activa
+      if (video) {
+        if (card && card.contains(video)) {
+          video.play();
+        } else {
+          video.pause();
+        }
       }
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => setActive(card));
     });
-  }, { threshold: 0.4 });
 
-  observer.observe(video);
+    // Al salir del accordion, vuelve la card featured y pausa el video
+    accordion.addEventListener('mouseleave', () => setActive(featured));
 
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? '🔇' : '🔊';
-  });
-})();
-
-// ─── Avatar Evento: botón mute (play/pause manejado por tabs) ────────────
-(function () {
-  const video = document.getElementById('avatarEventoVideo');
-  const muteBtn = document.getElementById('avatarEventoMuteBtn');
-  if (!video || !muteBtn) return;
-
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? '🔇' : '🔊';
-  });
-})();
-
-// ─── Wufly: play muteado al entrar en pantalla ──────────────────────────
-(function () {
-  const video = document.getElementById('wuflyVideo');
-  const muteBtn = document.getElementById('wuflyMuteBtn');
-  if (!video || !muteBtn) return;
-
-  video.muted = true;
-  muteBtn.textContent = '🔇';
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        video.play();
-      } else { 
-        video.pause();
-      }
-    });
-  }, { threshold: 0.4 });
-
-  observer.observe(video);
-
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? '🔇' : '🔊';
-  });
-})();
-
-// ─── Intent Meter: play muteado al entrar en pantalla ───────────────────
-(function () {
-  const video = document.getElementById('intentMeterVideo');
-  const muteBtn = document.getElementById('intentMeterMuteBtn');
-  if (!video || !muteBtn) return;
-
-  video.muted = true;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.4 });
-
-  observer.observe(video);
-
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? '🔇' : '🔊';
+    // Estado inicial: video pausado
+    setActive(featured);
   });
 })();
 
