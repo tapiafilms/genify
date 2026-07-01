@@ -58,11 +58,11 @@ const projectsData = {
     url: 'https://wufly.cl/'
   },
   'item-3': {
-    title: 'Conexión Digital',
-    description: 'Maestrio es Marketplace inteligente para servicios del hogar, rápido, confiable y escalable. Conecta usuarios con profesionales verificados mediante IA. La nueva forma de resolver lo cotidiano.',
-    logo: './img/logo-maestrio.webp',
-    image: './img/img-maestrio.webp',
-    url: 'https://pwa-maestrio.vercel.app/'
+    title: 'Plannia',
+    description: 'Organiza tu vida con inteligencia artificial, tareas, hábitos, metas y finanzas en un solo lugar, potenciado por IA real que entiende tu contexto.',
+    logo: './img/logo-plannia.png',
+    image: './img/ipad-plannia.png',
+    url: 'https://plannia-woad.vercel.app/'
   },
   'item-4': {
     title: 'Viajes Interurbanos',
