@@ -573,7 +573,7 @@ img {
 }
 
 .strip-logo {
-  height: 100px;
+  height: 80px;
   margin-bottom: 0rem;
 }
 
@@ -683,7 +683,7 @@ img {
   }
 
   .strip-logo {
-    height: 40px;
+    height: 32px;
     margin-bottom: 0.8rem;
     margin-top: 25px;
   }

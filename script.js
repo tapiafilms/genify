@@ -58,7 +58,7 @@ const projectsData = {
     url: 'https://wufly.cl/'
   },
   'item-3': {
-    title: 'Plannia',
+    title: 'El plan que necesitas',
     description: 'Organiza tu vida con inteligencia artificial, tareas, hábitos, metas y finanzas en un solo lugar, potenciado por IA real que entiende tu contexto.',
     logo: './img/logo-plannia.png',
     image: './img/ipad-plannia.png',
