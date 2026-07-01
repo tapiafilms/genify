@@ -594,3 +594,32 @@ function prefillContact(product) {
     messageField.value = `Hola, me interesa conocer más sobre ${product}.`;
   }
 }
+
+// ─── Modal para la demo de Gen OS (Iframe) ───────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const demoModal      = document.getElementById('demoModal');
+  const demoBtnDXP     = document.getElementById('demoBtnDXP');
+  const demoModalClose = document.getElementById('demoModalClose');
+  const demoIframe     = document.getElementById('demoIframe');
+
+  if (!demoModal || !demoBtnDXP || !demoModalClose || !demoIframe) return;
+
+  const openDemoModal = () => {
+    demoIframe.src = 'https://intent-meter.vercel.app/';
+    demoModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeDemoModal = () => {
+    demoModal.classList.remove('active');
+    demoIframe.src = ''; // Vaciar src para detener reproducción/scripts en segundo plano
+    document.body.style.overflow = '';
+  };
+
+  demoBtnDXP.addEventListener('click', openDemoModal);
+  demoModalClose.addEventListener('click', closeDemoModal);
+
+  demoModal.addEventListener('click', (e) => {
+    if (e.target === demoModal) closeDemoModal();
+  });
+});
