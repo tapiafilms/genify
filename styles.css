@@ -1656,6 +1656,15 @@ main {
     transform: scale(1.1);
   }
 
+  .pilar-mute-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    bottom: auto;
+    left: auto;
+    z-index: 10;
+  }
+
   .que-es-text {
     display: flex;
     flex-direction: column;

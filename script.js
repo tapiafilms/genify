@@ -485,23 +485,23 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
   });
 });
 
-// ─── Sistema global de audio ─────────────────────────────────────────────────
-// Los videos arrancan silenciados (requerido por los navegadores para autoplay).
-// Al primer click/toque del usuario en cualquier parte de la página se activan
-// todos los audios. Cada botón permite silenciar/activar individualmente.
+// ─── Sistema global de audio y control de videos ─────────────────────────────
+// Todos los videos inician silenciados (muted). Los botones alternan sonido.
 
 const MUTE_BTNS = [
-  { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
-  { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
+  { videoId: 'pilarAvatarVideo',     btnId: 'pilarAvatarMuteBtn'     },
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
   { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
+  { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
+  { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
+  { videoId: 'iphoneVideo',          btnId: 'iphoneVideoMuteBtn'     },
 ];
 
 function syncBtn(btn, muted) {
   if (btn) btn.textContent = muted ? '🔇' : '🔊';
 }
 
-// Registrar botones individuales
+// Registrar botones y forzar estado silenciado inicial
 MUTE_BTNS.forEach(({ videoId, btnId }) => {
   const video = document.getElementById(videoId);
   const btn   = document.getElementById(btnId);
@@ -516,25 +516,6 @@ MUTE_BTNS.forEach(({ videoId, btnId }) => {
     });
   }
 });
-
-// Al primer gesto del usuario, activar audio en todos
-let audioUnlocked = false;
-function unlockAudio() {
-  if (audioUnlocked) return;
-  audioUnlocked = true;
-  MUTE_BTNS.forEach(({ videoId, btnId }) => {
-    const video = document.getElementById(videoId);
-    const btn   = document.getElementById(btnId);
-    if (!video) return;
-    // solo desmutear los que ya están reproduciendo; los pausados se desbloquean en fadeIn
-    if (!video.paused) video.muted = false;
-    syncBtn(btn, false);
-  });
-  document.removeEventListener('scroll',  unlockAudio);
-  document.removeEventListener('keydown', unlockAudio);
-}
-document.addEventListener('scroll',  unlockAudio, { passive: true });
-document.addEventListener('keydown', unlockAudio);
 
 // ─── IntersectionObserver para play/pause por visibilidad ───────────────────
 function makeVideoObserver(videoId) {
