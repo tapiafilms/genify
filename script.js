@@ -491,7 +491,6 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
 // todos los audios. Cada botón permite silenciar/activar individualmente.
 
 const MUTE_BTNS = [
-  { videoId: 'avatarVideo',          btnId: 'avatarMuteBtn'          },
   { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
   { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
@@ -550,7 +549,6 @@ function makeVideoObserver(videoId) {
   observer.observe(video);
 }
 
-makeVideoObserver('avatarVideo');
 makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
 makeVideoObserver('pilarAvatarVideo');
