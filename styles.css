@@ -1723,6 +1723,9 @@ main {
     .pilares-grid {
       grid-template-columns: repeat(3, 1fr);
     }
+    .pilar {
+      height: 290px;
+    }
   }
 
   .pilar {
