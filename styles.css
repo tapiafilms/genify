@@ -2400,7 +2400,6 @@ select option {
   object-fit: cover;
   display: block;
   max-width: none;
-  filter: grayscale(60%) brightness(0.6) contrast(1.25);
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
 }
 
@@ -2412,7 +2411,6 @@ select option {
 .gob-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(6, 2, 20, 0.96) 0%, rgba(138, 77, 255, 0.22) 50%, rgba(82, 209, 255, 0.12) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -2514,7 +2512,14 @@ select option {
 }
 
 .gob-text--purple {
-  background: linear-gradient(135deg, rgba(122, 59, 255, 0.5) 0%, rgba(80, 20, 180, 0.6) 100%);
+  background-image: url('./img/compu.png'), linear-gradient(135deg, rgba(122, 59, 255, 0.5) 0%, rgba(80, 20, 180, 0.6) 100%);
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: contain;
+}
+
+.gob-text--purple .gob-footer {
+  right: 45%;
 }
 
 /* Mobile */
@@ -2544,6 +2549,12 @@ select option {
   }
   .gob-card--text {
     min-height: 140px;
+  }
+  .gob-text--purple {
+    background-image: linear-gradient(135deg, rgba(122, 59, 255, 0.5) 0%, rgba(80, 20, 180, 0.6) 100%);
+  }
+  .gob-text--purple .gob-footer {
+    right: 1.1rem;
   }
 }
 
