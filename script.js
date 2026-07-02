@@ -553,6 +553,7 @@ function makeVideoObserver(videoId) {
 makeVideoObserver('avatarVideo');
 makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
+makeVideoObserver('pilarAvatarVideo');
 
 // ─── Portrait Accordion (handles all instances) ───────────────────────────────
 (function () {
