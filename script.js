@@ -611,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (portraitDemoBtn) {
     portraitDemoBtn.addEventListener('click', () => {
-      openDemoModal('https://portrait-experience.vercel.app/', 'AI Portrait Experience Demo');
+      openDemoModal('https://portrait-experience.vercel.app/', 'AI Portrait Experience');
     });
   }
 
