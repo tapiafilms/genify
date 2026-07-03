@@ -577,17 +577,22 @@ function prefillContact(product) {
   }
 }
 
-// ─── Modal para la demo de Gen OS (Iframe) ───────────────────────────────────
+// ─── Modal para Demos externas (Iframe) ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const demoModal      = document.getElementById('demoModal');
-  const demoBtnDXP     = document.getElementById('demoBtnDXP');
+  const demoModalTitle = document.getElementById('demoModalTitle');
   const demoModalClose = document.getElementById('demoModalClose');
   const demoIframe     = document.getElementById('demoIframe');
 
-  if (!demoModal || !demoBtnDXP || !demoModalClose || !demoIframe) return;
+  // Botones
+  const demoBtnDXP      = document.getElementById('demoBtnDXP');
+  const portraitDemoBtn = document.getElementById('portraitDemoBtn');
 
-  const openDemoModal = () => {
-    demoIframe.src = 'https://intent-meter.vercel.app/';
+  if (!demoModal || !demoModalClose || !demoIframe) return;
+
+  const openDemoModal = (url, title) => {
+    if (demoModalTitle) demoModalTitle.textContent = title;
+    demoIframe.src = url;
     demoModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
@@ -598,7 +603,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   };
 
-  demoBtnDXP.addEventListener('click', openDemoModal);
+  if (demoBtnDXP) {
+    demoBtnDXP.addEventListener('click', () => {
+      openDemoModal('https://intent-meter.vercel.app/', 'Gen OS — Business Operating System Demo');
+    });
+  }
+
+  if (portraitDemoBtn) {
+    portraitDemoBtn.addEventListener('click', () => {
+      openDemoModal('https://portrait-experience.vercel.app/', 'AI Portrait Experience Demo');
+    });
+  }
+
   demoModalClose.addEventListener('click', closeDemoModal);
 
   demoModal.addEventListener('click', (e) => {
