@@ -224,14 +224,16 @@ form.addEventListener("submit", async (event) => {
   
 // ── iPhone Modal ──
 document.addEventListener('DOMContentLoaded', () => {
-  const iphoneModal   = document.getElementById('iphoneModal');
-  const iphoneVideo   = document.getElementById('iphoneVideo');
-  const iphoneClose   = document.getElementById('iphoneClose');
-  const iphoneTitle   = document.getElementById('iphoneTitle');
-  const iphoneDesc    = document.getElementById('iphoneDesc');
-  const iphoneFeatures = document.getElementById('iphoneFeatures');
-  const iphoneCtaBtn  = document.getElementById('iphoneCtaBtn');
-  const cards         = document.querySelectorAll('#servicios article.card');
+  const iphoneModal        = document.getElementById('iphoneModal');
+  const iphoneVideo        = document.getElementById('iphoneVideo');
+  const iphoneIframe       = document.getElementById('iphoneIframe');
+  const iphoneVideoMuteBtn = document.getElementById('iphoneVideoMuteBtn');
+  const iphoneClose        = document.getElementById('iphoneClose');
+  const iphoneTitle        = document.getElementById('iphoneTitle');
+  const iphoneDesc         = document.getElementById('iphoneDesc');
+  const iphoneFeatures     = document.getElementById('iphoneFeatures');
+  const iphoneCtaBtn       = document.getElementById('iphoneCtaBtn');
+  const cards              = document.querySelectorAll('#servicios article.card');
 
   const products = [
     {
@@ -247,10 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
       features: ['Agenda y comunicados digitales', 'Seguimiento del progreso estudiantil', 'Mensajería directa docente-familia', 'Panel administrativo centralizado']
     },
     {
-      video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4',
-      title: 'TalentFlow — RRHH',
-      desc: 'Solución integral para la gestión de personas en organizaciones modernas. Automatiza procesos de selección, onboarding y seguimiento de desempeño con IA.',
-      features: ['Reclutamiento y onboarding digital', 'Evaluaciones de desempeño automatizadas', 'Gestión de vacaciones y permisos', 'Reportes y analíticas de equipo']
+      iframeUrl: 'https://pet-one-one.vercel.app',
+      title: 'PetOne — Tienda & Comunidad',
+      desc: 'Aplicación PWA completa para tiendas de mascotas. Permite a los clientes explorar un amplio catálogo de productos, realizar compras y formar parte de una comunidad.',
+      features: ['Tienda e-commerce PWA responsiva', 'Catálogo de productos interactivo', 'Comunidad y foro de pet lovers', 'Instalable en cualquier dispositivo sin tienda de apps']
     },
     {
       video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4',
@@ -263,19 +265,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const openModal = (i) => {
     const p = products[i];
     if (p.url) { window.open(p.url, '_blank'); return; }
-    iphoneVideo.src       = p.video;
+
+    if (p.iframeUrl) {
+      if (iphoneIframe) {
+        iphoneIframe.src = p.iframeUrl;
+        iphoneIframe.style.display = 'block';
+      }
+      if (iphoneVideo) {
+        iphoneVideo.style.display = 'none';
+        iphoneVideo.pause();
+      }
+      if (iphoneVideoMuteBtn) {
+        iphoneVideoMuteBtn.style.display = 'none';
+      }
+    } else if (p.video) {
+      if (iphoneIframe) {
+        iphoneIframe.src = 'about:blank';
+        iphoneIframe.style.display = 'none';
+      }
+      if (iphoneVideo) {
+        iphoneVideo.style.display = 'block';
+        iphoneVideo.src = p.video;
+        iphoneVideo.currentTime = 0;
+        iphoneVideo.play();
+      }
+      if (iphoneVideoMuteBtn) {
+        iphoneVideoMuteBtn.style.display = 'block';
+      }
+    }
+
     iphoneTitle.textContent = p.title;
     iphoneDesc.textContent  = p.desc;
     iphoneFeatures.innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
     iphoneCtaBtn.onclick = (e) => {
       e.stopPropagation();
       prefillContact(p.title);
-      iphoneModal.classList.remove('active');
-      iphoneVideo.pause();
+      closeModal();
     };
     iphoneModal.classList.add('active');
-    iphoneVideo.currentTime = 0;
-    iphoneVideo.play();
   };
 
   cards.forEach((card, i) => {
@@ -285,7 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeModal = () => {
     iphoneModal.classList.remove('active');
-    iphoneVideo.pause();
+    if (iphoneVideo) iphoneVideo.pause();
+    if (iphoneIframe) iphoneIframe.src = 'about:blank';
   };
 
   iphoneClose.addEventListener('click', closeModal);
