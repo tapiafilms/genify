@@ -249,13 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
       features: ['Agenda y comunicados digitales', 'Seguimiento del progreso estudiantil', 'Mensajería directa docente-familia', 'Panel administrativo centralizado']
     },
     {
-      iframeUrl: 'https://pet-one-one.vercel.app',
-      title: 'PetOne — Tienda & Comunidad',
-      desc: '<p style="margin-bottom: 1rem;"><strong>¿Qué es PetOne?</strong></p><p style="margin-bottom: 1rem;">PetOne es una aplicación móvil inteligente (formato PWA) diseñada como el acompañante definitivo para tutores de mascotas. Funciona como un puente directo y sin fricciones entre los dueños de mascotas, la tienda de retail y los grandes proveedores de productos veterinarios.</p><p style="margin-bottom: 1.5rem;">Es una aplicación de tipo "Offline-First", lo que significa que funciona perfectamente en el teléfono del usuario incluso si este no tiene internet o se encuentra dentro de la tienda física sin señal de celular, sincronizando todos sus datos automáticamente con la nube en cuanto recupera conexión.</p><p style="margin-bottom: 0.5rem; color: var(--text-main); font-weight: bold;">Para el Dueño de la Tienda (Retail Media Network):</p>',
-      features: [
-        '<strong>Analítica de Góndola Físico-Digital:</strong> Te permite ver qué productos escanean tus clientes en las repisas y, lo más importante, por qué deciden no comprarlos (fricciones como precio alto, dudas de calidad o falta de stock en góndola).',
-        '<strong>Portal de Proveedores B2B:</strong> Las marcas asociadas (como Royal Canin, KONG, Oster) tienen su propio panel de analíticas consolidado donde pueden ver su porcentaje de mercado, calificaciones de clientes y el rendimiento de su publicidad pagada dentro de la app de forma 100% segura y anonimizada.'
-      ]
+      url: 'https://pet-one-one.vercel.app/',
+      title: 'PetOne',
+      desc: 'Aplicación PWA inteligente Offline-First para tutores de mascotas que conecta dueños, retail y proveedores.',
+      features: []
     },
     {
       video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4',
