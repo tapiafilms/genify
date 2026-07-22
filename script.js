@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       iframeUrl: 'https://pet-one-one.vercel.app',
       title: 'PetOne — Tienda & Comunidad',
-      desc: 'Aplicación PWA completa para tiendas de mascotas. Permite a los clientes explorar un amplio catálogo de productos, realizar compras y formar parte de una comunidad.',
+      desc: '<p style="margin-bottom: 1rem;"><strong>¿Qué es PetOne?</strong></p><p style="margin-bottom: 1rem;">PetOne es una aplicación móvil inteligente (formato PWA) diseñada como el acompañante definitivo para tutores de mascotas. Funciona como un puente directo y sin fricciones entre los dueños de mascotas, la tienda de retail y los grandes proveedores de productos veterinarios.</p><p>Es una aplicación de tipo "Offline-First", lo que significa que funciona perfectamente en el teléfono del usuario incluso si este no tiene internet o se encuentra dentro de la tienda física sin señal de celular, sincronizando todos sus datos automáticamente con la nube en cuanto recupera conexión.</p>',
       features: ['Tienda e-commerce PWA responsiva', 'Catálogo de productos interactivo', 'Comunidad y foro de pet lovers', 'Instalable en cualquier dispositivo sin tienda de apps']
     },
     {
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     iphoneTitle.textContent = p.title;
-    iphoneDesc.textContent  = p.desc;
+    iphoneDesc.innerHTML    = p.desc;
     iphoneFeatures.innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
     iphoneCtaBtn.onclick = (e) => {
       e.stopPropagation();
