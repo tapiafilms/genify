@@ -243,10 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
       features: []
     },
     {
-      video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778193039/pantalla1_1_voyze0.mp4',
-      title: 'Etapa Escolar',
-      desc: 'Plataforma educativa que conecta colegios, docentes, estudiantes y familias en un solo ecosistema digital. Simplifica la gestión académica y mejora la comunicación en tiempo real.',
-      features: ['Agenda y comunicados digitales', 'Seguimiento del progreso estudiantil', 'Mensajería directa docente-familia', 'Panel administrativo centralizado']
+      tabTarget: 'funside',
+      title: 'FunSide',
+      desc: 'La Suite de Experiencia y BI para Parques Infantiles. Gamifica la visita de las familias mediante una app y optimiza tu negocio con Business Intelligence impulsado por Inteligencia Artificial.',
+      features: []
     },
     {
       url: 'https://pet-one-one.vercel.app/',
@@ -265,6 +265,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const openModal = (i) => {
     const p = products[i];
     if (p.url) { window.open(p.url, '_blank'); return; }
+
+    if (p.tabTarget) {
+      const entSection = document.getElementById('entertainment');
+      if (entSection) {
+        entSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      const tabButton = document.querySelector(`.ent-tab[data-tab="${p.tabTarget}"]`);
+      if (tabButton) {
+        tabButton.click();
+      }
+      return;
+    }
 
     if (p.iframeUrl) {
       if (iphoneIframe) {
