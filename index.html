@@ -330,6 +330,7 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
             <button class="ent-tab active" data-tab="ai-portrait" role="tab" aria-selected="true">Totem Digital</button>
             <button class="ent-tab" data-tab="interactive" role="tab" aria-selected="false">Cuenta Joy</button>
             <button class="ent-tab" data-tab="games" role="tab" aria-selected="false">mirrAI</button>
+            <button class="ent-tab" data-tab="funside" role="tab" aria-selected="false">FunSide</button>
             <!-- Games tab: oculto hasta tener contenido definitivo -->
           </div>
 
@@ -481,6 +482,53 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
               </div>
             </div>
           </div>
+          <!-- ── Tab: FunSide ── -->
+          <div class="ent-panel" id="tab-funside" role="tabpanel">
+            <div class="about-wrap about-wrap--portrait">
+              <div class="about-copy reveal">
+                <h2 class="section-title" style="font-size:24px;">FunSide</h2>
+                <p>
+                  La Suite de Experiencia y BI para Parques Infantiles.<br><br>
+                  Gamifica la visita de las familias mediante una PWA instalable y optimiza tu negocio con Business Intelligence impulsado por Inteligencia Artificial.<br><br>
+                  <strong>- PWA de Experiencia Familiar:</strong><br>
+                  Una aplicación móvil instalable (sin fricción de App Store) que los niños y padres usan para acumular puntos, completar misiones en el parque, ver aforos y generar un diario de recuerdos con IA.<br><br>
+                  <strong>- Dashboard de Business Intelligence:</strong><br>
+                  El centro de comando del administrador del parque. Visualiza aforos por atracción, gestiona las reservas de cumpleaños en tiempo real y predice la deserción de familias (churn risk) mediante IA.
+                </p>
+                <a class="btn" href="#contacto" onclick="prefillContact('FunSide')">Solicitar información</a>
+              </div>
+              <div class="portrait-accordion reveal" style="--reveal-delay:100ms">
+                <div class="portrait-card portrait-card--featured">
+                  <img src="./img/mirror.webp" alt="FunSide" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <span class="portrait-card-tag">FunSide</span>
+                  <button class="portrait-card-arrow" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})" aria-label="Solicitar información">→</button>
+                  <div class="portrait-card-footer">
+                    <h4 class="portrait-card-title">Suite de Parques</h4>
+                    <button class="portrait-card-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">SOLICITAR INFO ›</button>
+                  </div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/mirror1.webp" alt="PWA Familiar" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="PWA Familiar">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">PWA Familiar</h4></div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/mirror2.webp" alt="BI Dashboard" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="BI Dashboard">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">BI Dashboard</h4></div>
+                </div>
+                <div class="portrait-card">
+                  <img src="./img/mirror3.webp" alt="Predicción IA" loading="lazy">
+                  <div class="portrait-card-overlay"></div>
+                  <button class="portrait-card-arrow" aria-label="Predicción IA">↗</button>
+                  <div class="portrait-card-footer"><h4 class="portrait-card-title">Predicción IA</h4></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- ── Tab: Intent ── -->
           <div class="ent-panel" id="tab-intent" role="tabpanel">
@@ -542,6 +590,7 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
                     <option value="Genofy OS">Genofy OS — Automatización para empresas</option>
                     <option value="Totem Digital">Totem Digital — Experiencias para eventos</option>
                     <option value="mirrAI">mirrAI — Espejo inteligente para retail</option>
+                    <option value="FunSide">FunSide — Suite para Parques Infantiles</option>
                     <option value="CuentaJoy">CuentaJoy — Experiencias IA para niños</option>
                     <option value="Open Platforms">Open Platforms — Celigot, Wufly, Maestrio, Un Cupo</option>
                     <option value="Otro">Otro</option>
