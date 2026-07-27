@@ -256,9 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4',
-      title: 'Nubli — Primera Infancia',
-      desc: 'Conecta educadoras de párvulos y familias en tiempo real. Comparte avances, fotos, actividades y comunicaciones del día a día de forma simple y segura.',
-      features: ['Registro diario de actividades', 'Galería privada para familias', 'Comunicación directa educadora-apoderado', 'Control de asistencia y alimentación']
+      title: 'Cumpland — Fiestas de Cumpleaños',
+      desc: 'Conecta anfitriones y familias en tiempo real. Coordina asistencias, videos, fotos y el retiro de los niños en la fiesta de forma simple.',
+      features: ['Invitaciones y confirmación de asistencia en tiempo real', 'Galería de fotos y videos compartida del evento', 'Control de asistencia y check-out seguro de los niños', 'Coordinación del evento entre anfitriones y familias']
     }
   ];
 
