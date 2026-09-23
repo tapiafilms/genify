@@ -1171,6 +1171,19 @@ main {
   }
 }
 
+/* Footer responsive centrado: logos y textos */
+@media (max-width: 768px) {
+  .footer-wrap,
+  .footer-main {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-nav {
+    justify-content: center;
+  }
+}
+
 .footer-links,
 .socials {
   display: flex;
