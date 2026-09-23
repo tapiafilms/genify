@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
       features: []
     },
     {
-      video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmojo.mp4',
+      video: 'https://res.cloudinary.com/dpkqqsjwk/video/upload/v1778120718/video1_wmoj0o.mp4',
       title: 'Cumpland — Fiestas de Cumpleaños',
       desc: 'Conecta anfitriones y familias en tiempo real. Coordina asistencias, videos, fotos y el retiro de los niños en la fiesta de forma simple.',
       features: ['Invitaciones y confirmación de asistencia en tiempo real', 'Galería de fotos y videos compartida del evento', 'Control de asistencia y check-out seguro de los niños', 'Coordinación del evento entre anfitriones y familias']
