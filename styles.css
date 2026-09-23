@@ -1147,9 +1147,9 @@ main {
 }
 
 .footer-tapiah img {
-  height: 42px;
-  width: auto;
-  display: block;
+    height: 80px;
+    width: auto;
+    display: block;
 }
 
 @media (min-width: 769px) {
