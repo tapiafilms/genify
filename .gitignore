@@ -1,3 +1,6 @@
 .vercel
 .claude/
 .DS_Store
+
+# Videos pesados: viven en Supabase Storage
+img/*.mp4
