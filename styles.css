@@ -1129,6 +1129,36 @@ main {
   text-align: left;
 }
 
+.footer-main {
+  display: grid;
+  gap: 1.3rem;
+  justify-items: start;
+}
+
+.footer-tapiah {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-tapiah:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.footer-tapiah img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .footer-wrap {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
 .footer-links,
 .socials {
   display: flex;
