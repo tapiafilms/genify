@@ -582,6 +582,11 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
               <p class="error-message" id="formError" aria-live="polite"></p>
               <button class="btn" type="submit" id="submitBtn">Enviar mensaje</button>
               <p class="success-message" id="formSuccess" aria-live="polite"></p>
+              <!-- Honeypot antispam: invisible para humanos -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="empresa_hp">Empresa</label>
+                <input id="empresa_hp" name="empresa" type="text" autocomplete="off" tabindex="-1">
+              </div>
             </form>
           </div>
         </div>

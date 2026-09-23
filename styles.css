@@ -1152,6 +1152,18 @@ main {
     display: block;
 }
 
+/* Honeypot antispam: fuera de pantalla, nunca visible */
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
 @media (min-width: 769px) {
   .footer-wrap {
     grid-template-columns: 1fr auto;

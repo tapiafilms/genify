@@ -176,15 +176,29 @@ const form       = document.getElementById("contactForm");
 const formError  = document.getElementById("formError");
 const formSuccess = document.getElementById("formSuccess");
 const submitBtn  = document.getElementById("submitBtn");
+const formLoadTime = Date.now();
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   formError.textContent   = "";
   formSuccess.textContent = "";
 
+  // Honeypot: si un bot lo llenó, fingir éxito sin guardar nada
+  if (form.empresa && form.empresa.value) {
+    form.reset();
+    formSuccess.textContent = "¡Mensaje enviado! Te contactaremos pronto.";
+    return;
+  }
+  // Trampa de tiempo: humanos tardan > 2s en completar
+  if (Date.now() - formLoadTime < 2000) {
+    formError.textContent = "Ocurrió un error al enviar. Intentalo de nuevo.";
+    return;
+  }
+
   const nombre  = form.name.value.trim();
   const email   = form.email.value.trim();
   const mensaje = form.message.value.trim();
+  const interest = form.interest ? form.interest.value : "";
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   if (!nombre || !email || !mensaje) {
@@ -206,7 +220,7 @@ form.addEventListener("submit", async (event) => {
   try {
     const { error } = await supabaseClient
       .from('leads')
-      .insert([{ nombre, email, mensaje }]);
+      .insert([{ nombre, email, mensaje, interest: interest || null }]);
 
     if (error) throw error;
 
