@@ -666,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (portraitDemoBtn) {
     portraitDemoBtn.addEventListener('click', () => {
-      openDemoModal('https://portrait-experience.vercel.app/', 'Totem Digital');
+      openDemoModal('./totem/', 'Totem Digital');
     });
   }
 
