@@ -543,7 +543,6 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
 // Todos los videos inician silenciados (muted). Los botones alternan sonido.
 
 const MUTE_BTNS = [
-  { videoId: 'pilarAvatarVideo',     btnId: 'pilarAvatarMuteBtn'     },
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
   { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
   { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
@@ -586,7 +585,6 @@ function makeVideoObserver(videoId) {
 
 makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
-makeVideoObserver('pilarAvatarVideo');
 makeVideoObserver('accordionAvatarVideo');
 makeVideoObserver('personajeVideo');
 
