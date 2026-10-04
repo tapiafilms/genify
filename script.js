@@ -257,9 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
       features: []
     },
     {
-      tabTarget: 'funside',
-      title: 'FunSide',
-      desc: 'La Suite de Experiencia y BI para Parques Infantiles. Gamifica la visita de las familias mediante una app y optimiza tu negocio con Business Intelligence impulsado por Inteligencia Artificial.',
+      tabTarget: 'weddside',
+      title: 'Weddside',
+      desc: 'La experiencia conectada para matrimonios: fotos en tiempo real desde la iglesia, mensaje en video de los novios, tótem con IA en la recepción y pantalla gigante durante toda la fiesta.',
       features: []
     },
     {
