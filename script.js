@@ -641,6 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Botones
   const demoBtnDXP      = document.getElementById('demoBtnDXP');
   const portraitDemoBtn = document.getElementById('portraitDemoBtn');
+  const weddsideDemoBtn = document.getElementById('weddsideDemoBtn');
 
   if (!demoModal || !demoModalClose || !demoIframe) return;
 
@@ -666,6 +667,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (portraitDemoBtn) {
     portraitDemoBtn.addEventListener('click', () => {
       openDemoModal('https://portrait-experience.vercel.app/', 'Totem Digital');
+    });
+  }
+
+  if (weddsideDemoBtn) {
+    weddsideDemoBtn.addEventListener('click', () => {
+      openDemoModal('./weddside/', 'Weddside — Experiencia para matrimonios');
     });
   }
 
