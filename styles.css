@@ -237,6 +237,25 @@ img {
   filter: none;
 }
 
+/* Variante fantasma: mismo tamaño, sin relleno */
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: none;
+}
+
+.btn--ghost:hover {
+  box-shadow: 0 10px 28px rgba(110, 43, 255, 0.35);
+}
+
+/* Grupo de CTAs lado a lado */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
 .hero {
   height: 860px;
   display: grid;

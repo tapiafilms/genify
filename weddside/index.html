@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="apple-touch-icon" href="./icon-192.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#050810" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Weddside — La experiencia de tu matrimonio</title>
+    <meta name="description" content="Weddside transforma a los invitados de tu matrimonio en protagonistas con retratos generados por IA en tiempo real." />
+    <meta name="keywords" content="Weddside, matrimonio, boda, retrato IA, experiencia invitados, tótem interactivo, AI portrait, casamiento" />
+    <meta property="og:title" content="Weddside — La experiencia de tu matrimonio" />
+    <meta property="og:description" content="Transforma a tus invitados en protagonistas de tu matrimonio. Retratos con IA en menos de 30 segundos." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://www.genofy.cl/weddside/" />
+    <meta property="og:url" content="https://www.genofy.cl/weddside/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Weddside — La experiencia de tu matrimonio" />
+    <meta name="twitter:description" content="Transforma a tus invitados en protagonistas de tu matrimonio. Retratos con IA en menos de 30 segundos." />
+    <style>
+      html, body {
+        background: #050810;
+        margin: 0;
+        padding: 0;
+        overscroll-behavior-y: auto;
+      }
+    </style>
+    <script type="module" crossorigin src="/weddside/assets/index-DWRncBRK.js"></script>
+    <link rel="stylesheet" crossorigin href="/weddside/assets/index-C9619iKQ.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then(reg => {
+            document.addEventListener('visibilitychange', () => {
+              if (document.visibilityState === 'visible') reg.update()
+            })
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'activated') window.location.reload()
+              })
+            })
+          })
+        })
+      }
+    </script>
+  </body>
+</html>
