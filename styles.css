@@ -351,8 +351,8 @@ img {
 }
 
 .hero-cards {
-  width: 45%;
-  justify-self: end;
+  width: 100%;
+  justify-self: stretch;
   display: flex;
   flex-direction: column;
   gap: 14px;
