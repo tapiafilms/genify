@@ -44,11 +44,11 @@ revealItems.forEach((item) => revealObserver.observe(item));
 // ─── Showcase strip ──────────────────────────────────────────────────────
 const projectsData = {
   'item-1': {
-    title: 'Plataforma Social',
-    description: 'Celigot es un ecosistema digital para la vida sin gluten, conectando gastronomía, comercio y comunidad. Impulsado por IA para descubrir opciones seguras y tomar decisiones informadas. La infraestructura que redefine la experiencia celíaca.',
-    logo: './img/logo-celigot.webp',
+    title: 'Plataforma Familiar',
+    description: 'Conecta anfitriones y familias en tiempo real. Coordina asistencias, videos, fotos y el retiro de los niños en la fiesta de forma simple.',
+    logo: './img/logo-cumpland.png',
     image: './img/img-celigot.webp',
-    url: 'https://celigot.cl'
+    url: '#contacto'
   },
   'item-2': {
     title: 'Experiencias Móviles',
@@ -116,6 +116,7 @@ const openItem = (clickedItem) => {
     stripLogo.src             = projectInfo.logo;
     stripImage.src            = projectInfo.image;
     stripButton.href          = projectInfo.url;
+    stripButton.target        = projectInfo.url.startsWith('#') ? '_self' : '_blank';
   }
 
   if (isResponsive) {
