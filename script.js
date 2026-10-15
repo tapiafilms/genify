@@ -680,3 +680,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === demoModal) closeDemoModal();
   });
 });
+
+// ─── Contacto colapsable (toggle Entrar) ───────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const contactToggleBtn   = document.getElementById('contactToggleBtn');
+  const contactCollapsible = document.getElementById('contactCollapsible');
+  if (!contactToggleBtn || !contactCollapsible) return;
+
+  contactToggleBtn.addEventListener('click', () => {
+    const open = contactCollapsible.classList.toggle('open');
+    contactToggleBtn.setAttribute('aria-expanded', open);
+    contactToggleBtn.textContent = open ? 'Cerrar' : 'Entrar';
+    if (open) {
+      setTimeout(() => {
+        const nameField = document.getElementById('name');
+        if (nameField) nameField.focus({ preventScroll: true });
+      }, 450);
+    }
+  });
+});

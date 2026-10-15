@@ -2720,3 +2720,32 @@ select option {
   border: none;
   display: block;
 }
+
+/* ─── Contacto colapsable (toggle Entrar) ─── */
+#contactToggleBtn {
+  margin-top: 1.4rem;
+}
+
+.contact-collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: grid-template-rows 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease, transform 0.45s ease, visibility 0s linear 0.55s;
+}
+
+.contact-collapsible.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: grid-template-rows 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.45s ease 0.1s, transform 0.45s ease, visibility 0s;
+}
+
+.contact-collapsible > .contact-box {
+  overflow: hidden;
+  min-height: 0;
+}
