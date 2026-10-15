@@ -259,9 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
       features: []
     },
     {
-      tabTarget: 'weddside',
-      title: 'Weddside',
-      desc: 'La experiencia conectada para matrimonios: fotos en tiempo real desde la iglesia, mensaje en video de los novios, tótem con IA en la recepción y pantalla gigante durante toda la fiesta.',
+      url: 'https://www.cuentajoy.cl',
+      title: 'CuentaJoy',
+      desc: 'Desde cuentos interactivos hasta personajes animados, transformamos ideas en contenido vivo que responde, se mueve e interactúa con tus niños.',
       features: []
     },
     {
