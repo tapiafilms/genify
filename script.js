@@ -547,7 +547,6 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
 const MUTE_BTNS = [
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
   { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
-  { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
   { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
   { videoId: 'iphoneVideo',          btnId: 'iphoneVideoMuteBtn'     },
 ];
@@ -588,7 +587,6 @@ function makeVideoObserver(videoId) {
 makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
 makeVideoObserver('accordionAvatarVideo');
-makeVideoObserver('personajeVideo');
 
 // ─── Portrait Accordion (handles all instances) ───────────────────────────────
 (function () {
