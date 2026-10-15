@@ -45,7 +45,7 @@ revealItems.forEach((item) => revealObserver.observe(item));
 const projectsData = {
   'item-1': {
     title: 'Plataforma Familiar',
-    description: 'Conecta anfitriones y familias en tiempo real. Coordina asistencias, videos, fotos y el retiro de los niños en la fiesta de forma simple.',
+    description: 'Con CumpLand, anfitriones y familias se conectan en tiempo real para vivir cada momento del cumpleaños de una forma más fácil, entretenida y especial. Organiza las asistencias, comparte fotos y videos al instante, sigue los mejores momentos de la celebración y mantén a todos informados desde un solo lugar. Desde la invitación hasta el momento de ir a buscar a los pequeños, todo está pensado para que la comunicación sea sencilla, la experiencia sea inolvidable y los adultos puedan disfrutar con mayor tranquilidad.',
     logo: './img/logo-cumpland.png',
     image: './img/img-celigot.webp',
     url: '#contacto'
