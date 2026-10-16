@@ -2731,6 +2731,7 @@ select option {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  border-bottom: 4px solid #ffffff40;
 }
 
 .contact-head .section-subtitle {
