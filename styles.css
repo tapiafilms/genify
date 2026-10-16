@@ -2724,6 +2724,8 @@ select option {
 /* ─── Contacto colapsable (toggle Entrar) ─── */
 #contactToggleBtn {
   margin-top: 1.4rem;
+  display: flex;
+  margin-left: auto;
 }
 
 .contact-collapsible {

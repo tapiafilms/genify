@@ -690,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
   contactToggleBtn.addEventListener('click', () => {
     const open = contactCollapsible.classList.toggle('open');
     contactToggleBtn.setAttribute('aria-expanded', open);
-    contactToggleBtn.textContent = open ? 'Cerrar' : 'Entrar';
+    contactToggleBtn.textContent = open ? 'Cerrar' : 'Contacto';
     if (open) {
       setTimeout(() => {
         const nameField = document.getElementById('name');
