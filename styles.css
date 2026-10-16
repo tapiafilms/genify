@@ -2723,9 +2723,29 @@ select option {
 
 /* ─── Contacto colapsable (toggle Entrar) ─── */
 #contactToggleBtn {
-  margin-top: 1.4rem;
+  flex-shrink: 0;
+}
+
+.contact-head {
   display: flex;
-  margin-left: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.contact-head .section-subtitle {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .contact-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contact-head #contactToggleBtn {
+    align-self: flex-start;
+  }
 }
 
 .contact-collapsible {
