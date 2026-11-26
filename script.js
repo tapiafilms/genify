@@ -547,12 +547,16 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
 const MUTE_BTNS = [
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
   { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
+  { videoId: 'kabinaVideo',          btnId: 'kabinaMuteBtn'          },
   { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
   { videoId: 'iphoneVideo',          btnId: 'iphoneVideoMuteBtn'     },
 ];
 
 function syncBtn(btn, muted) {
-  if (btn) btn.textContent = muted ? '🔇' : '🔊';
+  if (btn) {
+    btn.textContent = muted ? '🔇' : '🔊';
+    btn.title = muted ? 'Activar sonido' : 'Silenciar';
+  }
 }
 
 // Registrar botones y forzar estado silenciado inicial
@@ -588,6 +592,7 @@ function makeVideoObserver(videoId) {
 
 makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
+makeVideoObserver('kabinaVideo');
 makeVideoObserver('accordionAvatarVideo');
 
 // ─── Portrait Accordion (handles all instances) ───────────────────────────────

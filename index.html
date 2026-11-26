@@ -318,7 +318,8 @@ Están disponibles para cualquier persona y son financiadas por marcas o negocio
               <!-- Accordion expandible (imágenes temporales de Gen Experience) -->
               <div class="portrait-accordion reveal" style="--reveal-delay:100ms">
                 <div class="portrait-card portrait-card--featured">
-                  <img src="./img/totem.webp" alt="Kabina - Contenido listo" loading="lazy">
+                  <video id="kabinaVideo" src="./img/Kabina.mp4" loop playsinline muted style="width:100%;height:100%;object-fit:cover;display:block;max-width:none;"></video>
+                  <button class="avatar-mute-btn" id="kabinaMuteBtn" title="Activar sonido" style="bottom:3.8rem;right:0.75rem;z-index:4;">🔇</button>
                   <div class="portrait-card-overlay"></div>
                   <span class="portrait-card-tag">Kabina</span>
                   <button class="portrait-card-arrow" onclick="prefillContact('Kabina'); document.getElementById('contacto').scrollIntoView({behavior:'smooth'})" aria-label="Solicitar información sobre Kabina">→</button>
