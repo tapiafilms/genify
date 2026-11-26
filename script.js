@@ -548,6 +548,7 @@ const MUTE_BTNS = [
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
   { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
   { videoId: 'kabinaVideo',          btnId: 'kabinaMuteBtn'          },
+  { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
   { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
   { videoId: 'iphoneVideo',          btnId: 'iphoneVideoMuteBtn'     },
 ];
@@ -594,6 +595,7 @@ makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
 makeVideoObserver('kabinaVideo');
 makeVideoObserver('accordionAvatarVideo');
+makeVideoObserver('personajeVideo');
 
 // ─── Portrait Accordion (handles all instances) ───────────────────────────────
 (function () {
