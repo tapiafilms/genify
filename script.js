@@ -536,7 +536,7 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
     // Reproducir video del tab activo muteado (el usuario activa audio con el botón)
     const videoInPanel = activePanel.querySelector('video');
     if (videoInPanel) {
-      videoInPanel.play();
+      videoInPanel.play().catch(() => {});
     }
   });
 });
@@ -577,8 +577,10 @@ function makeVideoObserver(videoId) {
   if (!video) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { video.play(); }
-      else                       { video.pause(); }
+      const panel = video.closest('.ent-panel');
+      const panelVisible = !panel || panel.classList.contains('active');
+      if (entry.isIntersecting && panelVisible) { video.play().catch(() => {}); }
+      else                                      { video.pause(); }
     });
   }, { threshold: 0.4 });
   observer.observe(video);
@@ -595,14 +597,16 @@ makeVideoObserver('accordionAvatarVideo');
     const featured = accordion.querySelector('.portrait-card--featured');
     const video    = accordion.querySelector('video');
 
-    const setActive = (card) => {
+    const setActive = (card, allowPlay = true) => {
       cards.forEach(c => c.classList.remove('is-active'));
       if (card) card.classList.add('is-active');
 
-      // Play/pause el video según si su card está activa
+      // Play/pause el video según si su card está activa y el tab está visible
       if (video) {
-        if (card && card.contains(video)) {
-          video.play();
+        const panel = accordion.closest('.ent-panel');
+        const panelVisible = !panel || panel.classList.contains('active');
+        if (allowPlay && panelVisible && card && card.contains(video)) {
+          video.play().catch(() => {});
         } else {
           video.pause();
         }
@@ -613,16 +617,30 @@ makeVideoObserver('accordionAvatarVideo');
       card.addEventListener('mouseenter', () => setActive(card));
     });
 
-    // Al salir del accordion, vuelve la card featured y pausa el video
+    // Al salir del accordion, vuelve la card featured
     accordion.addEventListener('mouseleave', () => setActive(featured));
 
     // Estado inicial: video pausado
-    setActive(featured);
+    setActive(featured, false);
   });
 })();
 
 // ─── Prefill contact form from product CTAs ──────────────────────────────────
 function prefillContact(product) {
+  const contactCollapsible = document.getElementById('contactCollapsible');
+  const contactToggleBtn   = document.getElementById('contactToggleBtn');
+  if (contactCollapsible && !contactCollapsible.classList.contains('open')) {
+    contactCollapsible.classList.add('open');
+    if (contactToggleBtn) {
+      contactToggleBtn.setAttribute('aria-expanded', 'true');
+      contactToggleBtn.textContent = 'Cerrar';
+    }
+  }
+  const interestField = document.getElementById('interest');
+  if (interestField) {
+    const match = Array.from(interestField.options).find(o => o.value === product);
+    if (match) interestField.value = product;
+  }
   const messageField = document.getElementById('message');
   if (messageField && !messageField.value) {
     messageField.value = `Hola, me interesa conocer más sobre ${product}.`;
@@ -664,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (portraitDemoBtn) {
     portraitDemoBtn.addEventListener('click', () => {
-      openDemoModal('./totem/', 'Totem Digital');
+      openDemoModal('https://portrait-experience.vercel.app/', 'Gen Experience');
     });
   }
 
