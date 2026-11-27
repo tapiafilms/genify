@@ -533,11 +533,15 @@ document.querySelectorAll('.ent-tab').forEach(tab => {
     // Pausar videos en tabs inactivos
     document.querySelectorAll('.ent-panel:not(.active) video').forEach(v => v.pause());
 
-    // Reproducir video del tab activo muteado (el usuario activa audio con el botón)
-    const videoInPanel = activePanel.querySelector('video');
-    if (videoInPanel) {
-      videoInPanel.play().catch(() => {});
-    }
+    // Reproducir video de la card activa del tab activo (muteado)
+    activePanel.querySelectorAll('video').forEach(v => {
+      const card = v.closest('.portrait-card');
+      if (!card || card.classList.contains('is-active')) {
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
   });
 });
 
@@ -548,6 +552,7 @@ const MUTE_BTNS = [
   { videoId: 'wuflyVideo',           btnId: 'wuflyMuteBtn'           },
   { videoId: 'intentMeterVideo',     btnId: 'intentMeterMuteBtn'     },
   { videoId: 'kabinaVideo',          btnId: 'kabinaMuteBtn'          },
+  { videoId: 'kabinaVideo2',         btnId: 'kabinaMuteBtn2'         },
   { videoId: 'personajeVideo',       btnId: 'personajeMuteBtn'       },
   { videoId: 'accordionAvatarVideo', btnId: 'accordionAvatarMuteBtn' },
   { videoId: 'iphoneVideo',          btnId: 'iphoneVideoMuteBtn'     },
@@ -583,9 +588,11 @@ function makeVideoObserver(videoId) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const panel = video.closest('.ent-panel');
+      const card  = video.closest('.portrait-card');
       const panelVisible = !panel || panel.classList.contains('active');
-      if (entry.isIntersecting && panelVisible) { video.play().catch(() => {}); }
-      else                                      { video.pause(); }
+      const cardActive   = !card  || card.classList.contains('is-active');
+      if (entry.isIntersecting && panelVisible && cardActive) { video.play().catch(() => {}); }
+      else                                                    { video.pause(); }
     });
   }, { threshold: 0.4 });
   observer.observe(video);
@@ -594,6 +601,7 @@ function makeVideoObserver(videoId) {
 makeVideoObserver('wuflyVideo');
 makeVideoObserver('intentMeterVideo');
 makeVideoObserver('kabinaVideo');
+makeVideoObserver('kabinaVideo2');
 makeVideoObserver('accordionAvatarVideo');
 makeVideoObserver('personajeVideo');
 
@@ -602,21 +610,23 @@ makeVideoObserver('personajeVideo');
   document.querySelectorAll('.portrait-accordion').forEach(function (accordion) {
     const cards    = accordion.querySelectorAll('.portrait-card');
     const featured = accordion.querySelector('.portrait-card--featured');
-    const video    = accordion.querySelector('video');
+    const videos   = accordion.querySelectorAll('video');
 
     const setActive = (card, allowPlay = true) => {
       cards.forEach(c => c.classList.remove('is-active'));
       if (card) card.classList.add('is-active');
 
-      // Play/pause el video según si su card está activa y el tab está visible
-      if (video) {
+      // Play/pause cada video según si su card está activa y el tab está visible
+      if (videos.length) {
         const panel = accordion.closest('.ent-panel');
         const panelVisible = !panel || panel.classList.contains('active');
-        if (allowPlay && panelVisible && card && card.contains(video)) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
+        videos.forEach(video => {
+          if (allowPlay && panelVisible && card && card.contains(video)) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
       }
     };
 

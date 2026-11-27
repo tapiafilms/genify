@@ -2272,6 +2272,11 @@ select option {
   opacity: 1;
 }
 
+.portrait-accordion .portrait-card:not(.is-active) .avatar-mute-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Botón flecha */
 .portrait-accordion .portrait-card-arrow {
   position: absolute;

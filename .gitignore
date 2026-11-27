@@ -5,3 +5,4 @@
 # Videos pesados: viven en Supabase Storage
 img/*.mp4
 !img/Kabina.mp4
+!img/Kabina2.mp4
