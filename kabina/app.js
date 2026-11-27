@@ -222,17 +222,29 @@
   });
 
   /* ------------------------------------------------------------------------
-     7. Accessible FAQ Accordion
+     7. Accessible FAQ Accordion (single-open)
      ------------------------------------------------------------------------ */
   const faqButtons = document.querySelectorAll('.faq-btn');
   faqButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const panelId = btn.getAttribute('aria-controls');
-      const panel = panelId ? document.getElementById(panelId) : null;
-      btn.setAttribute('aria-expanded', String(!expanded));
-      if (panel) {
-        panel.hidden = expanded;
+
+      faqButtons.forEach((otherBtn) => {
+        const otherPanelId = otherBtn.getAttribute('aria-controls');
+        const otherPanel = otherPanelId ? document.getElementById(otherPanelId) : null;
+        otherBtn.setAttribute('aria-expanded', 'false');
+        if (otherPanel) {
+          otherPanel.hidden = true;
+        }
+      });
+
+      if (!expanded) {
+        const panelId = btn.getAttribute('aria-controls');
+        const panel = panelId ? document.getElementById(panelId) : null;
+        btn.setAttribute('aria-expanded', 'true');
+        if (panel) {
+          panel.hidden = false;
+        }
       }
     });
   });
@@ -332,7 +344,7 @@
       const pkgLabel = pkgMap[String(data.get('package'))] || 'tu sesión';
 
       bookingStatus.hidden = false;
-      bookingStatus.textContent = `¡Solicitud recibida, ${name}! Guardamos tu interés en ${pkgLabel}. Te contactaremos por WhatsApp en menos de 24 horas con horarios disponibles en Santiago.`;
+      bookingStatus.textContent = `¡Solicitud recibida, ${name}! Guardamos tu interés en ${pkgLabel}. Te contactaremos por WhatsApp en menos de 24 horas con horarios disponibles en Viña del Mar.`;
       bookingForm.reset();
     });
   }

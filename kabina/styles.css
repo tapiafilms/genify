@@ -318,6 +318,13 @@ textarea {
   min-block-size: 44px;
 }
 
+.brand-logo {
+  block-size: 32px;
+  inline-size: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .brand-mark {
   inline-size: 36px;
   block-size: 36px;
