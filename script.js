@@ -673,6 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Botones
   const demoBtnDXP      = document.getElementById('demoBtnDXP');
+  const kabinaDemoBtn   = document.getElementById('kabinaDemoBtn');
   const portraitDemoBtn = document.getElementById('portraitDemoBtn');
   const weddsideDemoBtn = document.getElementById('weddsideDemoBtn');
 
@@ -694,6 +695,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (demoBtnDXP) {
     demoBtnDXP.addEventListener('click', () => {
       openDemoModal('https://intent-meter.vercel.app/', 'Gen OS — Business Operating System Demo');
+    });
+  }
+
+  if (kabinaDemoBtn) {
+    kabinaDemoBtn.addEventListener('click', () => {
+      openDemoModal('./kabina/', 'Kabina — Estudio de Contenido y Cursos');
     });
   }
 
